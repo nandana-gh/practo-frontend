@@ -1,103 +1,378 @@
 <app-header></app-header>
 
-<!-- Hero Section -->
-<div class="bg-light py-5">
-  <div class="container py-4">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-6">
-        <h1 class="display-4 fw-extrabold mb-3" style="color: #263077; line-height: 1.2;">Your Home for Health</h1>
-        <p class="fs-5 text-muted mb-4">Find and book appointments with top-rated doctors near you, or start an instant online video consultation in minutes.</p>
+<!-- Main Page Body Wrap -->
+<div class="container my-4">
+  <div class="row g-4">
+    
+    <!-- Left Column: Surgery Network Banner & Benefits -->
+    <div class="col-12 col-lg-8">
+      
+      <!-- Banner Box -->
+      <div class="surgery-hero-banner p-4 p-md-5 mb-4 text-center text-md-start position-relative overflow-hidden">
+        <div class="row align-items-center">
+          <div class="col-md-7 z-1">
+            <h1 class="fw-extrabold text-dark mb-2" style="font-size: 32px; letter-spacing: -0.02em;">
+              India's fastest growing surgery network
+            </h1>
+            <p class="fw-bold mb-4" style="color: #263077; font-size: 16px;">
+              Trusted across India for safe, guided surgery care.
+            </p>
+          </div>
+          <!-- Doctor Image + Badges Container -->
+          <div class="col-md-5 text-center position-relative mt-4 mt-md-0 d-flex justify-content-center align-items-center">
+            <!-- Blue circle background -->
+            <div class="doctor-bg-circle"></div>
+            <!-- Doctor Drawing/SVG -->
+            <svg width="180" height="220" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="doctor-avatar img-fluid z-2">
+              <circle cx="50" cy="30" r="16" fill="#e0e0e0"/>
+              <!-- Glasses -->
+              <circle cx="45" cy="27" r="3" stroke="#282c3f" stroke-width="1"/>
+              <circle cx="55" cy="27" r="3" stroke="#282c3f" stroke-width="1"/>
+              <path d="M48 27 H 52" stroke="#282c3f" stroke-width="1"/>
+              <!-- Coat & Body -->
+              <path d="M25 80 C 25 55, 75 55, 75 80 Z" fill="#ffffff"/>
+              <path d="M38 52 L 50 75 L 62 52" fill="#263077"/>
+              <path d="M48 55 V 72 M 45 60 H 51" stroke="#ffffff" stroke-width="1.5"/>
+              <!-- Stethoscope -->
+              <path d="M42 40 C 42 48, 58 48, 58 40" stroke="#a8a8a8" stroke-width="2" fill="none"/>
+              <path d="M50 44 V 52" stroke="#a8a8a8" stroke-width="2"/>
+            </svg>
+
+            <!-- Floating Badges -->
+            <div class="f-badge f-badge-1 z-3">
+              <i class="bi bi-person-fill text-primary"></i> 2,00,000+ <br><span>Surgeries</span>
+            </div>
+            <div class="f-badge f-badge-2 z-3">
+              <i class="bi bi-activity text-danger"></i> 10,000+ <br><span>Surgeons</span>
+            </div>
+            <div class="f-badge f-badge-3 z-3">
+              <i class="bi bi-building text-warning"></i> 25+ <br><span>Cities</span>
+            </div>
+            <div class="f-badge f-badge-4 z-3">
+              <i class="bi bi-hospital text-success"></i> 1,000+ <br><span>Hospitals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Practo Assured -->
+      <div class="bg-white p-4 rounded shadow-xs mb-4">
+        <h4 class="fw-bold mb-1" style="color: #282c3f; font-size: 20px;">Why Practo Assured?</h4>
+        <p class="text-muted small mb-4">Practo Assured Benefits</p>
         
-        <!-- Search bar layout matching Practo -->
-        <div class="row g-2 bg-white p-2 rounded shadow-sm border">
-          <div class="col-md-4 border-end-md">
-            <div class="input-group">
-              <span class="input-group-text bg-transparent border-0 text-muted"><i class="bi bi-geo-alt-fill"></i></span>
-              <select class="form-select border-0 px-1 fw-semibold text-dark">
-                <option>Bangalore</option>
-                <option>Mumbai</option>
-                <option>Delhi</option>
-                <option>Chennai</option>
-              </select>
+        <div class="row g-3">
+          <!-- Benefit 1 -->
+          <div class="col-md-4">
+            <div class="benefit-card h-100 p-3">
+              <i class="bi bi-star-fill text-warning fs-3 mb-2 d-block"></i>
+              <h6 class="fw-bold mb-1 text-dark" style="font-size: 14px;">4+/5 Hospital Rating</h6>
+              <p class="text-muted small mb-0" style="font-size: 11.5px; line-height: 1.5;">
+                First score of its kind in India, evaluating hospital's infrastructure, equipment, and facilities.
+              </p>
             </div>
           </div>
-          <div class="col-md-8">
-            <div class="input-group">
-              <span class="input-group-text bg-transparent border-0 text-muted"><i class="bi bi-search"></i></span>
-              <input type="text" class="form-control border-0" placeholder="Search doctors, specialties, clinics...">
-              <button class="btn btn-practo-turquoise px-4 rounded">Search</button>
+          <!-- Benefit 2 -->
+          <div class="col-md-4">
+            <div class="benefit-card h-100 p-3">
+              <i class="bi bi-shield-check text-primary fs-3 mb-2 d-block"></i>
+              <h6 class="fw-bold mb-1 text-dark" style="font-size: 14px;">1,000+ Assured Hospitals</h6>
+              <p class="text-muted small mb-0" style="font-size: 11.5px; line-height: 1.5;">
+                Carefully Vetted & Quality-Verified Facilities Across Multiple Cities.
+              </p>
+            </div>
+          </div>
+          <!-- Benefit 3 -->
+          <div class="col-md-4">
+            <div class="benefit-card h-100 p-3">
+              <i class="bi bi-clock-history text-success fs-3 mb-2 d-block"></i>
+              <h6 class="fw-bold mb-1 text-dark" style="font-size: 14px;">15+ Years of Expertise</h6>
+              <p class="text-muted small mb-0" style="font-size: 11.5px; line-height: 1.5;">
+                Proven Expertise & Safe Outcomes from certified senior surgical teams.
+              </p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-6 text-center">
-        <!-- SVG Healthcare Illustration -->
-        <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="img-fluid">
-          <rect width="400" height="300" rx="16" fill="url(#heroGrad)" />
-          <circle cx="200" cy="150" r="80" fill="#ffffff" opacity="0.15"/>
-          <path d="M160 150H240M200 110V190" stroke="#2CB7DF" stroke-width="20" stroke-linecap="round"/>
-          <defs>
-            <linearGradient id="heroGrad" x1="0" y1="0" x2="400" y2="300" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#263077"/>
-              <stop offset="1" stop-color="#161b42"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- Core Services Grid -->
-<div class="container my-5 py-4">
-  <div class="row g-4 justify-content-center">
-    <!-- Service 1 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card practo-card h-100 p-3">
-        <div class="card-body d-flex flex-column justify-content-between">
+        <!-- Assured Stats Summary -->
+        <div class="assured-stats-row mt-4 p-3 d-flex flex-wrap justify-content-around text-center gap-3">
           <div>
-            <div class="p-3 bg-light rounded-circle d-inline-block mb-3">
-              <i class="bi bi-calendar-event fs-3" style="color: #263077;"></i>
-            </div>
-            <h5 class="card-title fw-bold">Find Doctors Near You</h5>
-            <p class="card-text text-muted small">Book guaranteed physical in-clinic consultations with verified clinical specialists in your locality.</p>
+            <h5 class="fw-bold mb-0 text-primary" style="color: #263077 !important;">1 Crore+</h5>
+            <span class="text-muted small">Patients</span>
           </div>
-          <button class="btn btn-outline-practo-blue w-100 mt-3 py-2">Book In-Clinic Appt</button>
+          <div class="vr d-none d-sm-block"></div>
+          <div>
+            <h5 class="fw-bold mb-0 text-primary" style="color: #263077 !important;">10,000+</h5>
+            <span class="text-muted small">Surgeons</span>
+          </div>
+          <div class="vr d-none d-sm-block"></div>
+          <div>
+            <h5 class="fw-bold mb-0 text-primary" style="color: #263077 !important;">25+</h5>
+            <span class="text-muted small">Cities</span>
+          </div>
+        </div>
+        <p class="text-center text-muted small mt-3 mb-0">
+          <i class="bi bi-people-fill me-1"></i> 1,000+ satisfied customers monthly
+        </p>
+      </div>
+
+      <!-- Brands that trust us -->
+      <div class="bg-white p-4 rounded shadow-xs mb-4">
+        <h6 class="text-muted fw-bold mb-3" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;">Brands that trust us</h6>
+        <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center">
+          <div class="brand-badge">ARTEMIS HOSPITALS</div>
+          <div class="brand-badge">OVUM CLINICS</div>
+          <div class="brand-badge">WOCKHARDT</div>
+          <div class="brand-badge">MEDICOVER</div>
+          <div class="brand-badge">CLOUD NINE</div>
+        </div>
+      </div>
+
+      <!-- Treatments Offered Accordion -->
+      <div class="bg-white p-4 rounded shadow-xs mb-4">
+        <h4 class="fw-bold mb-4" style="color: #282c3f; font-size: 20px;">Treatments Offered</h4>
+        
+        <!-- Accordion Item 1 (Open by default) -->
+        <div class="accordion-section border-bottom pb-3 mb-3">
+          <div class="d-flex justify-content-between align-items-center fw-bold text-dark py-2 cursor-pointer" style="font-size: 15px;">
+            <span>Popular</span>
+            <i class="bi bi-chevron-up"></i>
+          </div>
+          
+          <!-- Treatment icons grid -->
+          <div class="row g-3 row-cols-3 row-cols-sm-4 row-cols-md-5 mt-2">
+            <!-- Treatment 1 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-activity text-primary fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Piles</span>
+            </div>
+            <!-- Treatment 2 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-heart-pulse text-danger fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Varicose Veins</span>
+            </div>
+            <!-- Treatment 3 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-body-text text-warning fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Hernia</span>
+            </div>
+            <!-- Treatment 4 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-eye-fill text-success fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Lasik</span>
+            </div>
+            <!-- Treatment 5 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-droplet-half text-info fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Gallstone</span>
+            </div>
+            <!-- Treatment 6 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-slash-square text-secondary fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Anal Fistula</span>
+            </div>
+            <!-- Treatment 7 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-brightness-high-fill text-warning fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Cataract</span>
+            </div>
+            <!-- Treatment 8 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-gem text-primary fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Kidney Stone</span>
+            </div>
+            <!-- Treatment 9 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-scissors text-dark fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Circumcision</span>
+            </div>
+            <!-- Treatment 10 -->
+            <div class="col text-center">
+              <div class="treatment-circle mx-auto">
+                <i class="bi bi-slash-circle text-danger fs-4"></i>
+              </div>
+              <span class="treatment-label mt-2 d-block">Anal Fissure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion headers closed -->
+        <div class="accordion-item-header border-bottom py-3 d-flex justify-content-between align-items-center text-dark cursor-pointer fw-semibold" style="font-size: 14.5px;">
+          <span>General Surgery</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="accordion-item-header border-bottom py-3 d-flex justify-content-between align-items-center text-dark cursor-pointer fw-semibold" style="font-size: 14.5px;">
+          <span>Proctology</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="accordion-item-header border-bottom py-3 d-flex justify-content-between align-items-center text-dark cursor-pointer fw-semibold" style="font-size: 14.5px;">
+          <span>Ophthalmology</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="accordion-item-header border-bottom py-3 d-flex justify-content-between align-items-center text-dark cursor-pointer fw-semibold" style="font-size: 14.5px;">
+          <span>Urology</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="accordion-item-header border-bottom py-3 d-flex justify-content-between align-items-center text-dark cursor-pointer fw-semibold" style="font-size: 14.5px;">
+          <span>Cosmetic Surgery</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="accordion-item-header border-bottom py-3 d-flex justify-content-between align-items-center text-dark cursor-pointer fw-semibold" style="font-size: 14.5px;">
+          <span>Orthopedics</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="accordion-item-header border-bottom py-3 d-flex justify-content-between align-items-center text-dark cursor-pointer fw-semibold" style="font-size: 14.5px;">
+          <span>Robotic Surgeries</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+      </div>
+
+      <!-- Experiences You Can Trust -->
+      <div class="bg-white p-4 rounded shadow-xs mb-4">
+        <h4 class="fw-bold mb-1" style="color: #282c3f; font-size: 20px;">Experiences You Can Trust</h4>
+        <p class="text-primary small fw-semibold mb-4"><i class="bi bi-star-fill"></i> Rated 4.75 <span class="text-muted">(94,296 patients)</span></p>
+
+        <!-- Testimonial scroll list -->
+        <div class="row g-3 flex-nowrap overflow-auto pb-3 testimonial-scroll">
+          <!-- Card 1 -->
+          <div class="col-10 col-md-6 flex-shrink-0">
+            <div class="testimonial-card p-3 h-100 border rounded">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <div class="avatar-circle bg-success text-white">T</div>
+                <div>
+                  <h6 class="fw-bold mb-0" style="font-size: 13px;">Tarun Gupta</h6>
+                  <span class="small text-warning"><i class="bi bi-star-fill"></i> 5.0</span>
+                </div>
+              </div>
+              <p class="small text-muted mb-0" style="line-height: 1.5; font-size: 12px;">
+                "We feel truly grateful to Dr Radhika Kamuni for guiding us through our pregnancy journey with warmth and patience. Thanks to her expertise, we were blessed with a healthy baby girl."
+              </p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col-10 col-md-6 flex-shrink-0">
+            <div class="testimonial-card p-3 h-100 border rounded">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <div class="avatar-circle bg-warning text-white">R</div>
+                <div>
+                  <h6 class="fw-bold mb-0" style="font-size: 13px;">Rashmi R</h6>
+                  <span class="small text-warning"><i class="bi bi-star-fill"></i> 4.8</span>
+                </div>
+              </div>
+              <p class="small text-muted mb-0" style="line-height: 1.5; font-size: 12px;">
+                "I was nervous in the OT but Dr Manjula helped me calm down. I was able to walk after just 2 days of delivery. And the baby are in perfect health with no complications."
+              </p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="col-10 col-md-6 flex-shrink-0">
+            <div class="testimonial-card p-3 h-100 border rounded">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <div class="avatar-circle bg-primary text-white">J</div>
+                <div>
+                  <h6 class="fw-bold mb-0" style="font-size: 13px;">John Paul</h6>
+                  <span class="small text-warning"><i class="bi bi-star-fill"></i> 4.9</span>
+                </div>
+              </div>
+              <p class="small text-muted mb-0" style="line-height: 1.5; font-size: 12px;">
+                "I had a major surgery under Dr Gopal Varma and I am walking again. Doctor and staff were very confident - I never felt like I was undergoing anything major."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Booking Form Widget -->
+    <div class="col-12 col-lg-4">
+      <div class="booking-widget-form p-4 border bg-white shadow-xs rounded sticky-top" style="top: 80px;">
+        <h5 class="fw-bold text-dark mb-1" style="font-size: 18px;">Book your consultation today</h5>
+        <p class="text-muted small mb-4" style="font-size: 12px;">Get a Call Back Within 15 Minutes</p>
+        
+        <form>
+          <!-- Surgery selection -->
+          <div class="mb-3">
+            <select class="form-select select-field py-2 fs-6">
+              <option>Surgery</option>
+              <option>Piles Treatment</option>
+              <option>Varicose Veins Operation</option>
+              <option>Lasik Eye Surgery</option>
+            </select>
+          </div>
+
+          <!-- Location selection -->
+          <div class="mb-3">
+            <select class="form-select select-field py-2 fs-6">
+              <option>Bangalore</option>
+              <option>Mumbai</option>
+              <option>Delhi</option>
+              <option>Chennai</option>
+            </select>
+          </div>
+
+          <!-- Name input -->
+          <div class="mb-3">
+            <input type="text" class="form-control input-field" placeholder="Name">
+          </div>
+
+          <!-- Phone input -->
+          <div class="mb-4">
+            <input type="text" class="form-control input-field" placeholder="Mobile Number">
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-booking-submit w-100 py-3 fw-bold text-white rounded mb-2">
+            Book Appointment
+          </button>
+          
+          <p class="text-center text-muted small mt-2 mb-4" style="font-size: 11px;">
+            By submitting the form, you agree to Practo's <a href="#" class="text-decoration-none" style="color: #00a6e2;">T&C</a>
+          </p>
+        </form>
+
+        <div class="text-center text-muted small mb-4 separator-or position-relative">
+          <span class="bg-white px-2 z-2 position-relative">OR</span>
+          <hr class="w-100 my-0 position-absolute" style="top: 50%; left: 0;">
+        </div>
+
+        <!-- Phone contact -->
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div class="circle-icon bg-blue text-white"><i class="bi bi-telephone-fill"></i></div>
+          <div>
+            <span class="d-block text-muted small" style="font-size: 12px;">Reach Out to Us</span>
+            <a href="tel:+918045685554" class="fw-bold text-decoration-none" style="color: #263077; font-size: 15px; border-bottom: 1.5px solid #263077;">+91-8045685554</a>
+          </div>
+        </div>
+
+        <!-- WhatsApp contact -->
+        <div class="d-flex align-items-center gap-3">
+          <div class="circle-icon bg-whatsapp text-white"><i class="bi bi-whatsapp"></i></div>
+          <div>
+            <span class="d-block text-muted small" style="font-size: 12px;">Chat with Us</span>
+            <a href="#" class="fw-bold text-decoration-none text-success" style="font-size: 15px; border-bottom: 1.5px solid #198754;">+91-7353101441</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Service 2 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card practo-card h-100 p-3">
-        <div class="card-body d-flex flex-column justify-content-between">
-          <div>
-            <div class="p-3 bg-light rounded-circle d-inline-block mb-3">
-              <i class="bi bi-camera-video fs-3" style="color: #2cb7df;"></i>
-            </div>
-            <h5 class="card-title fw-bold">Instant Video Consult</h5>
-            <p class="card-text text-muted small">Connect with qualified general physicians or specialists 24/7 over secure HD video chat within 2 minutes.</p>
-          </div>
-          <button class="btn btn-practo-turquoise w-100 mt-3 py-2">Consult Now</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Service 3 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card practo-card h-100 p-3">
-        <div class="card-body d-flex flex-column justify-content-between">
-          <div>
-            <div class="p-3 bg-light rounded-circle d-inline-block mb-3">
-              <i class="bi bi-droplet fs-3" style="color: #ea5455;"></i>
-            </div>
-            <h5 class="card-title fw-bold">Order Medicines</h5>
-            <p class="card-text text-muted small">Order prescription and OTC healthcare medicines from local verified pharmacies with express delivery.</p>
-          </div>
-          <button class="btn btn-outline-practo-blue w-100 mt-3 py-2">Buy Medicines</button>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 

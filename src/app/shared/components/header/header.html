@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3 sticky-top">
-  <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-2 sticky-top shadow-xs">
+  <div class="container-fluid px-lg-5">
     <!-- Brand Logo -->
-    <a class="navbar-brand d-flex align-items-center" routerLink="/">
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
-        <rect width="36" height="36" rx="8" fill="#263077"/>
-        <path d="M18 9V27M9 18H27" stroke="#2CB7DF" stroke-width="4" stroke-linecap="round"/>
-      </svg>
-      <span class="fs-4 fw-extrabold tracking-tight" style="color: #263077; font-family: 'Inter', sans-serif;">practo</span>
+    <a class="navbar-brand d-flex align-items-center me-4" routerLink="/">
+      <span class="fs-3 fw-extrabold d-flex align-items-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+        <span style="color: #2CB7DF; margin-right: 1px; font-size: 1.2em; line-height: 0;">•</span>
+        <span style="color: #263077; font-weight: 800;">practo</span>
+        <span style="color: #2CB7DF; margin-left: 1px; font-size: 1.2em; line-height: 0;">•</span>
+      </span>
     </a>
 
     <!-- Mobile Toggle -->
@@ -14,54 +14,73 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navbar Links -->
+    <!-- Navbar Content -->
     <div class="collapse navbar-collapse" id="practoNavbar">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 gap-2">
+      <!-- Centered Menu Links -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1 gap-lg-3">
         <li class="nav-item">
-          <a class="nav-link fw-semibold" routerLink="/search" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">Find Doctors</a>
+          <a class="nav-link fw-bold px-2 py-3" routerLink="/search" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">Find Doctors</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-semibold" routerLink="/video-consult" routerLinkActive="active">Video Consult</a>
+          <a class="nav-link fw-bold px-2 py-3" routerLink="/video-consult" routerLinkActive="active">Video Consult</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-semibold" routerLink="/medicines" routerLinkActive="active">Medicines</a>
+          <a class="nav-link fw-bold px-2 py-3" routerLink="/medicines" routerLinkActive="active">Medicines</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-semibold" routerLink="/labs" routerLinkActive="active">Lab Tests</a>
+          <a class="nav-link fw-bold px-2 py-3" routerLink="/labs" routerLinkActive="active">Lab Tests</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold px-2 py-3" routerLink="/surgeries" routerLinkActive="active">Surgeries</a>
         </li>
       </ul>
 
-      <!-- User Auth Section -->
-      <div class="d-flex align-items-center">
-        <ng-container *ngIf="authService.isAuthenticated(); else guestView">
-          <div class="dropdown">
-            <button class="btn btn-outline-practo-blue dropdown-toggle d-flex align-items-center gap-2 py-2 px-3" type="button" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle fs-5"></i>
-              <span>{{ authService.currentUser()?.firstName }}</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2" aria-labelledby="userMenuButton">
-              <li>
-                <div class="px-3 py-2 border-bottom">
-                  <span class="d-block fw-bold text-dark">{{ authService.currentUser()?.firstName }} {{ authService.currentUser()?.lastName }}</span>
-                  <span class="d-block small text-muted">{{ authService.currentUser()?.email }}</span>
-                  <span class="badge bg-light text-dark mt-1 border">{{ authService.currentUser()?.role }}</span>
-                </div>
-              </li>
-              <li><a class="dropdown-menu-item dropdown-item py-2 px-3" routerLink="/dashboard"><i class="bi bi-grid-1x2 me-2"></i>My Dashboard</a></li>
-              <li><a class="dropdown-menu-item dropdown-item py-2 px-3" routerLink="/records"><i class="bi bi-file-earmark-medical me-2"></i>Medical Records</a></li>
-              <li><hr class="dropdown-divider my-1"></li>
-              <li>
-                <button class="dropdown-item py-2 px-3 text-danger" (click)="logout()">
-                  <i class="bi bi-box-arrow-right me-2"></i>Logout
-                </button>
-              </li>
-            </ul>
-          </div>
-        </ng-container>
+      <!-- Right Utility Bar -->
+      <div class="d-flex align-items-center gap-3">
+        <!-- For Corporates -->
+        <a href="#" class="nav-link small fw-semibold d-flex align-items-center gap-1 d-none d-xl-flex text-muted" style="font-size: 13.5px;">
+          <span class="badge rounded-pill px-2 py-1" style="background-color: #263077; font-size: 9px; font-weight: 700;">NEW</span>
+          For Corporates
+        </a>
+        
+        <!-- For Providers -->
+        <a href="#" class="nav-link small fw-semibold text-muted d-none d-lg-block" style="font-size: 13.5px;">For Providers</a>
+        
+        <!-- Security & help -->
+        <a href="#" class="nav-link small fw-semibold text-muted d-none d-lg-block" style="font-size: 13.5px;">Security & help</a>
 
-        <ng-template #guestView>
-          <a class="btn btn-outline-practo-blue py-2 px-4 me-2 rounded" routerLink="/login">Login / Signup</a>
-        </ng-template>
+        <!-- User Authentication Section -->
+        <div class="ms-2">
+          <ng-container *ngIf="authService.isAuthenticated(); else guestView">
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle d-flex align-items-center gap-2 py-2 px-3 fw-semibold" style="font-size: 13.5px; border-color: #dee2e6; color: #495057;" type="button" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle text-muted"></i>
+                <span>{{ authService.currentUser()?.firstName }}</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2" aria-labelledby="userMenuButton" style="min-width: 200px;">
+                <li>
+                  <div class="px-3 py-2 border-bottom">
+                    <span class="d-block fw-bold text-dark">{{ authService.currentUser()?.firstName }} {{ authService.currentUser()?.lastName }}</span>
+                    <span class="d-block small text-muted text-truncate">{{ authService.currentUser()?.email }}</span>
+                    <span class="badge bg-light text-dark mt-1 border">{{ authService.currentUser()?.role }}</span>
+                  </div>
+                </li>
+                <li><a class="dropdown-item py-2 px-3" routerLink="/dashboard"><i class="bi bi-grid-1x2 me-2"></i>My Dashboard</a></li>
+                <li><a class="dropdown-item py-2 px-3" routerLink="/records"><i class="bi bi-file-earmark-medical me-2"></i>Medical Records</a></li>
+                <li><hr class="dropdown-divider my-1"></li>
+                <li>
+                  <button class="dropdown-item py-2 px-3 text-danger" (click)="logout()">
+                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </ng-container>
+
+          <ng-template #guestView>
+            <a class="btn btn-outline-secondary py-1 px-3 fw-semibold text-muted" style="border-color: #dee2e6; border-radius: 4px; font-size: 13.5px;" routerLink="/login">Login / Signup</a>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>

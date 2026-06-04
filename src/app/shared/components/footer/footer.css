@@ -1,23 +1,20 @@
-footer {
-  background-color: #12151e !important;
-}
-
 .footer-links a {
-  color: #adb5bd;
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13.5px;
   transition: color 0.15s ease-in-out;
 }
 
 .footer-links a:hover {
-  color: var(--practo-turquoise);
+  color: #fff;
 }
 
 .social-icons a {
   transition: opacity 0.15s ease-in-out;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .social-icons a:hover {
-  opacity: 0.8;
-  color: var(--practo-turquoise) !important;
+  opacity: 1;
+  color: #fff !important;
 }

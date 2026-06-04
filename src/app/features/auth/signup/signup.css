@@ -1,0 +1,11 @@
+.tracking-widest {
+  letter-spacing: 0.35em;
+}
+
+.modal-backdrop {
+  background-color: rgba(38, 48, 119, 0.4);
+}
+
+.modal-content {
+  border-radius: 12px;
+}

@@ -1,0 +1,11 @@
+.border-end-md {
+  border-right: 1px solid #dee2e6;
+}
+
+@media (max-width: 767.98px) {
+  .border-end-md {
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 8px;
+  }
+}

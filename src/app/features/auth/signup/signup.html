@@ -1,0 +1,113 @@
+<div class="container my-5 py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card practo-card border-0 p-4">
+        <div class="card-body">
+          <div class="text-center mb-4">
+            <svg width="48" height="48" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-3">
+              <rect width="36" height="36" rx="8" fill="#263077"/>
+              <path d="M18 9V27M9 18H27" stroke="#2CB7DF" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            <h3 class="fw-bold" style="color: #263077;">Join Practo</h3>
+            <p class="text-muted">Create an account to book appointments and consult online</p>
+          </div>
+
+          <!-- Error Message Alert -->
+          <div *ngIf="errorMessage" class="alert alert-danger border-0 small py-2 rounded" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            {{ errorMessage }}
+          </div>
+
+          <!-- Signup Form -->
+          <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+            <div class="row">
+              <!-- First Name -->
+              <div class="col-md-6 mb-3">
+                <label for="firstName" class="form-label small fw-semibold text-muted">First Name</label>
+                <input type="text" class="form-control form-control-lg py-2 fs-6" id="firstName" name="firstName" [(ngModel)]="firstName" required placeholder="John">
+              </div>
+
+              <!-- Last Name -->
+              <div class="col-md-6 mb-3">
+                <label for="lastName" class="form-label small fw-semibold text-muted">Last Name</label>
+                <input type="text" class="form-control form-control-lg py-2 fs-6" id="lastName" name="lastName" [(ngModel)]="lastName" required placeholder="Doe">
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label small fw-semibold text-muted">Email Address</label>
+              <input type="email" class="form-control form-control-lg py-2 fs-6" id="email" name="email" [(ngModel)]="email" required placeholder="john.doe@example.com">
+            </div>
+
+            <!-- Phone Number -->
+            <div class="mb-3">
+              <label for="phoneNumber" class="form-label small fw-semibold text-muted">Phone Number</label>
+              <input type="text" class="form-control form-control-lg py-2 fs-6" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" required placeholder="e.g. 9876543210">
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label small fw-semibold text-muted">Password</label>
+              <input type="password" class="form-control form-control-lg py-2 fs-6" id="password" name="password" [(ngModel)]="password" required placeholder="Minimum 6 characters">
+            </div>
+
+            <!-- Role Select -->
+            <div class="mb-4">
+              <label for="role" class="form-label small fw-semibold text-muted">I am a...</label>
+              <select class="form-select form-select-lg py-2 fs-6" id="role" name="role" [(ngModel)]="role" required>
+                <option [value]="0">Patient (Looking for healthcare services)</option>
+                <option [value]="1">Doctor (Providing consultations)</option>
+              </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-practo-blue w-100 py-3 rounded fs-6" [disabled]="isLoading">
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              {{ isLoading ? 'Creating Account...' : 'Register & Verify Email' }}
+            </button>
+          </form>
+
+          <div class="text-center mt-4">
+            <p class="small text-muted mb-0">Already have an account? <a routerLink="/login" class="fw-bold text-decoration-none" style="color: #263077;">Log In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Email OTP Verification Modal Overlay -->
+<div *ngIf="showOtpModal" class="modal-backdrop fade show"></div>
+<div *ngIf="showOtpModal" class="modal fade show d-block" tabindex="-1" role="dialog" style="top: 15%;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content border-0 shadow-lg p-3 rounded-3">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold" style="color: #263077;"><i class="bi bi-shield-lock me-2"></i>Email Verification</h5>
+        <button type="button" class="btn-close" (click)="closeOtpModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body py-3">
+        <p class="text-muted small">We've sent a 6-digit OTP code to <strong class="text-dark">{{ email }}</strong>. Enter it below to complete verification.</p>
+        
+        <div *ngIf="otpError" class="alert alert-danger border-0 small py-2 rounded" role="alert">
+          {{ otpError }}
+        </div>
+
+        <div class="mb-3">
+          <label for="otpCode" class="form-label small fw-semibold text-muted">Enter 6-Digit OTP</label>
+          <input type="text" maxlength="6" class="form-control form-control-lg text-center fw-bold tracking-widest py-2 fs-5" id="otpCode" name="otpCode" [(ngModel)]="otpCode" placeholder="000000">
+        </div>
+      </div>
+      <div class="modal-footer border-0 pt-0 gap-2">
+        <button type="button" class="btn btn-light px-3 py-2" (click)="closeOtpModal()">Cancel</button>
+        <button type="button" class="btn btn-practo-turquoise px-4 py-2" (click)="onVerifyOtp()" [disabled]="otpLoading">
+          <span *ngIf="otpLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          Verify & Sign Up
+        </button>
+      </div>
+      <div class="text-center pb-2">
+        <button type="button" class="btn btn-link small text-decoration-none fw-semibold p-0" style="color: #2cb7df;" (click)="onResendOtp()">Resend OTP</button>
+      </div>
+    </div>
+  </div>
+</div>

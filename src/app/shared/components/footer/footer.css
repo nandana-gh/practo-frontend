@@ -1,0 +1,23 @@
+footer {
+  background-color: #12151e !important;
+}
+
+.footer-links a {
+  color: #adb5bd;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.15s ease-in-out;
+}
+
+.footer-links a:hover {
+  color: var(--practo-turquoise);
+}
+
+.social-icons a {
+  transition: opacity 0.15s ease-in-out;
+}
+
+.social-icons a:hover {
+  opacity: 0.8;
+  color: var(--practo-turquoise) !important;
+}

@@ -1,0 +1,43 @@
+.nav-link {
+  color: var(--practo-dark) !important;
+  font-size: 15px;
+  padding: 0.5rem 1rem !important;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: var(--practo-light-gray);
+  color: var(--practo-blue) !important;
+}
+
+.nav-link.active {
+  color: var(--practo-blue) !important;
+  background-color: rgba(38, 48, 119, 0.08);
+}
+
+.dropdown-menu {
+  border-radius: 8px;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.dropdown-menu-item {
+  color: var(--practo-dark);
+  font-size: 14px;
+}
+
+.dropdown-menu-item:hover {
+  background-color: var(--practo-light-gray);
+  color: var(--practo-blue);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

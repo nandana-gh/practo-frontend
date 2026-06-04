@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { HeaderComponent } from '../../../shared/components/header/header';
+import { FooterComponent } from '../../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, HeaderComponent, FooterComponent],
   templateUrl: './signup.html',
   styleUrl: './signup.css'
 })
@@ -15,10 +17,8 @@ export class SignupComponent {
   authService = inject(AuthService);
   router = inject(Router);
 
-  firstName = '';
-  lastName = '';
+  fullName = '';
   email = '';
-  phoneNumber = '';
   password = '';
   role = 0; // 0 = Patient, 1 = Doctor
   errorMessage = '';
@@ -31,7 +31,7 @@ export class SignupComponent {
   otpLoading = false;
 
   onSubmit(): void {
-    if (!this.firstName || !this.lastName || !this.email || !this.phoneNumber || !this.password) {
+    if (!this.fullName || !this.email || !this.password) {
       this.errorMessage = 'Please fill in all fields';
       return;
     }
@@ -39,11 +39,16 @@ export class SignupComponent {
     this.isLoading = true;
     this.errorMessage = '';
 
+    // Split Full Name into FirstName and LastName
+    const nameParts = this.fullName.trim().split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '.';
+
     const payload = {
-      firstName: this.firstName,
-      lastName: this.lastName,
+      firstName: firstName,
+      lastName: lastName,
       email: this.email,
-      phoneNumber: this.phoneNumber,
+      phoneNumber: '1234567890',
       password: this.password,
       role: Number(this.role)
     };

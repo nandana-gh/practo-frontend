@@ -1,79 +1,133 @@
-<div class="container my-5 py-5">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6">
-      <div class="card practo-card border-0 p-4">
+<app-header></app-header>
+
+<div class="container my-5 py-3">
+  <div class="row justify-content-center align-items-center g-5">
+    
+    <!-- Left Column: Planet Illustration -->
+    <div class="col-12 col-md-5 col-lg-5 text-center d-none d-md-block">
+      <svg width="100%" height="auto" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="planet-illustration">
+        <circle cx="200" cy="200" r="160" fill="url(#planetGlow)" opacity="0.08"/>
+        <circle cx="100" cy="120" r="4" fill="#2CB7DF"/>
+        <circle cx="310" cy="180" r="3" fill="#ea8d35"/>
+        <circle cx="280" cy="80" r="5" fill="#263077" opacity="0.3"/>
+        <path d="M70 210 C 70 235, 330 235, 330 210" stroke="#7e4ffc" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+        <circle cx="200" cy="200" r="90" fill="#2CB7DF"/>
+        <path d="M140 180 C 170 160, 230 220, 260 200" stroke="#229cb0" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+        <path d="M150 220 C 180 200, 220 240, 250 220" stroke="#229cb0" stroke-width="4" stroke-linecap="round" opacity="0.3"/>
+        <g transform="translate(115, 235)">
+          <rect x="0" y="0" width="50" height="60" rx="4" fill="#ea8d35"/>
+          <rect x="15" y="45" width="20" height="15" fill="#ffffff" rx="1"/>
+          <rect x="8" y="10" width="10" height="10" fill="#ffffff" opacity="0.8"/>
+          <rect x="32" y="10" width="10" height="10" fill="#ffffff" opacity="0.8"/>
+          <rect x="8" y="28" width="10" height="10" fill="#ffffff" opacity="0.8"/>
+          <rect x="32" y="28" width="10" height="10" fill="#ffffff" opacity="0.8"/>
+          <path d="M25 48 V 57 M 21 52 H 29" stroke="#ea8d35" stroke-width="2"/>
+        </g>
+        <g transform="translate(240, 240)">
+          <rect x="0" y="10" width="50" height="25" rx="3" fill="#2CB7DF"/>
+          <rect x="35" y="0" width="15" height="15" fill="#2CB7DF"/>
+          <rect x="10" y="5" width="10" height="10" fill="#ffffff" opacity="0.6"/>
+          <circle cx="12" cy="35" r="8" fill="#282c3f"/>
+          <circle cx="38" cy="35" r="8" fill="#282c3f"/>
+          <path d="M25 15 V 25 M 20 20 H 30" stroke="#ffffff" stroke-width="2"/>
+        </g>
+        <g transform="translate(110, 110)">
+          <circle cx="20" cy="20" r="18" fill="#263077"/>
+          <path d="M12 20 C 12 25, 28 25, 28 20" stroke="#2CB7DF" stroke-width="3" fill="none"/>
+          <path d="M20 22 V 32" stroke="#2CB7DF" stroke-width="3"/>
+          <circle cx="20" cy="32" r="4" fill="#ffffff"/>
+        </g>
+        <g transform="translate(190, 85)">
+          <circle cx="20" cy="20" r="18" fill="#7e4ffc"/>
+          <path d="M20 10 C 15 10, 12 13, 12 18 C 12 24, 20 28, 20 30 C 20 28, 28 24, 28 18 C 28 13, 25 10, 20 10 Z" fill="#ffffff"/>
+        </g>
+        <g transform="translate(260, 115)">
+          <rect x="0" y="0" width="36" height="36" rx="4" fill="#2cb7df"/>
+          <circle cx="18" cy="14" r="6" fill="#ffffff"/>
+          <path d="M8 28 C 8 22, 28 22, 28 28" fill="#ffffff"/>
+        </g>
+        <path d="M330 210 C 330 185, 70 185, 70 210" stroke="#7e4ffc" stroke-width="8" stroke-linecap="round"/>
+        <g transform="translate(300, 150) rotate(30)">
+          <rect x="0" y="0" width="24" height="10" rx="5" fill="#ea8d35"/>
+          <rect x="12" y="0" width="12" height="10" fill="#ffffff" rx="1"/>
+        </g>
+        <g transform="translate(90, 185) rotate(-45)">
+          <rect x="0" y="0" width="24" height="10" rx="5" fill="#263077"/>
+          <rect x="12" y="0" width="12" height="10" fill="#2CB7DF" rx="1"/>
+        </g>
+        <defs>
+          <radialGradient id="planetGlow" cx="200" cy="200" r="1">
+            <stop offset="0%" stop-color="#2CB7DF"/>
+            <stop offset="100%" stop-color="#263077" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- Right Column: Form Container -->
+    <div class="col-12 col-md-7 col-lg-5">
+      <!-- Tabs Header -->
+      <div class="d-flex justify-content-center border-bottom mb-4 auth-tabs">
+        <a class="auth-tab" routerLink="/login">Login</a>
+        <a class="auth-tab active" routerLink="/signup">Register</a>
+      </div>
+
+      <!-- Register Card -->
+      <div class="card auth-card border p-4 bg-white">
         <div class="card-body">
-          <div class="text-center mb-4">
-            <svg width="48" height="48" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-3">
-              <rect width="36" height="36" rx="8" fill="#263077"/>
-              <path d="M18 9V27M9 18H27" stroke="#2CB7DF" stroke-width="4" stroke-linecap="round"/>
-            </svg>
-            <h3 class="fw-bold" style="color: #263077;">Join Practo</h3>
-            <p class="text-muted">Create an account to book appointments and consult online</p>
+          <!-- Card Header Panel -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0" style="color: #282c3f; font-size: 17px;">Join Practo</h5>
+            <a href="#" class="small text-decoration-none fw-semibold" style="color: #df8926;">Are you a doctor? <span style="text-decoration: underline;">Register Here</span></a>
           </div>
 
           <!-- Error Message Alert -->
-          <div *ngIf="errorMessage" class="alert alert-danger border-0 small py-2 rounded" role="alert">
+          <div *ngIf="errorMessage" class="alert alert-danger border-0 small py-2 rounded mb-3" role="alert">
             <i class="bi bi-exclamation-triangle-fill me-2"></i>
             {{ errorMessage }}
           </div>
 
-          <!-- Signup Form -->
+          <!-- Register Form -->
           <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
-            <div class="row">
-              <!-- First Name -->
-              <div class="col-md-6 mb-3">
-                <label for="firstName" class="form-label small fw-semibold text-muted">First Name</label>
-                <input type="text" class="form-control form-control-lg py-2 fs-6" id="firstName" name="firstName" [(ngModel)]="firstName" required placeholder="John">
-              </div>
-
-              <!-- Last Name -->
-              <div class="col-md-6 mb-3">
-                <label for="lastName" class="form-label small fw-semibold text-muted">Last Name</label>
-                <input type="text" class="form-control form-control-lg py-2 fs-6" id="lastName" name="lastName" [(ngModel)]="lastName" required placeholder="Doe">
-              </div>
-            </div>
-
-            <!-- Email -->
+            <!-- Full Name Input -->
             <div class="mb-3">
-              <label for="email" class="form-label small fw-semibold text-muted">Email Address</label>
-              <input type="email" class="form-control form-control-lg py-2 fs-6" id="email" name="email" [(ngModel)]="email" required placeholder="john.doe@example.com">
+              <label for="fullName" class="form-label small text-muted fw-semibold">Full Name</label>
+              <input type="text" class="form-control auth-input" id="fullName" name="fullName" [(ngModel)]="fullName" required placeholder="Full Name">
             </div>
 
-            <!-- Phone Number -->
+            <!-- Email Address Input -->
             <div class="mb-3">
-              <label for="phoneNumber" class="form-label small fw-semibold text-muted">Phone Number</label>
-              <input type="text" class="form-control form-control-lg py-2 fs-6" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" required placeholder="e.g. 9876543210">
+              <label for="email" class="form-label small text-muted fw-semibold">Email Address</label>
+              <input type="email" class="form-control auth-input" id="email" name="email" [(ngModel)]="email" required placeholder="Email Address">
             </div>
 
-            <!-- Password -->
+            <!-- Create Password Input -->
             <div class="mb-3">
-              <label for="password" class="form-label small fw-semibold text-muted">Password</label>
-              <input type="password" class="form-control form-control-lg py-2 fs-6" id="password" name="password" [(ngModel)]="password" required placeholder="Minimum 6 characters">
+              <label for="password" class="form-label small text-muted fw-semibold">Create Password</label>
+              <input type="password" class="form-control auth-input" id="password" name="password" [(ngModel)]="password" required placeholder="Password">
             </div>
 
-            <!-- Role Select -->
-            <div class="mb-4">
-              <label for="role" class="form-label small fw-semibold text-muted">I am a...</label>
-              <select class="form-select form-select-lg py-2 fs-6" id="role" name="role" [(ngModel)]="role" required>
-                <option [value]="0">Patient (Looking for healthcare services)</option>
-                <option [value]="1">Doctor (Providing consultations)</option>
-              </select>
+            <!-- Receive Offers Checkbox -->
+            <div class="form-check mb-2">
+              <input type="checkbox" class="form-check-input" id="offersCheck" checked>
+              <label class="form-check-label small text-muted" for="offersCheck" style="font-size: 12px; line-height: 1.4;">
+                Receive relevant offers and promotional communication from Practo
+              </label>
             </div>
+
+            <!-- Terms label -->
+            <p class="small text-muted mb-4" style="font-size: 11px;">By signing up, I agree to <a href="#" class="text-decoration-none" style="color: #00a6e2;">terms</a></p>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-practo-blue w-100 py-3 rounded fs-6" [disabled]="isLoading">
+            <button type="submit" class="btn btn-login-submit w-100 py-2 fw-bold text-white" [disabled]="isLoading">
               <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-              {{ isLoading ? 'Creating Account...' : 'Register & Verify Email' }}
+              {{ isLoading ? 'Sending OTP...' : 'Send OTP' }}
             </button>
           </form>
-
-          <div class="text-center mt-4">
-            <p class="small text-muted mb-0">Already have an account? <a routerLink="/login" class="fw-bold text-decoration-none" style="color: #263077;">Log In</a></p>
-          </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -111,3 +165,5 @@
     </div>
   </div>
 </div>
+
+<app-footer></app-footer>

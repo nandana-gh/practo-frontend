@@ -1,0 +1,127 @@
+<div class="search-page-container bg-light">
+  <!-- Search Context Header -->
+  <div class="search-header bg-white border-bottom py-3">
+    <div class="container">
+      <h1 class="h4 mb-0 fw-bold">{{ doctors.length }} doctors available in {{ city || 'your location' }}</h1>
+      <p class="text-muted mb-0 fs-6">Book appointments with minimum wait-time & verified doctor details</p>
+    </div>
+  </div>
+
+  <!-- Filter Toolbar -->
+  <div class="filter-toolbar bg-white border-bottom py-2 sticky-top shadow-sm">
+    <div class="container d-flex align-items-center gap-3 overflow-auto">
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle btn-sm rounded-pill px-3" type="button" data-bs-toggle="dropdown">
+          Consultation Fee
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" (click)="applyFilter('maxFee', 500)">Free - ₹500</a></li>
+          <li><a class="dropdown-item" (click)="applyFilter('maxFee', 1000)">₹500 - ₹1000</a></li>
+          <li><a class="dropdown-item" (click)="applyFilter('maxFee', null)">Any Fee</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle btn-sm rounded-pill px-3" type="button" data-bs-toggle="dropdown">
+          Consultation Type
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" (click)="applyFilter('consultType', 'video')">Video Consult</a></li>
+          <li><a class="dropdown-item" (click)="applyFilter('consultType', 'clinic')">In-Clinic</a></li>
+          <li><a class="dropdown-item" (click)="applyFilter('consultType', '')">All</a></li>
+        </ul>
+      </div>
+
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <span class="text-muted fs-6">Sort By:</span>
+        <select class="form-select form-select-sm border-0 fw-bold bg-transparent" (change)="applyFilter('sortBy', $any($event.target).value)">
+          <option value="relevance">Relevance</option>
+          <option value="experience">Experience</option>
+          <option value="fee">Consultation Fee</option>
+          <option value="rating">Recommendation</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-lg-8">
+        
+        <div *ngIf="loading" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+
+        <div *ngIf="!loading && doctors.length === 0" class="text-center py-5 bg-white rounded shadow-sm">
+          <h4 class="text-muted">No doctors found matching your criteria.</h4>
+          <p>Try adjusting your filters or searching a different area.</p>
+        </div>
+
+        <!-- Doctor Cards -->
+        <div *ngFor="let doc of doctors" class="card doctor-card border-0 shadow-sm mb-4 rounded-3">
+          <div class="card-body p-4">
+            <div class="row">
+              <!-- Profile Pic -->
+              <div class="col-auto">
+                <div class="profile-img-container rounded-circle overflow-hidden position-relative" style="width: 120px; height: 120px; background-color: #f0f0f5;">
+                  <img [src]="doc.profileImageUrl || 'assets/images/default-doctor.png'" class="w-100 h-100 object-fit-cover" alt="Doctor Profile">
+                  <div class="position-absolute bottom-0 start-50 translate-middle-x bg-success text-white px-2 py-0 rounded-pill fs-7 d-flex align-items-center" style="font-size: 11px;">
+                    <i class="bi bi-check-circle-fill me-1"></i> Verified
+                  </div>
+                </div>
+              </div>
+
+              <!-- Details -->
+              <div class="col">
+                <h2 class="h5 fw-bold text-primary mb-1 cursor-pointer" [routerLink]="['/profile', doc.id]">{{ doc.name }}</h2>
+                <p class="text-muted fs-6 mb-1">{{ doc.specialty }}</p>
+                <p class="text-dark fs-6 mb-2">{{ doc.experienceYears }} years experience overall</p>
+                
+                <p class="fs-6 mb-1 fw-medium"><i class="bi bi-geo-alt-fill text-muted me-1"></i> {{ doc.locality }}, {{ doc.city }}</p>
+                <p class="text-muted fs-6 mb-3">{{ doc.clinicName }}</p>
+                
+                <p class="mb-0 fs-6 fw-bold">₹{{ doc.consultationFee }} <span class="fw-normal text-muted">Consultation fee at clinic</span></p>
+              </div>
+
+              <!-- Action Column -->
+              <div class="col-auto d-flex flex-column align-items-end justify-content-between border-start ps-4" style="min-width: 250px;">
+                <div class="w-100 text-end mb-3">
+                  <div class="d-flex justify-content-end align-items-center mb-1">
+                    <div class="bg-success text-white px-2 py-1 rounded me-2 fw-bold d-flex align-items-center">
+                      <i class="bi bi-hand-thumbs-up-fill me-1"></i> {{ doc.recommendationPercentage }}%
+                    </div>
+                  </div>
+                  <a href="#" class="text-decoration-underline text-dark fs-6 fw-medium">{{ doc.totalReviews }} Patient Stories</a>
+                </div>
+
+                <div class="w-100 d-flex flex-column gap-2 mt-auto">
+                  <button class="btn btn-outline-primary btn-practo w-100 fw-bold py-2" *ngIf="doc.isVideoConsultationAvailable">
+                    <i class="bi bi-camera-video-fill me-2"></i> Video Consult
+                  </button>
+                  <button class="btn btn-primary btn-practo-primary w-100 fw-bold py-2 shadow-sm" [routerLink]="['/profile', doc.id]">
+                    Book Clinic Visit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Ad Banner/Map Placeholder -->
+      <div class="col-lg-4 d-none d-lg-block">
+        <div class="bg-white rounded-3 shadow-sm p-4 sticky-top" style="top: 80px;">
+          <h5 class="fw-bold mb-3">Safety of your data is our top priority</h5>
+          <ul class="list-unstyled mb-0 text-muted fs-6">
+            <li class="mb-2"><i class="bi bi-shield-check text-success me-2 fs-5"></i> Multi-level security checks</li>
+            <li class="mb-2"><i class="bi bi-shield-check text-success me-2 fs-5"></i> Multiple data backups</li>
+            <li class="mb-2"><i class="bi bi-shield-check text-success me-2 fs-5"></i> Stringent data privacy policies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

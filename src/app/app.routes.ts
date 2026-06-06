@@ -14,6 +14,14 @@ export const routes: Routes = [
     loadComponent: () => import('./features/auth/signup/signup').then(m => m.SignupComponent)
   },
   {
+    path: 'search',
+    loadComponent: () => import('./features/search/search-results/search-results').then(m => m.SearchResultsComponent)
+  },
+  {
+    path: 'profile/:id',
+    loadComponent: () => import('./features/profile/doctor-profile/doctor-profile').then(m => m.DoctorProfileComponent)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

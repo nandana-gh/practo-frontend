@@ -1,0 +1,87 @@
+<div class="bg-light min-vh-100 py-4">
+  <div class="container">
+    <div *ngIf="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+    <div class="row g-4" *ngIf="!loading && profile">
+      
+      <!-- Main Content (Left Column) -->
+      <div class="col-lg-8">
+        
+        <!-- Identity Card -->
+        <div class="card border-0 shadow-sm mb-4 rounded-3">
+          <div class="card-body p-4">
+            <div class="d-flex flex-column flex-md-row gap-4 align-items-start">
+              <img [src]="profile.profileImageUrl || 'assets/images/default-doctor.png'" 
+                   class="rounded-circle object-fit-cover shadow-sm" 
+                   style="width: 150px; height: 150px; border: 4px solid #fff;"
+                   alt="Doctor Profile">
+              
+              <div>
+                <div class="d-flex align-items-center mb-2">
+                  <h1 class="h3 fw-bold text-dark mb-0 me-2">{{ profile.name }}</h1>
+                  <span class="badge bg-success rounded-pill px-2 py-1"><i class="bi bi-check-circle-fill me-1"></i> Profile is Claimed</span>
+                </div>
+                
+                <p class="text-muted mb-2 fs-5">{{ profile.qualifications }}</p>
+                <p class="text-dark mb-2 fs-6 fw-medium">{{ profile.specialty }}</p>
+                <p class="text-muted mb-3 fs-6">{{ profile.experienceYears }} Years Experience Overall</p>
+                
+                <div class="d-flex align-items-center gap-3 bg-light p-3 rounded mb-3">
+                  <div class="d-flex flex-column">
+                    <span class="text-success fw-bold"><i class="bi bi-hand-thumbs-up-fill me-1"></i> {{ profile.recommendationPercentage }}%</span>
+                    <span class="text-muted" style="font-size: 12px;">Recommendation</span>
+                  </div>
+                  <div class="vr"></div>
+                  <div class="d-flex flex-column">
+                    <span class="text-dark fw-bold">Medical Registration Verified</span>
+                    <span class="text-muted" style="font-size: 12px;">{{ profile.registrationNumber }}</span>
+                  </div>
+                </div>
+                
+                <div class="about-section mt-4">
+                  <h5 class="fw-bold mb-3">About</h5>
+                  <p class="text-muted fs-6 lh-lg">{{ profile.about }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clinics Card -->
+        <div class="card border-0 shadow-sm mb-4 rounded-3">
+          <div class="card-body p-4">
+            <h5 class="fw-bold mb-4 border-bottom pb-3">Clinics</h5>
+            
+            <div *ngFor="let clinic of profile.clinics" class="d-flex flex-column flex-md-row gap-4 mb-4 border-bottom pb-4">
+              <div style="flex: 1;">
+                <h6 class="fw-bold text-primary mb-2">{{ clinic.name }}</h6>
+                <p class="text-muted mb-1 fs-6"><i class="bi bi-geo-alt me-1 text-secondary"></i> {{ clinic.address }}, {{ clinic.locality }}, {{ clinic.city }}</p>
+                <p class="text-muted fs-6"><i class="bi bi-clock me-1 text-secondary"></i> {{ clinic.timings }}</p>
+                <a href="#" class="text-decoration-none text-primary fs-6 fw-medium">Get Directions</a>
+              </div>
+              <div class="text-md-end border-start-md ps-md-4" style="min-width: 150px;">
+                <p class="text-muted mb-1 fs-6">Consultation Fee</p>
+                <p class="fw-bold fs-5 text-dark mb-0">₹{{ clinic.consultationFee }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column (Booking Widget Sticky) -->
+      <div class="col-lg-4">
+        <div class="sticky-top" style="top: 80px;">
+          <app-booking-widget [doctorId]="profile.id" [clinics]="profile.clinics"></app-booking-widget>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

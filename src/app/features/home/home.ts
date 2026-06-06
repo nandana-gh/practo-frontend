@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,6 +22,7 @@ interface SpecialtyItem {
 export class HomeComponent {
   authService = inject(AuthService);
   router = inject(Router);
+  http = inject(HttpClient);
 
   // Search state variables
   locationInput = 'Kochi';
@@ -94,22 +96,13 @@ export class HomeComponent {
   }
 
   useCurrentLocation(): void {
-    if (navigator.geolocation) {
-      this.locationInput = 'Detecting location...';
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          this.locationInput = 'Kochi'; // Mock fallback for simplicity
-          this.showLocationDropdown = false;
-        },
-        (error) => {
-          this.locationInput = 'Kochi';
-          this.showLocationDropdown = false;
-        }
-      );
-    } else {
-      this.locationInput = 'Kochi';
-      this.showLocationDropdown = false;
-    }
+    this.locationInput = 'Detecting location...';
+    this.showLocationDropdown = false;
+    
+    // Simulate network delay for detection
+    setTimeout(() => {
+      this.locationInput = 'Kochi'; 
+    }, 600);
   }
 
   // Search Query Methods

@@ -1,0 +1,73 @@
+<div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+  
+  <!-- Tabs -->
+  <div class="d-flex border-bottom">
+    <button class="flex-fill btn btn-light rounded-0 py-3 fw-bold border-end" 
+            [class.bg-white]="activeTab === 'clinic'" 
+            [class.text-primary]="activeTab === 'clinic'"
+            [class.border-bottom-0]="activeTab === 'clinic'"
+            [style.border-bottom]="activeTab === 'clinic' ? '3px solid #2CB7DF !important' : ''"
+            (click)="switchTab('clinic')">
+      <i class="bi bi-hospital me-2"></i> Clinic Appointment
+    </button>
+    <button class="flex-fill btn btn-light rounded-0 py-3 fw-bold" 
+            [class.bg-white]="activeTab === 'video'" 
+            [class.text-primary]="activeTab === 'video'"
+            [class.border-bottom-0]="activeTab === 'video'"
+            [style.border-bottom]="activeTab === 'video' ? '3px solid #2CB7DF !important' : ''"
+            (click)="switchTab('video')">
+      <i class="bi bi-camera-video me-2"></i> Video Consult
+    </button>
+  </div>
+
+  <div class="card-body p-4 bg-white">
+    
+    <!-- Clinic Selector (only for Clinic Tab) -->
+    <div class="mb-4" *ngIf="activeTab === 'clinic' && clinics && clinics.length > 1">
+      <label class="form-label fw-bold text-muted fs-6">Select Clinic</label>
+      <select class="form-select" (change)="changeClinic($event)">
+        <option *ngFor="let clinic of clinics" [value]="clinic.id">{{ clinic.name }} - {{ clinic.locality }}</option>
+      </select>
+    </div>
+
+    <!-- Date Slider -->
+    <div class="d-flex align-items-center mb-4 border rounded">
+      <button class="btn btn-light border-0 py-3 px-2 rounded-start"><i class="bi bi-chevron-left"></i></button>
+      
+      <div class="d-flex flex-fill overflow-hidden text-center">
+        <div *ngFor="let slotDay of slots; let i = index" 
+             class="flex-fill py-2 cursor-pointer border-end"
+             [class.bg-primary-subtle]="selectedDateIndex === i"
+             (click)="selectDate(i)">
+          <div class="fw-bold text-dark">{{ i === 0 ? 'Today' : i === 1 ? 'Tomorrow' : (slotDay.date | date:'EEE, dd MMM') }}</div>
+          <div class="text-success fs-7 fw-bold">{{ slotDay.availableTimes.length }} Slots</div>
+        </div>
+      </div>
+
+      <button class="btn btn-light border-0 py-3 px-2 rounded-end"><i class="bi bi-chevron-right"></i></button>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center py-4">
+      <div class="spinner-border text-primary spinner-border-sm" role="status"></div>
+    </div>
+
+    <!-- Slots Grid -->
+    <div *ngIf="!loading && slots.length > 0">
+      <div *ngIf="slots[selectedDateIndex].availableTimes.length === 0" class="text-center text-muted py-4">
+        No slots available on this date.
+      </div>
+      
+      <div *ngIf="slots[selectedDateIndex].availableTimes.length > 0">
+        <div class="row g-2">
+          <div class="col-4" *ngFor="let time of slots[selectedDateIndex].availableTimes">
+            <button class="btn btn-outline-primary btn-practo w-100 py-2 fw-medium rounded-1" (click)="bookSlot(time)">
+              {{ time }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

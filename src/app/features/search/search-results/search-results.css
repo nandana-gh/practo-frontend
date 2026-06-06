@@ -1,0 +1,51 @@
+.search-page-container {
+  min-height: calc(100vh - 60px);
+}
+
+.search-header h1 {
+  color: #414146;
+  font-size: 22px;
+}
+
+.filter-toolbar {
+  z-index: 1020;
+}
+
+.dropdown-toggle::after {
+  vertical-align: middle;
+  margin-left: 0.5em;
+}
+
+.doctor-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.doctor-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+}
+
+.btn-practo {
+  color: #2CB7DF;
+  border-color: #2CB7DF;
+}
+.btn-practo:hover {
+  background-color: #2CB7DF;
+  color: white;
+}
+
+.btn-practo-primary {
+  background-color: #2CB7DF;
+  border-color: #2CB7DF;
+}
+.btn-practo-primary:hover {
+  background-color: #219cb8;
+  border-color: #219cb8;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.fs-7 {
+  font-size: 0.85rem;
+}

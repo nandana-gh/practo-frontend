@@ -1,0 +1,175 @@
+.max-w-700 {
+  max-width: 700px;
+}
+
+.max-w-900 {
+  max-width: 900px;
+}
+
+.search-container {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1.5px solid #e2e4e8 !important;
+}
+
+.search-input {
+  font-size: 14.5px;
+  outline: none;
+  box-shadow: none !important;
+}
+
+.core-service-card {
+  border-radius: 16px;
+  border: 1px solid #e8eaf0 !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(38, 48, 119, 0.02) !important;
+}
+
+.core-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(38, 48, 119, 0.08) !important;
+}
+
+.rounded-bottom-16 {
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+
+/* Online specialties */
+.specialty-circle-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.specialty-circle-wrap:hover {
+  transform: scale(1.08);
+}
+
+.consult-link {
+  color: #00a6e2;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  transition: color 0.15s ease;
+}
+
+.consult-link:hover {
+  color: #008cc0;
+}
+
+.btn-view-specialties {
+  border-color: #00a6e2;
+  color: #00a6e2;
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  padding: 8px 16px;
+}
+
+.btn-view-specialties:hover {
+  background-color: #00a6e2;
+  color: #fff !important;
+}
+
+/* In Clinic Specialty Cards */
+.clinic-specialty-card {
+  border: 1px solid #e8eaf0 !important;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 240px;
+}
+
+.scroll-container {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-control-next-mock {
+  top: 50%;
+  right: -20px;
+}
+
+/* Article Cards */
+.article-card {
+  border-radius: 8px;
+  border: 1px solid #e8eaf0 !important;
+  overflow: hidden;
+}
+
+.testimonial-scroll {
+  scrollbar-width: none;
+}
+
+.testimonial-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Autocomplete suggestions dropdown styles */
+.autocomplete-dropdown {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  z-index: 1050;
+  box-shadow: 0 4px 12px rgba(38, 48, 119, 0.08);
+}
+
+.dropdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+  border-bottom: 1px solid #f8f9fd;
+}
+
+.dropdown-row:hover {
+  background-color: #f8f9fd;
+}
+
+.use-location-row {
+  border-bottom: 1.5px solid #e9ecef;
+}
+
+.dropdown-list-container {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.badge-type {
+  font-size: 10px;
+  font-weight: 700;
+  color: #a855f7;
+  background-color: #faf5ff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+

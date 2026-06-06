@@ -1,0 +1,77 @@
+.planet-illustration {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.auth-tabs {
+  gap: 2rem;
+}
+
+.auth-tab {
+  font-size: 16px;
+  font-weight: 500;
+  color: #787887;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.auth-tab:hover {
+  color: var(--practo-blue);
+}
+
+.auth-tab.active {
+  color: #00a6e2;
+  font-weight: 700;
+  border-bottom: 3px solid #00a6e2;
+}
+
+.auth-card {
+  border-radius: 4px;
+  border: 1px solid #e2e4e8 !important;
+  box-shadow: 0 4px 12px rgba(38, 48, 119, 0.02) !important;
+}
+
+.auth-input {
+  height: 44px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--practo-dark);
+}
+
+.auth-input::placeholder {
+  color: #a8a8a8;
+}
+
+.form-check-input:checked {
+  background-color: #00a6e2;
+  border-color: #00a6e2;
+}
+
+.btn-login-submit {
+  background-color: #00a6e2;
+  border: none;
+  height: 44px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-login-submit:hover {
+  background-color: #008cc0;
+}
+
+.tracking-widest {
+  letter-spacing: 0.35em;
+}
+
+.modal-backdrop {
+  background-color: rgba(38, 48, 119, 0.4);
+}
+
+.modal-content {
+  border-radius: 8px;
+}

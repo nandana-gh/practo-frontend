@@ -43,6 +43,8 @@ export class LoginComponent {
         this.isLoading = false;
         if (res.role === 'Admin') {
           this.router.navigate(['/admin/dashboard']);
+        } else if (res.role === 'Doctor') {
+          this.router.navigate(['/doctor/dashboard']);
         } else {
           this.router.navigate(['/']);
         }
@@ -74,6 +76,8 @@ export class LoginComponent {
         this.showOtpModal = false;
         if (res.role === 'Admin') {
           this.router.navigate(['/admin/dashboard']);
+        } else if (res.role === 'Doctor') {
+          this.router.navigate(['/doctor/dashboard']);
         } else {
           this.router.navigate(['/']);
         }

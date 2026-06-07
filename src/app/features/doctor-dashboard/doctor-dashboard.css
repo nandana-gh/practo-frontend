@@ -1,0 +1,52 @@
+.sidebar {
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.sidebar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease-in-out;
+  border-left: 4px solid transparent;
+}
+
+.sidebar-nav .nav-link:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-nav .active-tab {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #2CB7DF !important;
+  font-weight: 600;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card {
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+}
+
+/* Scrollbar styling for main content area */
+.flex-grow-1::-webkit-scrollbar {
+  width: 8px;
+}
+
+.flex-grow-1::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.flex-grow-1::-webkit-scrollbar-thumb {
+  background: #c1c1c1; 
+  border-radius: 4px;
+}
+
+.flex-grow-1::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8; 
+}

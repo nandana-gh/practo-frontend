@@ -19,8 +19,12 @@ export class SignupComponent {
 
   fullName = '';
   email = '';
+  phoneNumber = '';
   password = '';
   role = 0; // 0 = Patient, 1 = Doctor
+  experienceYears: number | null = null;
+  videoConsultationFee: number | null = null;
+  
   errorMessage = '';
   isLoading = false;
 
@@ -48,9 +52,11 @@ export class SignupComponent {
       firstName: firstName,
       lastName: lastName,
       email: this.email,
-      phoneNumber: '1234567890',
+      phoneNumber: this.phoneNumber,
       password: this.password,
-      role: Number(this.role)
+      role: Number(this.role),
+      experienceYears: Number(this.role) === 1 ? (this.experienceYears || 0) : null,
+      videoConsultationFee: Number(this.role) === 1 ? (this.videoConsultationFee || 0) : null
     };
 
     this.authService.register(payload).subscribe({

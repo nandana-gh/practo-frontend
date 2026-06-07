@@ -1,0 +1,142 @@
+/* Help Center Styles */
+
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  background-color: #fcfcfc;
+}
+
+/* Minimalist Header */
+.help-header {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+/* Search Bar Section */
+.help-search-section {
+  background-color: #f1f4f6;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.help-search-box {
+  display: flex;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.help-search-input {
+  flex-grow: 1;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.95rem;
+  outline: none;
+}
+.help-search-btn {
+  background-color: #00bced;
+  color: white;
+  border: none;
+  padding: 0 2rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+.help-search-btn:hover {
+  background-color: #00a5d1;
+}
+
+/* Main Layout */
+.help-main-content {
+  padding: 3rem 0 5rem;
+}
+
+/* Category Grid */
+.category-block {
+  margin-bottom: 2.5rem;
+}
+.category-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #2CB7DF;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.category-icon {
+  color: #555;
+  font-size: 1.1rem;
+}
+.doc-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.doc-list li {
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.doc-icon {
+  color: #999;
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+.doc-link {
+  color: #555;
+  font-size: 0.85rem;
+  text-decoration: none;
+  line-height: 1.4;
+}
+.doc-link:hover {
+  color: #2CB7DF;
+}
+
+/* Right Sidebar */
+.sidebar-widget {
+  margin-bottom: 2rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+.sidebar-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.8rem;
+}
+.contact-btn {
+  background-color: #f7941d;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.contact-btn:hover {
+  background-color: #e68a1a;
+}
+.sidebar-link {
+  color: #2CB7DF;
+  text-decoration: none;
+}
+.sidebar-link:hover {
+  text-decoration: underline;
+}
+.sidebar-text {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.footer-copy {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  text-align: right;
+  font-size: 0.75rem;
+  color: #999;
+}

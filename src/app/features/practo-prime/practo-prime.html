@@ -1,0 +1,521 @@
+<div class="prime-wrapper">
+  
+  <!-- Custom Practo Prime Global Header -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 border-bottom sticky-top" style="z-index: 1050;">
+    <div class="container px-lg-5">
+      <div class="d-flex align-items-center">
+        <i class="bi bi-list fs-4 me-3 text-dark cursor-pointer"></i>
+        <!-- Brand Logo -->
+        <a class="navbar-brand d-flex align-items-center" routerLink="/">
+          <span class="fs-4 fw-extrabold d-flex align-items-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+            <span style="color: #2CB7DF; margin-right: 1px; font-size: 1.2em; line-height: 0;">•</span>
+            <span style="color: #2b3b8c; font-weight: 800;">practo</span>
+            <span style="color: #2CB7DF; margin-left: 1px; font-size: 1.2em; line-height: 0;">•</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="ms-auto d-flex align-items-center gap-4">
+        <a routerLink="/data-security" class="text-decoration-none text-muted fw-semibold" style="font-size: 0.9rem;">Safety of your data</a>
+        <div class="dropdown">
+          <a href="#" class="text-decoration-none text-muted fw-semibold d-flex align-items-center" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+            For Clinics & Hospitals <i class="bi bi-chevron-down ms-1" style="font-size: 0.7rem;"></i>
+          </a>
+          <ul class="dropdown-menu border-0 shadow-sm mt-2" style="width: 250px;">
+            <li>
+              <a class="dropdown-item py-2 text-dark d-flex align-items-center" routerLink="/providers/prime" style="font-size: 0.9rem;">
+                Practo Prime <i class="bi bi-patch-check-fill ms-1" style="color: #4b2e83;"></i>
+                <span class="badge ms-auto" style="background-color: #ff9800; font-size: 0.65rem;">NEW</span>
+              </a>
+            </li>
+            <li><a class="dropdown-item py-2 text-dark" routerLink="/software/clinics" style="font-size: 0.9rem;">Software for clinics</a></li>
+            <li><a class="dropdown-item py-2 text-dark" routerLink="/software/hospitals" style="font-size: 0.9rem;">Software for hospitals</a></li>
+            <li><a class="dropdown-item py-2 text-dark" routerLink="/providers/profile" style="font-size: 0.9rem;">List your practice for Free</a></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-secondary px-4 py-2" style="font-size: 0.9rem; font-weight: 500;">Contact Us</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sub Header -->
+  <div class="bg-white py-3 shadow-sm border-bottom" style="position: relative; z-index: 1040;">
+    <div class="container px-lg-5 d-flex justify-content-between align-items-center">
+      <span class="text-practo-orange fw-bold" style="font-size: 0.95rem;">Practo Prime</span>
+      <button class="btn btn-practo-orange px-4 py-2 rounded shadow-sm fw-bold" (click)="scrollTo('demo-form')">Get free demo</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="prime-hero">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <!-- Text Content -->
+        <div class="col-lg-6 hero-content pb-5 pt-4">
+          <h1 class="prime-hero-title d-flex align-items-center mb-1">
+            Practo Prime <i class="bi bi-patch-check-fill ms-2 text-practo-purple fs-3"></i>
+          </h1>
+          <p class="text-dark fw-normal mb-4 fs-5" style="color: #333;">For Clinics & Hospitals</p>
+          
+          <p class="hero-subtitle mb-4 text-dark" style="font-size: 1.05rem;">
+            A technology product designed for clinics and hospitals that assists in growing your practice and enhancing the overall patient visit experience.
+          </p>
+          
+          <button class="btn btn-practo-orange px-4 py-2 rounded shadow-sm fw-bold fs-6 mt-2" (click)="scrollTo('demo-form')">
+            Get free demo
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Hero Background Mockup -->
+    <div class="hero-image-placeholder d-none d-lg-block">
+      <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light">
+        <div class="text-center text-muted">
+          <i class="bi bi-image" style="font-size: 5rem; opacity: 0.2;"></i>
+          <p>Doctor examining a child</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Plans Section -->
+  <section class="py-5 bg-light" id="subscription-plans">
+    <div class="container px-lg-5">
+      <h2 class="text-center fw-bold text-dark mb-5">Choose Your Practo Prime Plan</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-4" *ngFor="let plan of subscriptionPlans">
+          <div class="card border-0 shadow-sm rounded-3 text-center h-100">
+            <div class="card-body p-4 d-flex flex-column">
+              <h4 class="fw-bold text-practo-purple mb-3">{{ plan.name }}</h4>
+              <h2 class="fw-bold text-dark mb-4">₹{{ plan.price }}<span class="fs-6 text-muted fw-normal"> / {{ plan.durationMonths }} mo</span></h2>
+              <p class="text-muted mb-4">{{ plan.description }}</p>
+              <div class="mt-auto">
+                <button class="btn btn-practo-orange w-100 fw-bold py-2 rounded shadow-sm" (click)="buySubscription(plan)">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <section class="stats-strip">
+    <div class="container">
+      <div class="row">
+        <div class="col-4 stat-item">
+          <div class="stat-number text-practo-purple">55000+</div>
+          <div class="stat-label mt-1 text-dark">Clinic / Hospitals on Prime</div>
+        </div>
+        <div class="col-4 stat-item">
+          <div class="stat-number text-practo-purple">1.4 Cr+</div>
+          <div class="stat-label mt-1 text-dark">Patients</div>
+        </div>
+        <div class="col-4 stat-item border-0">
+          <div class="stat-number text-practo-purple">9/10 *</div>
+          <div class="stat-label mt-1 text-dark">Highly rated by patients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What our clinics have to say -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <h3 class="fw-bold mb-4" style="color: #4b2e83;">Here's what our clinics have to say about Prime</h3>
+      <p class="text-practo-orange mb-5 fw-bold"><i class="bi bi-play-circle-fill me-1"></i> Watch Video</p>
+      
+      <div class="row justify-content-center gap-4">
+        <div class="col-md-3">
+          <div class="bg-white rounded-circle shadow-sm mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+            <i class="bi bi-person-heart text-practo-orange fs-1"></i>
+          </div>
+          <p class="mt-3 fw-semibold text-muted">Stronger Visibility</p>
+        </div>
+        <div class="col-md-3">
+          <div class="bg-white rounded-circle shadow-sm mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+            <i class="bi bi-calendar-check text-practo-purple fs-1"></i>
+          </div>
+          <p class="mt-3 fw-semibold text-muted">More Appointments</p>
+        </div>
+        <div class="col-md-3">
+          <div class="bg-white rounded-circle shadow-sm mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+            <i class="bi bi-graph-up-arrow text-primary fs-1"></i>
+          </div>
+          <p class="mt-3 fw-semibold text-muted">Practice Growth</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visibility in Prime Listing -->
+  <section class="feature-section bg-light-blue">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-lg-5 offset-lg-1 order-lg-2">
+          <h2 class="feature-title">Visibility in Prime Listing</h2>
+          <p class="feature-desc">
+            As a Prime partner, you will be showcased in the Prime Section on the Practo app. Over 1 Crore patients look for a doctor on Practo every month. Make sure they find you when they search.
+          </p>
+          <button class="btn btn-practo-orange px-4 py-2 rounded mt-3">Know More</button>
+        </div>
+        
+        <div class="col-lg-6 order-lg-1">
+          <div class="mockup-container">
+            <div class="card-mockup border border-primary border-opacity-25" style="transform: rotate(-2deg);">
+              <div class="d-flex align-items-center mb-3">
+                <div class="rounded-circle bg-secondary me-3" style="width: 50px; height: 50px;"></div>
+                <div>
+                  <h6 class="mb-0 fw-bold">Dr. Anil Kohli</h6>
+                  <small class="text-muted">Dentist • 15 Yrs Exp</small>
+                </div>
+                <i class="bi bi-patch-check-fill ms-auto text-practo-purple fs-4"></i>
+              </div>
+              <div class="d-flex align-items-center justify-content-between mt-4">
+                <div>
+                  <small class="d-block text-muted">Next Slot</small>
+                  <strong>Today, 4:00 PM</strong>
+                </div>
+                <button class="btn btn-primary btn-sm rounded-pill px-3">Book Clinic Visit</button>
+              </div>
+            </div>
+            <!-- Background element -->
+            <div class="position-absolute bg-white rounded shadow-sm" style="width: 320px; height: 420px; top: -10px; z-index: -1; opacity: 0.5;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 24/7 Instant Booking -->
+  <section class="feature-section">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-lg-5 pe-lg-5">
+          <h2 class="feature-title">24/7 Instant Booking</h2>
+          <p class="feature-desc">
+            75% patients prefer clinics which offer instant booking. Your practice is open 24/7. Patients can see your real-time availability and book appointments. This means fewer phone calls for your staff to manage and a great experience for your patients.
+          </p>
+          <p class="feature-desc text-muted fs-6">
+            You will also get a dedicated web link that you can use on WhatsApp, Google My Business, etc., so patients can book directly.
+          </p>
+          <button class="btn btn-practo-orange px-4 py-2 rounded mt-3">Know More</button>
+        </div>
+        
+        <div class="col-lg-6 offset-lg-1">
+          <div class="mockup-container">
+            <div class="phone-mockup">
+              <div class="phone-notch"></div>
+              <div class="p-3 pt-5 h-100 bg-light d-flex flex-column">
+                <div class="bg-white rounded shadow-sm p-3 mb-3">
+                  <h6 class="fw-bold mb-1">Select Time Slot</h6>
+                  <p class="text-muted small mb-3">Today, 24 May</p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="badge bg-primary px-3 py-2 border rounded">10:00 AM</span>
+                    <span class="badge bg-white text-dark px-3 py-2 border rounded">10:30 AM</span>
+                    <span class="badge bg-white text-dark px-3 py-2 border rounded">11:00 AM</span>
+                    <span class="badge bg-white text-dark px-3 py-2 border rounded">11:30 AM</span>
+                    <span class="badge bg-white text-dark px-3 py-2 border rounded">12:00 PM</span>
+                    <span class="badge bg-light text-muted px-3 py-2 border rounded">01:00 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Calling System -->
+  <section class="feature-section bg-light-blue">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-lg-5 offset-lg-1 order-lg-2">
+          <h2 class="feature-title">Smart Calling System</h2>
+          <p class="feature-desc">
+            Every patient call to the clinic is an opportunity to provide a great experience. Our Cloud Telephony System ensures no call goes unanswered. Your staff gets an easy interface on their mobile & web to track and manage calls efficiently. You get complete transparency on staff performance & call logs.
+          </p>
+          <p class="feature-desc text-muted fs-6">
+            Furthermore, you can send automated SMS to patients reminding them of their appointment and clinic location. This significantly reduces patient no-shows.
+          </p>
+          <button class="btn btn-practo-orange px-4 py-2 rounded mt-3">Know More</button>
+        </div>
+        
+        <div class="col-lg-6 order-lg-1">
+          <div class="mockup-container">
+            <div class="phone-mockup" style="transform: rotate(90deg);">
+              <!-- Horizontal Mockup -->
+              <div class="phone-notch" style="top: 50%; left: 0; transform: translateY(-50%) rotate(-90deg); width: 25px; height: 120px;"></div>
+              <div class="h-100 w-100 bg-white d-flex align-items-center justify-content-center">
+                <div class="text-center p-4">
+                  <div class="rounded-circle bg-success mx-auto d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                    <i class="bi bi-telephone-fill text-white fs-3"></i>
+                  </div>
+                  <h5 class="fw-bold text-dark mb-1">+91 9876543210</h5>
+                  <p class="text-muted">Incoming Call...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pay as you consume banner -->
+  <section class="py-5">
+    <div class="container px-lg-5">
+      <div class="pay-consume-banner d-flex align-items-center">
+        <div class="me-4 d-none d-md-block">
+          <i class="bi bi-cash-stack text-success" style="font-size: 4rem;"></i>
+        </div>
+        <div>
+          <h3 class="fw-bold text-dark mb-2">Pay as you consume Technology Fee</h3>
+          <p class="text-muted mb-0">
+            You only pay a nominal technology fee for the patients you actually see. We do not charge anything for repeat patients, walk-ins or calls.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-5 bg-white">
+    <div class="container px-lg-5">
+      <h2 class="section-title">How it works?</h2>
+      
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="step-item">
+            <div class="step-icon">1</div>
+            <div class="step-content">
+              <h5 class="fw-bold mb-1">Patient discovers clinic on Practo/Google</h5>
+            </div>
+          </div>
+          
+          <div class="step-item">
+            <div class="step-icon">2</div>
+            <div class="step-content">
+              <h5 class="fw-bold mb-1">Patient books a confirmed appointment instantly</h5>
+              <p>They receive a confirmation SMS with Google map link</p>
+            </div>
+          </div>
+          
+          <div class="step-item">
+            <div class="step-icon">3</div>
+            <div class="step-content">
+              <h5 class="fw-bold mb-1">Clinic staff receives notification & manages patients</h5>
+              <p>Using the Practo Pro App on Mobile / Web Dashboard</p>
+            </div>
+          </div>
+          
+          <div class="step-item">
+            <div class="step-icon">4</div>
+            <div class="step-content">
+              <h5 class="fw-bold mb-1">Doctor focuses on providing great consultation</h5>
+            </div>
+          </div>
+          
+          <div class="text-center mt-4">
+            <button class="btn btn-practo-orange px-4 py-2 rounded">Join Prime</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Dashboard -->
+  <section class="py-5 text-center bg-light-blue">
+    <div class="container px-lg-5">
+      <h2 class="fw-bold" style="color: #4b2e83;">All this powered by an incredibly established<br>clinic management software (available on Web & App) included in the Prime Subscription</h2>
+      
+      <div class="row align-items-center mt-5 text-start">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="laptop-mockup">
+            <div class="laptop-screen bg-light">
+              <!-- Simple Mockup UI -->
+              <div class="d-flex h-100">
+                <div class="bg-dark text-white p-2" style="width: 20%;">
+                  <div class="mb-2" style="height: 10px; background: #555; width: 80%; border-radius: 5px;"></div>
+                  <div class="mb-2" style="height: 10px; background: #555; width: 60%; border-radius: 5px;"></div>
+                  <div class="mb-2" style="height: 10px; background: #555; width: 70%; border-radius: 5px;"></div>
+                </div>
+                <div class="p-3 w-100">
+                  <div class="d-flex gap-2 mb-3">
+                    <div class="bg-white p-2 border rounded shadow-sm w-100" style="height: 40px;"></div>
+                    <div class="bg-white p-2 border rounded shadow-sm w-100" style="height: 40px;"></div>
+                    <div class="bg-white p-2 border rounded shadow-sm w-100" style="height: 40px;"></div>
+                  </div>
+                  <div class="bg-white border rounded shadow-sm w-100 h-50"></div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+        </div>
+        
+        <div class="col-lg-5 offset-lg-1">
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+              <span class="text-muted fw-semibold">Manage Staff Profiles, Access Control & Multiple Clinics</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+              <span class="text-muted fw-semibold">Patient Electronic Medical Records (EMR) & Prescriptions</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+              <span class="text-muted fw-semibold">Billing, Invoices & Tax Management</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+              <span class="text-muted fw-semibold">Detailed Business Analytics & Reports</span>
+            </li>
+          </ul>
+          <button class="btn btn-practo-orange px-4 py-2 rounded mt-3">Get Demo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Form Section -->
+  <section id="demo-form" class="lead-form-section text-center">
+    <div class="container px-lg-5">
+      <h3 class="fw-bold mb-4">Join 50,000+ clinics & hospitals already on Prime</h3>
+      
+      <div *ngIf="submitSuccess" class="alert alert-success mx-auto" style="max-width: 600px;">
+        <i class="bi bi-check-circle-fill me-2"></i> Thank you! We will get in touch with you shortly.
+      </div>
+      <div *ngIf="submitError" class="alert alert-danger mx-auto" style="max-width: 600px;">
+        <i class="bi bi-exclamation-circle-fill me-2"></i> {{ submitError }}
+      </div>
+
+      <form [formGroup]="leadForm" (ngSubmit)="onSubmit()" class="mx-auto" style="max-width: 800px;">
+        <div class="row g-3 justify-content-center">
+          <div class="col-md-3">
+            <input type="text" class="form-control lead-form-input" formControlName="name" placeholder="Name">
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control lead-form-input" formControlName="mobileNumber" placeholder="Mobile Number">
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control lead-form-input" formControlName="city" placeholder="City">
+          </div>
+          <div class="col-md-3">
+            <select class="form-select lead-form-input" formControlName="speciality">
+              <option value="" disabled selected>Speciality</option>
+              <option value="Dentist">Dentist</option>
+              <option value="Dermatologist">Dermatologist</option>
+              <option value="General Physician">General Physician</option>
+              <option value="Pediatrician">Pediatrician</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-practo-orange px-5 py-2 rounded shadow mt-4" [disabled]="isSubmitting">
+          <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
+          Submit Details
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Still have questions -->
+  <section class="py-5 bg-white text-center border-bottom">
+    <div class="container">
+      <h4 class="fw-bold text-dark mb-2">Still have questions on Prime?</h4>
+      <p class="text-muted">Please reach out to us at <span class="text-primary fw-semibold">support@practo.com</span> and our team will connect!</p>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="py-5 bg-white">
+    <div class="container px-lg-5" style="max-width: 800px;">
+      <h3 class="fw-bold mb-4">FAQs</h3>
+      
+      <div class="accordion accordion-flush" id="primeFaq">
+        <div class="accordion-item border-bottom">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button fw-semibold px-0 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+              What is Practo Prime?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#primeFaq">
+            <div class="accordion-body px-0 text-muted">
+              Practo Prime is a technology product for clinics & hospitals which provides a seamless appointment booking experience to patients.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border-bottom">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed fw-semibold px-0 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false">
+              How does Prime increase my revenue?
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#primeFaq">
+            <div class="accordion-body px-0 text-muted">
+              Prime increases visibility for your clinic and reduces drop-offs via instant booking.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border-bottom">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed fw-semibold px-0 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false">
+              Is there any hidden setup or software cost?
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#primeFaq">
+            <div class="accordion-body px-0 text-muted">
+              No. Practo Prime runs on a 'Pay as you consume' model. You only pay for new patients.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border-bottom">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed fw-semibold px-0 text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false">
+              What if a patient doesn't show up? Do I still pay?
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#primeFaq">
+            <div class="accordion-body px-0 text-muted">
+              No, if a patient marks themselves as "Did Not Attend", the technology fee is refunded.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download App -->
+  <section class="app-download-section">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-5 offset-md-1">
+          <!-- Mockup for two phones -->
+          <div class="position-relative" style="height: 350px;">
+            <div class="phone-mockup position-absolute shadow-lg" style="left: 0; bottom: 0; width: 180px; height: 320px; z-index: 1;"></div>
+            <div class="phone-mockup position-absolute shadow-lg" style="right: 50px; bottom: 20px; width: 180px; height: 320px; z-index: 2;"></div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <h3 class="fw-bold mb-3" style="color: #4b2e83;">Download Practo Pro App</h3>
+          <p class="text-muted fw-semibold mb-4">A complete app for doctors to manage their practice</p>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2"><i class="bi bi-check2 text-success me-2"></i> Easily manage your online appointments & profile</li>
+            <li class="mb-2"><i class="bi bi-check2 text-success me-2"></i> Respond to patient feedback & resolve issues</li>
+            <li class="mb-2"><i class="bi bi-check2 text-success me-2"></i> Provide Online Video consultations (Optional)</li>
+            <li class="mb-2"><i class="bi bi-check2 text-success me-2"></i> Add manual walk-in patients</li>
+            <li class="mb-2"><i class="bi bi-check2 text-success me-2"></i> Track revenue & practice growth</li>
+          </ul>
+          <div class="d-flex gap-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" height="40" class="cursor-pointer">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" height="40" class="cursor-pointer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

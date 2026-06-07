@@ -54,3 +54,11 @@
     transform: translateY(0);
   }
 }
+
+/* Hover effect for navbar dropdown */
+@media all and (min-width: 992px) {
+  .navbar .nav-item.dropdown.corporate-dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+}

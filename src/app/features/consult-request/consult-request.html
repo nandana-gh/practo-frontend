@@ -1,0 +1,122 @@
+<div class="consult-wrapper">
+  
+  <!-- Minimalist Header -->
+  <header class="minimal-header">
+    <div class="container px-lg-5">
+      <a routerLink="/" class="text-decoration-none">
+        <span class="fs-4 fw-extrabold" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+          <span style="color: #2b3b8c; font-weight: 800;">practo</span>
+          <span style="color: #2CB7DF; margin-left: 2px; font-size: 1.2em; line-height: 0;">•</span>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <div class="consult-modal-wrapper">
+    
+    <div class="consult-card">
+      <button class="close-btn" (click)="goBack()">×</button>
+      
+      <h2 class="card-title">Consult with a Doctor</h2>
+      
+      <div class="consult-body">
+        <!-- Form Section -->
+        <div class="form-section">
+          
+          <!-- Success Step -->
+          <div *ngIf="step === 'success'" class="mt-4 text-center">
+            <div class="mb-3">
+              <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Request Submitted!</h4>
+            <p class="text-muted">A verified doctor will be assigned shortly and will connect with you on your email: <br><strong>{{ consultForm.value.email }}</strong></p>
+            <button class="btn btn-info text-white fw-bold px-4 py-2 mt-3" routerLink="/" style="background-color: #00a6e2; border: none;">Go to Home</button>
+          </div>
+
+          <!-- Details Step -->
+          <form [formGroup]="consultForm" (ngSubmit)="onSubmit()" *ngIf="step === 'details'">
+            <div *ngIf="submitError" class="alert alert-danger mt-3 rounded-0 border-0">
+              <i class="bi bi-exclamation-circle-fill me-2"></i> {{ submitError }}
+            </div>
+            
+            <div class="mb-1 mt-3">
+              <label class="form-label">Tell us your symptom or health problem</label>
+              <textarea class="custom-textarea" formControlName="symptom" placeholder="Eg: fever, headache"></textarea>
+              <div class="help-text">Min 4 characters</div>
+            </div>
+
+            <div class="sub-help-text">
+              A relevant speciality will be shown below...
+            </div>
+
+            <div class="mb-1">
+              <label class="form-label">Email address</label>
+              <div class="email-input-group">
+                <input type="email" class="custom-input" formControlName="email" placeholder="Enter email address" [ngStyle]="{'border-color': consultForm.get('email')?.touched && consultForm.get('email')?.invalid ? '#dc3545' : '#e0e0e0'}">
+              </div>
+              <div class="help-text">A verification code will be sent to this email address.</div>
+            </div>
+
+            <button type="submit" class="submit-btn" [disabled]="consultForm.invalid || isSubmitting">
+              <span *ngIf="!isSubmitting">Continue</span>
+              <span *ngIf="isSubmitting"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending OTP...</span>
+            </button>
+          </form>
+
+          <!-- OTP Step -->
+          <form [formGroup]="otpForm" (ngSubmit)="onVerifyOtp()" *ngIf="step === 'otp'">
+            <div class="mt-3">
+              <h5 class="fw-bold mb-2">Enter Verification Code</h5>
+              <p class="text-muted small mb-4">We've sent a 6-digit code to <strong>{{ consultForm.value.email }}</strong></p>
+
+              <div *ngIf="verifyError" class="alert alert-danger rounded-0 border-0">
+                <i class="bi bi-exclamation-circle-fill me-2"></i> {{ verifyError }}
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">OTP Code</label>
+                <div class="email-input-group">
+                  <input type="text" class="custom-input text-center fs-4 letter-spacing-2" formControlName="otp" placeholder="• • • • • •" maxlength="6" [ngStyle]="{'border-color': otpForm.get('otp')?.touched && otpForm.get('otp')?.invalid ? '#dc3545' : '#e0e0e0'}">
+                </div>
+              </div>
+
+              <button type="submit" class="submit-btn w-100" [disabled]="otpForm.invalid || isVerifying">
+                <span *ngIf="!isVerifying">Verify & Submit</span>
+                <span *ngIf="isVerifying"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Verifying...</span>
+              </button>
+              
+              <div class="text-center mt-3">
+                <a href="javascript:void(0)" class="text-decoration-none small text-info" (click)="goBack()">Change Email</a>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+        <!-- Graphic Section -->
+        <div class="graphic-section">
+          <!-- Scalable SVG mimicking the provided Doctor Illustration -->
+          <svg class="doctor-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Shoulders/Coat -->
+            <path d="M20 90C20 70 35 60 50 60C65 60 80 70 80 90V100H20V90Z" fill="#00bced"/>
+            <!-- Neck -->
+            <rect x="42" y="45" width="16" height="20" fill="#f4c494"/>
+            <!-- Face -->
+            <circle cx="50" cy="35" r="15" fill="#f4c494"/>
+            <!-- Hair -->
+            <path d="M35 35C35 20 45 15 50 15C55 15 65 20 65 35V38H35V35Z" fill="#a0522d"/>
+            <path d="M32 30C32 20 45 18 50 18C55 18 68 20 68 30V35H32V30Z" fill="#8b4513"/>
+            <!-- Stethoscope -->
+            <path d="M40 60V75C40 80 45 85 50 85C55 85 60 80 60 75V60" stroke="#f7941d" stroke-width="3" fill="none"/>
+            <circle cx="50" cy="85" r="4" fill="#555"/>
+            <!-- Collar -->
+            <path d="M40 60L50 75L60 60Z" fill="white"/>
+          </svg>
+          <div class="verified-text">Verified Doctors</div>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -18,115 +18,10 @@
   box-shadow: none !important;
 }
 
-.core-service-card {
-  border-radius: 16px;
-  border: 1px solid #e8eaf0 !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(38, 48, 119, 0.02) !important;
-}
-
-.core-service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(38, 48, 119, 0.08) !important;
-}
-
-.rounded-bottom-16 {
-  border-bottom-left-radius: 16px !important;
-  border-bottom-right-radius: 16px !important;
-}
-
-/* Online specialties */
-.specialty-circle-wrap {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.specialty-circle-wrap:hover {
-  transform: scale(1.08);
-}
-
-.consult-link {
-  color: #00a6e2;
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  transition: color 0.15s ease;
-}
-
-.consult-link:hover {
-  color: #008cc0;
-}
-
-.btn-view-specialties {
-  border-color: #00a6e2;
-  color: #00a6e2;
-  font-weight: 600;
-  font-size: 13.5px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  padding: 8px 16px;
-}
-
-.btn-view-specialties:hover {
-  background-color: #00a6e2;
-  color: #fff !important;
-}
-
-/* In Clinic Specialty Cards */
-.clinic-specialty-card {
-  border: 1px solid #e8eaf0 !important;
-  border-radius: 8px;
-  overflow: hidden;
-  min-width: 240px;
-}
-
-.scroll-container {
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel-control-next-mock {
-  top: 50%;
-  right: -20px;
-}
-
-/* Article Cards */
-.article-card {
-  border-radius: 8px;
-  border: 1px solid #e8eaf0 !important;
-  overflow: hidden;
-}
-
-.testimonial-scroll {
-  scrollbar-width: none;
-}
-
-.testimonial-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.avatar-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  font-size: 14px;
-}
-
 /* Autocomplete suggestions dropdown styles */
 .autocomplete-dropdown {
   position: absolute;
-  top: 48px;
+  top: 60px;
   left: 0;
   width: 100%;
   background-color: #fff;
@@ -173,3 +68,19 @@
   cursor: pointer;
 }
 
+/* Hero Section specific styles */
+.hero-nav-item {
+  transition: all 0.2s ease-in-out;
+}
+.hero-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Article Cards */
+.article-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important;
+}

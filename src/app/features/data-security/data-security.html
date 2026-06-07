@@ -1,0 +1,372 @@
+<div class="security-wrapper">
+  
+  <!-- Custom Header -->
+  <nav class="navbar navbar-expand-lg security-header sticky-top">
+    <div class="container px-lg-5 d-flex align-items-center">
+      <!-- Brand Logo (Blue Practo only) -->
+      <a class="navbar-brand me-5" routerLink="/">
+        <span class="fs-4 fw-extrabold" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+          <span style="color: #2b3b8c; font-weight: 800;">practo</span>
+        </span>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto d-flex gap-4">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about">About Practo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">In Media / News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/data-security">Data Security</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">For Partners</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              For Clinics & Hospitals
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm mt-2" style="width: 250px;">
+              <li>
+                <a class="dropdown-item py-2 text-dark d-flex align-items-center" routerLink="/providers/prime" style="font-size: 0.9rem;">
+                  Practo Prime <i class="bi bi-patch-check-fill ms-1" style="color: #4b2e83;"></i>
+                  <span class="badge ms-auto" style="background-color: #ff9800; font-size: 0.65rem;">NEW</span>
+                </a>
+              </li>
+              <li><a class="dropdown-item py-2 text-dark" routerLink="/software/clinics" style="font-size: 0.9rem;">Software for clinics</a></li>
+              <li><a class="dropdown-item py-2 text-dark" routerLink="/software/hospitals" style="font-size: 0.9rem;">Software for hospitals</a></li>
+              <li><a class="dropdown-item py-2 text-dark" routerLink="/providers/profile" style="font-size: 0.9rem;">List your practice for Free</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-white">
+    <div class="container">
+      <h1 class="hero-title">Trust: the foundation on which<br>Practo is built</h1>
+    </div>
+  </section>
+
+  <!-- Data Ownership -->
+  <section class="data-ownership-section bg-white">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6 pe-lg-5">
+          <h2 class="ownership-title">Your data has only one<br>owner. YOU!</h2>
+          <ul class="ownership-list mt-4">
+            <li>You dictate what happens to your health data.</li>
+            <li>You define who can access your data and who can't.</li>
+            <li>No third-party gets your data unless you explicitly consent to it.</li>
+          </ul>
+
+          <div class="cert-icons">
+            <div class="cert-item">
+              <i class="bi bi-shield-lock"></i>
+              <p>256-bit<br>encryption</p>
+            </div>
+            <div class="cert-item">
+              <i class="bi bi-award"></i>
+              <p>ISO<br>27001<br>certified</p>
+            </div>
+            <div class="cert-item">
+              <i class="bi bi-file-earmark-medical"></i>
+              <p>HIPAA<br>compliant<br>data centers</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="illustration-placeholder">
+            <div class="text-center text-muted">
+              <i class="bi bi-server" style="font-size: 5rem; color: #2CB7DF;"></i>
+              <p class="mt-2 fw-semibold">Secure Server Infrastructure</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ISO Section -->
+  <section class="iso-section">
+    <div class="container px-lg-5">
+      <div class="row align-items-center mb-5">
+        <div class="col-md-3 text-center text-md-start">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/ISO_27001_Logo.svg" alt="ISO 27001" class="iso-badge opacity-50" style="filter: grayscale(100%);">
+        </div>
+        <div class="col-md-9">
+          <h2 class="iso-title">We are ISO 27001<br>certified</h2>
+          <p class="iso-desc">
+            <span class="text-orange">ISO 27001</span> is a globally recognized independent international security standard. This means that a third party has evaluated the processes that we have in place to secure your data and have certified us as adhering to international standards.
+          </p>
+          <ul class="ownership-list">
+            <li><span class="text-orange">24x7 security personnel</span> guarding the data centers where your data resides</li>
+            <li><span class="text-orange">Biometric access</span> for all personnel at our data centers</li>
+            <li><span class="text-orange">Strong encryption methods</span> and strict access control to databases over a private network</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="iso-card">
+            <h4>Data privacy for patients</h4>
+            <ul>
+              <li>Your health records, your rules.</li>
+              <li>You alone have access to your health records. Only the doctors you consult can view them.</li>
+              <li>You can selectively share your records with a doctor or lab on Practo.</li>
+              <li>You can revoke access to your records at any time.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="iso-card">
+            <h4>Data privacy for doctors</h4>
+            <ul>
+              <li>We will not share your data with any third party, without your consent.</li>
+              <li>Data access is strictly based on the roles that you define. You are in complete control of your data.</li>
+              <li>Practo administrators do not have access to your patient or practice data.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Provider Security -->
+  <section class="provider-security">
+    <div class="container px-lg-5">
+      <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+          <div class="illustration-placeholder bg-white">
+            <i class="bi bi-folder-symlink" style="font-size: 6rem; color: #f78104;"></i>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h2 class="section-heading">Secure platform for<br>healthcare providers</h2>
+          <p class="section-subheading">Learn more about the security measures in<br>place for your practice</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="security-grid-card">
+            <div class="card-icon-container">
+              <i class="bi bi-shield-check" style="font-size: 3rem; color: #e74c3c;"></i>
+            </div>
+            <h5>Strict access control over your patient & clinic data</h5>
+            <p>Every practice is isolated and access is restricted exclusively to authenticated users added to the practice. There are strict role-based access rules to govern data access. E.g. A receptionist cannot see patient health records without the doctor's explicit permission.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="security-grid-card">
+            <div class="card-icon-container">
+              <i class="bi bi-cloud-check" style="font-size: 3rem; color: #f39c12;"></i>
+            </div>
+            <h5>Your data is safe, globally</h5>
+            <p>We deploy strict security measures across all our data centers, regardless of geography. Our security framework ensures compliance with data protection laws wherever we operate.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="security-grid-card">
+            <div class="card-icon-container">
+              <i class="bi bi-file-lock" style="font-size: 3rem; color: #9b59b6;"></i>
+            </div>
+            <h5>Continuous data backups</h5>
+            <p>We automatically backup your data every 30 mins to multiple secure, geographically distributed locations. In case of an unexpected event, your data is restored instantly with no loss.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="security-grid-card">
+            <div class="card-icon-container">
+              <i class="bi bi-door-closed" style="font-size: 3rem; color: #2ecc71;"></i>
+            </div>
+            <h5>Advanced monitoring and incident response</h5>
+            <p>We have automated tracking systems that log every access attempt. Any suspicious behavior triggers immediate alerts to our 24x7 security operations team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Patient Security -->
+  <section class="patient-security">
+    <div class="container px-lg-5">
+      <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-6">
+          <div class="illustration-placeholder bg-transparent">
+            <i class="bi bi-shield-fill-check" style="font-size: 6rem; color: #8e44ad;"></i>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h2 class="section-heading">Secure place for<br>your health data</h2>
+          <p class="section-subheading">Learn how we ensure your health data is<br>safe from unauthorized access</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="security-grid-card">
+            <div class="card-icon-container">
+              <i class="bi bi-laptop" style="font-size: 3rem; color: #2CB7DF;"></i>
+            </div>
+            <h5>Data Security at Rest</h5>
+            <p>All sensitive health data stored in our databases is protected with AES-256 encryption. Our infrastructure ensures that even direct access to the database yields only encrypted, unreadable text.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="security-grid-card">
+            <div class="card-icon-container">
+              <i class="bi bi-search" style="font-size: 3rem; color: #3498db;"></i>
+            </div>
+            <h5>Strictly governed access</h5>
+            <p>Only you and the healthcare professionals you authorize can access your data. We implement rigorous internal policies preventing any Practo employee from accessing patient health records.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="security-grid-card">
+            <div class="card-icon-container">
+              <i class="bi bi-fingerprint" style="font-size: 3rem; color: #1abc9c;"></i>
+            </div>
+            <h5>Two-factor authentication</h5>
+            <p>We provide two-factor authentication (2FA) for your account. Even if someone obtains your password, they cannot access your health records without the OTP sent to your registered device.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="security-grid-card">
+            <div class="card-icon-container">
+              <i class="bi bi-shield-shaded" style="font-size: 3rem; color: #e67e22;"></i>
+            </div>
+            <h5>Regular security audits</h5>
+            <p>We conduct independent security audits and penetration tests regularly to identify and patch potential vulnerabilities, ensuring our systems remain impenetrable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="faq-section">
+    <div class="container px-lg-5" style="max-width: 1000px;">
+      <h2 class="faq-title">FAQs</h2>
+      
+      <div *ngIf="faqs.length === 0" class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading FAQs...</span>
+        </div>
+      </div>
+
+      <div class="accordion accordion-flush" id="securityFaq">
+        <div class="accordion-item" *ngFor="let faq of faqs; let i = index">
+          <h2 class="accordion-header" [id]="'faqHeading' + i">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#faqCollapse' + i" aria-expanded="false" [attr.aria-controls]="'faqCollapse' + i">
+              {{ faq.question }}
+            </button>
+          </h2>
+          <div [id]="'faqCollapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'faqHeading' + i" data-bs-parent="#securityFaq">
+            <div class="accordion-body">
+              {{ faq.answer }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Dark Footer -->
+  <footer class="practo-dark-footer">
+    <div class="container px-lg-5">
+      <div class="row">
+        <div class="col-md-2 col-6">
+          <h5 class="footer-heading">Practo</h5>
+          <ul class="footer-list">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6">
+          <h5 class="footer-heading">For patients</h5>
+          <ul class="footer-list">
+            <li><a href="#">Search for doctors</a></li>
+            <li><a href="#">Search for clinics</a></li>
+            <li><a href="#">Search for hospitals</a></li>
+            <li><a href="#">Book Diagnostic Tests</a></li>
+            <li><a href="#">Book Full Body Checkups</a></li>
+            <li><a href="#">Practo Plus</a></li>
+            <li><a href="#">Covid Hospital listing</a></li>
+            <li><a href="#">Read health articles</a></li>
+            <li><a href="#">Read about medicines</a></li>
+            <li><a href="#">Practo drive</a></li>
+            <li><a href="#">Health app</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">For doctors</h5>
+          <ul class="footer-list">
+            <li><a href="#">Practo Profile</a></li>
+          </ul>
+          <h5 class="footer-heading mt-4">For clinics</h5>
+          <ul class="footer-list">
+            <li><a href="#">Ray by Practo</a></li>
+            <li><a href="#">Practo Reach</a></li>
+            <li><a href="#">Ray Tab</a></li>
+            <li><a href="#">Practo Pro</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">For hospitals</h5>
+          <ul class="footer-list">
+            <li><a href="#">Insta by Practo</a></li>
+            <li><a href="#">Qikwell by Practo</a></li>
+            <li><a href="#">Practo Profile</a></li>
+            <li><a href="#">Practo Reach</a></li>
+            <li><a href="#">Practo Drive</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">More</h5>
+          <ul class="footer-list">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">PCS T&C</a></li>
+            <li><a href="#">Healthcare Directory</a></li>
+            <li><a href="#">Practo Health Wiki</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">Social</h5>
+          <ul class="footer-list">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Youtube</a></li>
+            <li><a href="#">Github</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-logo">
+        <span class="fs-3 fw-extrabold" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em; color: white;">
+          <span style="color: #2CB7DF; margin-right: 1px; font-size: 1.2em; line-height: 0;">•</span>
+          <span style="font-weight: 800;">practo</span>
+          <span style="color: #2CB7DF; margin-left: 1px; font-size: 1.2em; line-height: 0;">•</span>
+        </span>
+        <p class="footer-copyright mt-3">Copyright © 2017, Practo. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>

@@ -1,0 +1,458 @@
+<div class="corporate-wrapper">
+  <!-- Hero Section -->
+  <section class="corporate-hero">
+    <!-- Transparent Custom Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pt-3 pb-4 position-relative" style="z-index: 10;">
+      <div class="container px-lg-5">
+        <!-- Brand Logo -->
+        <a class="navbar-brand d-flex align-items-center" routerLink="/">
+          <span class="fs-3 fw-extrabold d-flex align-items-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+            <span style="color: #2CB7DF; margin-right: 1px; font-size: 1.2em; line-height: 0;">•</span>
+            <span style="color: white; font-weight: 800;">practo</span>
+            <span style="color: #2CB7DF; margin-left: 1px; font-size: 1.2em; line-height: 0;">•</span>
+          </span>
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#corporateNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="corporateNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-4">
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" (click)="scrollTo('our-services')" href="javascript:void(0)" style="font-size: 0.9rem; cursor: pointer;">Our Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" (click)="scrollTo('practo-ecosystem')" href="javascript:void(0)" style="font-size: 0.9rem; cursor: pointer;">Practo Ecosystem</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" (click)="scrollTo('product-capabilities')" href="javascript:void(0)" style="font-size: 0.9rem; cursor: pointer;">Product Capabilities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" (click)="scrollTo('testimonials')" href="javascript:void(0)" style="font-size: 0.9rem; cursor: pointer;">Testimonials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" (click)="scrollTo('faqs')" href="javascript:void(0)" style="font-size: 0.9rem; cursor: pointer;">FAQs</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-info text-white rounded-pill px-4 fw-bold shadow-sm" href="#" style="background-color: #2CB7DF; border: none;">Group Insurance</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container px-lg-5 mt-4">
+      <div class="row align-items-center">
+        <!-- Text Content -->
+        <div class="col-lg-6 hero-content text-lg-start text-center mb-5 mb-lg-0 pe-lg-5">
+          <h1 class="hero-title text-white mb-4">Your Workplace Health and Wellness Partner</h1>
+          <p class="hero-subtitle text-white fw-semibold mb-0" style="font-size: 1.15rem; line-height: 1.5;">Over 30cr users benefited by our holistic, customizable and accessible healthcare solutions</p>
+        </div>
+        
+        <!-- Form Content -->
+        <div class="col-lg-5 offset-lg-1">
+          <div class="demo-form-card">
+            <h3 class="text-center">Schedule a Demo</h3>
+            
+            <div *ngIf="submitSuccess" class="alert alert-success py-2 text-center" style="font-size: 0.9rem;">
+              <i class="bi bi-check-circle-fill me-2"></i> Request submitted successfully!
+            </div>
+            <div *ngIf="submitError" class="alert alert-danger py-2 text-center" style="font-size: 0.9rem;">
+              <i class="bi bi-exclamation-circle-fill me-2"></i> {{ submitError }}
+            </div>
+
+            <form [formGroup]="demoForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <input type="text" class="form-control" formControlName="name" placeholder="Name" [ngClass]="{'is-invalid': demoForm.get('name')?.invalid && demoForm.get('name')?.touched}">
+              </div>
+              
+              <div class="mb-3">
+                <input type="text" class="form-control" formControlName="organizationName" placeholder="Organization Name" [ngClass]="{'is-invalid': demoForm.get('organizationName')?.invalid && demoForm.get('organizationName')?.touched}">
+              </div>
+              
+              <div class="mb-3">
+                <input type="email" class="form-control" formControlName="officialEmailId" placeholder="Official Email ID" [ngClass]="{'is-invalid': demoForm.get('officialEmailId')?.invalid && demoForm.get('officialEmailId')?.touched}">
+              </div>
+              
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text bg-white text-muted" style="border-right: 0;">+91</span>
+                  <input type="text" class="form-control border-start-0 ps-0" formControlName="mobileNumber" placeholder="Mobile Number" [ngClass]="{'is-invalid': demoForm.get('mobileNumber')?.invalid && demoForm.get('mobileNumber')?.touched}">
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <select class="form-select text-muted" formControlName="organizationSize" [ngClass]="{'is-invalid': demoForm.get('organizationSize')?.invalid && demoForm.get('organizationSize')?.touched}">
+                  <option value="" disabled selected>Organization Size</option>
+                  <option value="1-50">1-50 Employees</option>
+                  <option value="51-200">51-200 Employees</option>
+                  <option value="201-500">201-500 Employees</option>
+                  <option value="500+">500+ Employees</option>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <input type="text" class="form-control" formControlName="city" placeholder="City Name" [ngClass]="{'is-invalid': demoForm.get('city')?.invalid && demoForm.get('city')?.touched}">
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100 rounded-pill" [disabled]="isSubmitting">
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                SCHEDULE A DEMO
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Total Protect Banner -->
+  <div class="container px-lg-5">
+    <div class="protect-banner d-flex flex-column flex-md-row align-items-center justify-content-between">
+      <div class="mb-3 mb-md-0 d-flex flex-column">
+        <span class="protect-title">TOTAL <span style="color: #2CB7DF;">PROTECT</span></span>
+        <span class="protect-subtitle mt-1">HEALTH BENEFITS & GROUP INSURANCE COVER</span>
+        <span class="text-muted small mt-2 fw-semibold">A OUT-BOXED COMPREHENSIVE CARE PLAN</span>
+      </div>
+      <div class="d-none d-lg-block mx-auto text-center" style="max-width: 300px;">
+        <!-- Placeholder for woman image -->
+        <div style="height: 100px; width: 250px; background-color: #d1ecf1; border-radius: 50px; display: flex; align-items: center; justify-content: center; color: #0c5460;">
+          <i class="bi bi-person-badge fs-2"></i>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">KNOW MORE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our Clients -->
+  <section class="py-5 bg-white text-center">
+    <div class="container">
+      <h4 class="fw-bold text-muted mb-4" style="font-size: 1.1rem;">Our Clients</h4>
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 gap-lg-5 opacity-75">
+        <h4 class="fw-bold m-0" style="color: #FFC107;">Paytm</h4>
+        <h4 class="fw-bold m-0" style="color: #00bcd4;">Aakash</h4>
+        <h4 class="fw-bold m-0" style="color: #d32f2f;">AON</h4>
+        <h4 class="fw-bold m-0" style="color: #ff9800;">hanu.</h4>
+        <h4 class="fw-bold m-0" style="color: #4CAF50;">OPPO</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Services -->
+  <section id="our-services" class="py-5" style="background-color: #f8f9fa;">
+    <div class="container px-lg-5">
+      <h2 class="section-heading">Our Services</h2>
+      
+      <div class="row gx-lg-5">
+        <!-- Column 1 -->
+        <div class="col-md-6">
+          <div class="service-item">
+            <div class="service-icon"><i class="bi bi-camera-video text-primary"></i></div>
+            <div>
+              <h4 class="service-title">Long Online consultations</h4>
+              <p class="service-desc">Consult Top Doctors online via video/audio across 22+ specialities</p>
+            </div>
+          </div>
+          
+          <div class="service-item">
+            <div class="service-icon"><i class="bi bi-capsule text-danger"></i></div>
+            <div>
+              <h4 class="service-title">Pharmacy Network</h4>
+              <p class="service-desc">Order medicines from top brands with huge discounts at your doorstep</p>
+            </div>
+          </div>
+          
+          <div class="service-item">
+            <div class="service-icon"><i class="bi bi-shield-check text-info"></i></div>
+            <div>
+              <h4 class="service-title">EAP Wellness Helpline</h4>
+              <p class="service-desc">Confidential platform for emotional wellness & behavioral health consultations</p>
+            </div>
+          </div>
+          
+          <div class="service-item">
+            <div class="service-icon"><i class="bi bi-heart-pulse text-danger"></i></div>
+            <div>
+              <h4 class="service-title">Chronic Disease Management</h4>
+              <p class="service-desc">Comprehensive care plans designed & monitored by specialized doctors for chronic conditions</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Column 2 -->
+        <div class="col-md-6">
+          <div class="service-item">
+            <div class="service-icon"><i class="bi bi-file-medical text-success"></i></div>
+            <div>
+              <h4 class="service-title">Health Checkups</h4>
+              <p class="service-desc">Comprehensive & preventive health checkups from top NABL accredited labs</p>
+            </div>
+          </div>
+          
+          <div class="service-item">
+            <div class="service-icon"><i class="bi bi-building text-warning"></i></div>
+            <div>
+              <h4 class="service-title">On-site Health Camps</h4>
+              <p class="service-desc">On-site camps for health checkups, vision care, and dental care</p>
+            </div>
+          </div>
+          
+          <div class="service-item">
+            <div class="service-icon"><i class="bi bi-person-check text-primary"></i></div>
+            <div>
+              <h4 class="service-title">Pre Employment Checkups</h4>
+              <p class="service-desc">Ensure health & fitness standards of new hires prior to joining your organization</p>
+            </div>
+          </div>
+          
+          <div class="service-item">
+            <div class="service-icon"><i class="bi bi-mic text-info"></i></div>
+            <div>
+              <h4 class="service-title">Engagement & Wellness Sessions</h4>
+              <p class="service-desc">Wellness sessions, Yoga classes & Zumba programs engaging employees via online/offline events</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-5 bg-white">
+    <div class="container px-lg-5">
+      <h2 class="section-heading">Why Choose Us?</h2>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="choose-card">
+            <div class="choose-icon"><i class="bi bi-building"></i></div>
+            <h4 class="choose-title">For Organizations</h4>
+            <p class="choose-desc">Reduce absenteeism & insurance costs with healthier employees</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="choose-card">
+            <div class="choose-icon"><i class="bi bi-people"></i></div>
+            <h4 class="choose-title">For Employees</h4>
+            <p class="choose-desc">Free & accessible preventive healthcare at their fingertips</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="choose-card">
+            <div class="choose-icon"><i class="bi bi-person-badge"></i></div>
+            <h4 class="choose-title">For Admins</h4>
+            <p class="choose-desc">Dedicated account managers & simplified dashboard</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practo Ecosystem -->
+  <section id="practo-ecosystem" class="py-5 bg-light-gray text-center">
+    <div class="container px-lg-5">
+      <h2 class="section-heading">Practo Ecosystem</h2>
+      <p class="text-muted mb-5">Your complete healthcare needs fulfilled at one place, anytime & anywhere across PAN India</p>
+      
+      <!-- Map Placeholder -->
+      <div class="position-relative mx-auto" style="max-width: 800px; height: 400px; background-color: #e9ecef; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <i class="bi bi-globe" style="font-size: 15rem; color: #dee2e6;"></i>
+        
+        <!-- Stat badges overlay -->
+        <div class="position-absolute bg-white rounded shadow-sm px-3 py-2 d-flex align-items-center gap-2" style="bottom: 10%; left: 10%;">
+          <i class="bi bi-chat-text text-primary fs-4"></i>
+          <div class="text-start">
+            <div class="fw-bold fs-5 lh-1">1L+</div>
+            <div class="small text-muted" style="font-size: 0.7rem;">Doctor Consultations</div>
+          </div>
+        </div>
+        
+        <div class="position-absolute bg-white rounded shadow-sm px-3 py-2 d-flex align-items-center gap-2" style="bottom: 10%; right: 10%;">
+          <i class="bi bi-heart-pulse text-danger fs-4"></i>
+          <div class="text-start">
+            <div class="fw-bold fs-5 lh-1">5k+</div>
+            <div class="small text-muted" style="font-size: 0.7rem;">Diagnostic Centers</div>
+          </div>
+        </div>
+        
+        <div class="position-absolute bg-white rounded shadow-sm px-3 py-2 d-flex align-items-center gap-2" style="bottom: -15px; left: 50%; transform: translateX(-50%);">
+          <i class="bi bi-person-check text-success fs-4"></i>
+          <div class="text-start">
+            <div class="fw-bold fs-5 lh-1">3.5Cr+</div>
+            <div class="small text-muted" style="font-size: 0.7rem;">Patient Served</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Video -->
+  <section class="py-5 bg-white text-center">
+    <div class="container px-lg-5">
+      <h2 class="section-heading">Demo Video</h2>
+      <div class="mx-auto bg-dark rounded-3 d-flex align-items-center justify-content-center cursor-pointer shadow-lg" style="max-width: 800px; height: 450px;">
+        <i class="bi bi-play-circle text-white" style="font-size: 5rem; opacity: 0.8;"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Capabilities -->
+  <section id="product-capabilities" class="py-5 text-center" style="background-color: #f8f9fa;">
+    <div class="container px-lg-5">
+      <h2 class="section-heading">Product Capabilities</h2>
+      <p class="text-muted mb-5">Access multiple benefits with single login credentials</p>
+      
+      <!-- Laptop Mockup Placeholder -->
+      <div class="mx-auto position-relative" style="max-width: 700px; height: 350px;">
+        <div class="bg-dark rounded-top shadow-lg w-100 h-100 border border-4 border-dark d-flex align-items-center justify-content-center text-white-50">
+          <div class="text-center">
+            <i class="bi bi-laptop fs-1 mb-2 d-block"></i>
+            HR Dashboard Interface
+          </div>
+        </div>
+        <div class="bg-secondary rounded-bottom shadow" style="height: 15px; width: 110%; margin-left: -5%;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-5 bg-white text-center">
+    <div class="container px-lg-5">
+      <h2 class="section-heading">Testimonials</h2>
+      
+      <div class="card shadow-sm border-0 mx-auto" style="max-width: 700px; border-radius: 12px;">
+        <div class="card-body p-5">
+          <img src="https://ui-avatars.com/api/?name=Kumar+Ankush&background=random" alt="Avatar" class="rounded-circle mb-3" width="64" height="64">
+          <h5 class="fw-bold text-dark mb-0">Kumar Ankush</h5>
+          <p class="text-muted small mb-3">VP HR</p>
+          
+          <div class="text-warning mb-4 fs-5">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          
+          <p class="text-muted fst-italic" style="line-height: 1.8;">
+            "Practo really understands what organizations need when it comes to employee wellness. We started seeing a major improvement in the overall health and satisfaction of our team since we partnered with them. The dedicated account managers make the process completely seamless and the HR dashboard is very easy to use."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section id="faqs" class="py-5" style="background-color: #f8f9fa;">
+    <div class="container px-lg-5" style="max-width: 900px;">
+      <h2 class="section-heading">FAQs</h2>
+      
+      <div class="accordion accordion-flush bg-white rounded shadow-sm border" id="corporateFaq">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq-heading-1">
+            <button class="accordion-button fw-semibold py-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-1" aria-expanded="true" aria-controls="faq-collapse-1">
+              Do we need to pay anything to create this plan?
+            </button>
+          </h2>
+          <div id="faq-collapse-1" class="accordion-collapse collapse show" aria-labelledby="faq-heading-1" data-bs-parent="#corporateFaq">
+            <div class="accordion-body text-muted pt-0 pb-4">
+              Practo Health Plans are completely customizable and you only pay for the services you choose for your employees. We will provide a tailored quote based on your specific requirements during the demo session.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq-heading-2">
+            <button class="accordion-button collapsed fw-semibold py-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-2" aria-expanded="false" aria-controls="faq-collapse-2">
+              For which cities are Health Checks currently available in?
+            </button>
+          </h2>
+          <div id="faq-collapse-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2" data-bs-parent="#corporateFaq">
+            <div class="accordion-body text-muted pt-0 pb-4">
+              Our health checkup services are available across 50+ major cities in India through our network of NABL accredited partner labs.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq-heading-3">
+            <button class="accordion-button collapsed fw-semibold py-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-3" aria-expanded="false" aria-controls="faq-collapse-3">
+              How do you ensure data privacy?
+            </button>
+          </h2>
+          <div id="faq-collapse-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3" data-bs-parent="#corporateFaq">
+            <div class="accordion-body text-muted pt-0 pb-4">
+              We employ military-grade encryption and strictly adhere to HIPAA and local data protection regulations to ensure all employee health data is completely secure and confidential.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq-heading-4">
+            <button class="accordion-button collapsed fw-semibold py-4 text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-4" aria-expanded="false" aria-controls="faq-collapse-4">
+              Read more...
+            </button>
+          </h2>
+          <div id="faq-collapse-4" class="accordion-collapse collapse" aria-labelledby="faq-heading-4" data-bs-parent="#corporateFaq">
+            <div class="accordion-body text-muted pt-0 pb-4">
+              Please reach out to our corporate team for more detailed information and a comprehensive FAQ document.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Corporate Footer -->
+  <footer class="corporate-footer">
+    <div class="container">
+      <div class="mb-4">
+        <span class="fs-3 fw-extrabold" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+          <span style="color: #2CB7DF; margin-right: 1px; font-size: 1.2em; line-height: 0;">•</span>
+          <span style="color: white; font-weight: 800;">practo</span>
+          <span style="color: #2CB7DF; margin-left: 1px; font-size: 1.2em; line-height: 0;">•</span>
+        </span>
+      </div>
+      
+      <div class="row text-start justify-content-center mx-auto" style="max-width: 800px;">
+        <div class="col-md-4 mb-3 mb-md-0">
+          <h6 class="fw-bold mb-3">About Practo</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#">About Us</a></li>
+            <li class="mb-2"><a href="#">Careers</a></li>
+            <li class="mb-2"><a href="#">Press</a></li>
+            <li class="mb-2"><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-md-4 mb-3 mb-md-0">
+          <h6 class="fw-bold mb-3">For Corporate</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#">Health & Wellness Plans</a></li>
+            <li class="mb-2"><a href="#">Group Insurance</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-md-4">
+          <h6 class="fw-bold mb-3">Follow Us</h6>
+          <div class="d-flex gap-3">
+            <a href="#" class="fs-5"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="fs-5"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="fs-5"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="fs-5"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-5 pt-4 border-top border-secondary text-center text-white-50 small">
+        <p class="mb-0">© 2026 Practo. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>

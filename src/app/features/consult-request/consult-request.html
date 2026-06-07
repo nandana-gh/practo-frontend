@@ -1,0 +1,88 @@
+<div class="consult-wrapper">
+  
+  <!-- Minimalist Header -->
+  <header class="minimal-header">
+    <div class="container px-lg-5">
+      <a routerLink="/" class="text-decoration-none">
+        <span class="fs-4 fw-extrabold" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+          <span style="color: #2b3b8c; font-weight: 800;">practo</span>
+          <span style="color: #2CB7DF; margin-left: 2px; font-size: 1.2em; line-height: 0;">•</span>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <div class="consult-modal-wrapper">
+    
+    <div class="consult-card">
+      <button class="close-btn" (click)="goBack()">×</button>
+      
+      <h2 class="card-title">Consult with a Doctor</h2>
+      
+      <div class="consult-body">
+        <!-- Form Section -->
+        <div class="form-section">
+          
+          <div *ngIf="submitSuccess" class="alert alert-success mt-3 rounded-0 border-0" style="background-color: #e6f6eb; color: #1e7e34;">
+            <i class="bi bi-check-circle-fill me-2"></i> {{ submitError ? submitError : 'Consultation request submitted successfully! A verified doctor will be assigned shortly.' }}
+          </div>
+          <div *ngIf="submitError && !submitSuccess" class="alert alert-danger mt-3 rounded-0 border-0">
+            <i class="bi bi-exclamation-circle-fill me-2"></i> {{ submitError }}
+          </div>
+
+          <form [formGroup]="consultForm" (ngSubmit)="onSubmit()" *ngIf="!submitSuccess">
+            
+            <div class="mb-1">
+              <label class="form-label">Tell us your symptom or health problem</label>
+              <textarea class="custom-textarea" formControlName="symptom" placeholder="Eg: fever, headache"></textarea>
+              <div class="help-text">Min 4 characters</div>
+            </div>
+
+            <div class="sub-help-text">
+              A relevant speciality will be shown below...
+            </div>
+
+            <div class="mb-1">
+              <label class="form-label">Email address</label>
+              <div class="email-input-group">
+                <input type="email" class="custom-input" formControlName="email" placeholder="Enter email address" [ngStyle]="{'border-color': consultForm.get('email')?.touched && consultForm.get('email')?.invalid ? '#dc3545' : '#e0e0e0'}">
+              </div>
+              <div class="help-text">A verification code will be sent to this email address.</div>
+            </div>
+
+            <button type="submit" class="submit-btn" [disabled]="consultForm.invalid || isSubmitting">
+              <span *ngIf="!isSubmitting">Continue</span>
+              <span *ngIf="isSubmitting"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...</span>
+            </button>
+
+          </form>
+
+        </div>
+
+        <!-- Graphic Section -->
+        <div class="graphic-section">
+          <!-- Scalable SVG mimicking the provided Doctor Illustration -->
+          <svg class="doctor-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Shoulders/Coat -->
+            <path d="M20 90C20 70 35 60 50 60C65 60 80 70 80 90V100H20V90Z" fill="#00bced"/>
+            <!-- Neck -->
+            <rect x="42" y="45" width="16" height="20" fill="#f4c494"/>
+            <!-- Face -->
+            <circle cx="50" cy="35" r="15" fill="#f4c494"/>
+            <!-- Hair -->
+            <path d="M35 35C35 20 45 15 50 15C55 15 65 20 65 35V38H35V35Z" fill="#a0522d"/>
+            <path d="M32 30C32 20 45 18 50 18C55 18 68 20 68 30V35H32V30Z" fill="#8b4513"/>
+            <!-- Stethoscope -->
+            <path d="M40 60V75C40 80 45 85 50 85C55 85 60 80 60 75V60" stroke="#f7941d" stroke-width="3" fill="none"/>
+            <circle cx="50" cy="85" r="4" fill="#555"/>
+            <!-- Collar -->
+            <path d="M40 60L50 75L60 60Z" fill="white"/>
+          </svg>
+          <div class="verified-text">Verified Doctors</div>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+</div>

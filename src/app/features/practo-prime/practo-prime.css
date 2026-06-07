@@ -1,0 +1,286 @@
+/* Practo Prime Styles */
+
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Base Colors */
+.text-practo-purple { color: #4b2e83; }
+.text-practo-orange { color: #ff9800; }
+.bg-practo-purple { background-color: #4b2e83; }
+.bg-practo-orange { background-color: #ff9800; }
+.bg-light-blue { background-color: #f5f8fc; }
+
+.btn-practo-orange {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  font-weight: 700;
+  transition: background-color 0.2s;
+}
+.btn-practo-orange:hover {
+  background-color: #e68a00;
+  color: white;
+}
+
+/* Hero Section */
+.prime-hero {
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+  padding: 4rem 0;
+}
+
+.prime-hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #4b2e83;
+  margin-bottom: 0.5rem;
+}
+
+.prime-hero-title i {
+  color: #4b2e83;
+  font-size: 2.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 500;
+  max-width: 400px;
+}
+
+.hero-image-placeholder {
+  position: absolute;
+  top: 0;
+  right: -5%;
+  width: 55%;
+  height: 100%;
+  background-color: #e0e0e0;
+  border-bottom-left-radius: 100px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Stats Strip */
+.stats-strip {
+  background: white;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 2rem 0;
+  position: relative;
+  z-index: 10;
+}
+
+.stat-item {
+  text-align: center;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background-color: #ddd;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #4b2e83;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Section Headings */
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #333;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Feature Sections */
+.feature-section {
+  padding: 5rem 0;
+}
+
+.feature-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.feature-desc {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* CSS Mockups */
+.mockup-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-mockup {
+  width: 260px;
+  height: 520px;
+  background: white;
+  border-radius: 40px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  border: 8px solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 25px;
+  background: #f0f0f0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 10;
+}
+
+/* Tablet / Smartwatch Mockup */
+.card-mockup {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  width: 300px;
+}
+
+/* Pay as you consume Banner */
+.pay-consume-banner {
+  background-color: #f8f9fb;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* How it works */
+.step-item {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.step-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #e6ddf5;
+  color: #4b2e83;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.step-content p {
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+/* Laptop Mockup */
+.laptop-mockup {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.laptop-screen {
+  background: white;
+  border: 15px solid #e0e0e0;
+  border-radius: 12px 12px 0 0;
+  aspect-ratio: 16/9;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.laptop-base {
+  height: 20px;
+  background: #d0d0d0;
+  border-radius: 0 0 15px 15px;
+  width: 110%;
+  margin-left: -5%;
+}
+
+/* Lead Form Section */
+.lead-form-section {
+  background: linear-gradient(135deg, #4b2e83 0%, #301d54 100%);
+  padding: 4rem 0;
+  color: white;
+}
+
+.lead-form-input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+}
+
+.lead-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.lead-form-input:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #ff9800;
+  box-shadow: none;
+  color: white;
+}
+
+select.lead-form-input option {
+  background-color: #4b2e83;
+  color: white;
+}
+
+/* Footer elements */
+.app-download-section {
+  background-color: #fbf9f6;
+  padding: 5rem 0;
+}

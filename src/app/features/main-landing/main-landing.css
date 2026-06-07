@@ -1,0 +1,13 @@
+.service-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.bg-video-consult { background-color: #E2EED7; }
+.bg-find-doctors { background-color: #E6E1F4; }
+.bg-surgeries { background-color: #D8EAF1; }

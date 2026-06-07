@@ -1,0 +1,317 @@
+/* Data Security Styles */
+
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+/* Custom Header */
+.security-header {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+}
+
+.security-header a.nav-link {
+  color: #555;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+}
+
+.security-header a.nav-link:hover,
+.security-header a.nav-link.active {
+  color: #2CB7DF;
+}
+
+.security-header a.nav-link.active {
+  border-bottom: 3px solid #2CB7DF;
+  padding-bottom: 1.25rem;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 4rem 0 2rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+/* Data Ownership Section */
+.data-ownership-section {
+  padding: 3rem 0;
+}
+
+.ownership-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.ownership-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.ownership-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.ownership-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #f78104; /* Orange bullet */
+  font-size: 1.2rem;
+  top: -2px;
+}
+
+.cert-icons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.cert-item {
+  text-align: center;
+}
+
+.cert-item i {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.cert-item p {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Custom CSS Illustration Placeholder */
+.illustration-placeholder {
+  width: 100%;
+  height: 300px;
+  background-color: #f8f9fb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ISO 27001 Section */
+.iso-section {
+  background-color: #f8f9fb;
+  padding: 5rem 0;
+}
+
+.iso-badge {
+  width: 100px;
+  height: auto;
+}
+
+.iso-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.iso-desc {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.iso-desc span.text-orange {
+  color: #f78104;
+  font-weight: 600;
+}
+
+.iso-card {
+  background-color: white;
+  padding: 2rem;
+  border-top: 4px solid #2CB7DF;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  height: 100%;
+}
+
+.iso-card h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.iso-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.iso-card ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.iso-card ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #2CB7DF;
+  font-size: 1.2rem;
+  top: -2px;
+}
+
+/* Provider Security Section */
+.provider-security {
+  padding: 5rem 0;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.section-subheading {
+  color: #2CB7DF;
+  font-weight: 600;
+}
+
+.security-grid-card {
+  background-color: #f8f9fb;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.card-icon-container {
+  height: 80px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.security-grid-card h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.security-grid-card p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Patient Security Section */
+.patient-security {
+  background-color: #f8f9fb;
+  padding: 5rem 0;
+}
+
+.patient-security .security-grid-card {
+  background-color: white;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+/* FAQs Section */
+.faq-section {
+  padding: 5rem 0;
+  background-color: #fff;
+}
+
+.faq-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.accordion-item {
+  border: none;
+  border-bottom: 1px solid #eee;
+}
+
+.accordion-button {
+  font-weight: 600;
+  color: #333;
+  padding: 1.25rem 0;
+  background-color: transparent;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #2CB7DF;
+  background-color: transparent;
+}
+
+.accordion-body {
+  padding: 0 0 1.25rem 0;
+  color: #666;
+}
+
+/* Custom Footer */
+.practo-dark-footer {
+  background-color: #2b3b8c;
+  color: white;
+  padding: 4rem 0 2rem;
+}
+
+.footer-heading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.footer-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-list li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-list a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-list a:hover {
+  color: white;
+}
+
+.footer-logo {
+  text-align: center;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 3rem;
+}
+
+.footer-copyright {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}

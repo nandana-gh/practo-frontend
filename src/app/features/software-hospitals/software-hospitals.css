@@ -1,0 +1,204 @@
+/* Software for Hospitals Styles */
+
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+/* Header */
+.security-header {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+}
+.security-header a.nav-link {
+  color: #555;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+}
+.security-header a.nav-link:hover { color: #2CB7DF; }
+
+/* Secondary Header */
+.secondary-header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+.secondary-header .nav-link {
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.secondary-header .nav-link.active-brand {
+  color: #f78104;
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #2b3b8c;
+  color: white;
+  padding: 6rem 0;
+}
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+.hero-stats-list {
+  list-style: none;
+  padding-left: 0;
+}
+.hero-stats-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.hero-stats-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #f78104;
+}
+
+/* Customers Section */
+.customers-section {
+  padding: 3rem 0;
+  background-color: #fff;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+.customers-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #666;
+  margin-bottom: 2rem;
+}
+.customer-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #999;
+  letter-spacing: -1px;
+}
+.customer-logo.nmc { font-family: 'Times New Roman', serif; }
+.customer-logo.vps { font-style: italic; }
+.customer-logo.wockhardt { font-weight: 300; }
+.customer-logo.treetop { border: 2px solid #ccc; border-radius: 50%; padding: 10px; width: 60px; height: 60px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+
+/* Product Blocks */
+.product-block {
+  padding: 5rem 0;
+}
+.bg-light-gray { background-color: #f8f9fb; }
+.bg-white { background-color: #fff; }
+
+.product-brand {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #4b2e83; /* Practo Prime Purple */
+  margin-bottom: 1rem;
+}
+.product-brand.insta { color: #3b5998; font-weight: 400; letter-spacing: -1px; font-size: 3rem; }
+.product-brand.qikwell { color: #2b3b8c; font-weight: 300; font-size: 3rem; }
+.product-brand.profile { color: #333; font-size: 2rem; }
+
+.product-desc {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.product-sub-desc {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+.product-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+.product-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+.product-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #f78104;
+}
+
+.product-btn {
+  background-color: #f78104;
+  color: white;
+  font-weight: 700;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.95rem;
+}
+
+/* App Download Section */
+.app-download-section {
+  padding: 5rem 0;
+  background-color: #fff;
+}
+.app-download-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.app-download-desc {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+.app-store-badge {
+  width: 140px;
+  margin-right: 1rem;
+}
+
+/* Custom Dark Footer */
+.practo-dark-footer {
+  background-color: #2b3b8c;
+  color: white;
+  padding: 4rem 0 2rem;
+}
+.footer-heading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+.footer-list {
+  list-style: none;
+  padding-left: 0;
+}
+.footer-list li { margin-bottom: 0.8rem; }
+.footer-list a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.footer-list a:hover { color: white; }
+.footer-logo {
+  text-align: center;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 3rem;
+}
+.footer-copyright {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}

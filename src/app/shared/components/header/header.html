@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-2 sticky-top shadow-xs">
-  <div class="container-fluid px-lg-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-2 sticky-top shadow-sm" style="z-index: 1050;">
+  <div class="container px-lg-4">
     <!-- Brand Logo -->
-    <a class="navbar-brand d-flex align-items-center me-4" routerLink="/">
-      <span class="fs-3 fw-extrabold d-flex align-items-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <span class="fs-4 fw-extrabold d-flex align-items-center" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
         <span style="color: #2CB7DF; margin-right: 1px; font-size: 1.2em; line-height: 0;">•</span>
-        <span style="color: #263077; font-weight: 800;">practo</span>
+        <span style="color: #2b3b8c; font-weight: 800;">practo</span>
         <span style="color: #2CB7DF; margin-left: 1px; font-size: 1.2em; line-height: 0;">•</span>
       </span>
     </a>
@@ -16,10 +16,11 @@
 
     <!-- Navbar Content -->
     <div class="collapse navbar-collapse" id="practoNavbar">
+      
       <!-- Centered Menu Links -->
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1 gap-lg-3">
         <li class="nav-item">
-          <a class="nav-link fw-bold px-2 py-3" routerLink="/search" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">Find Doctors</a>
+          <a class="nav-link fw-bold px-2 py-3" routerLink="/find-doctors" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">Find Doctors</a>
         </li>
         <li class="nav-item">
           <a class="nav-link fw-bold px-2 py-3" routerLink="/video-consult" routerLinkActive="active">Video Consult</a>
@@ -28,32 +29,53 @@
           <a class="nav-link fw-bold px-2 py-3" routerLink="/medicines" routerLinkActive="active">Medicines</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-bold px-2 py-3" routerLink="/labs" routerLinkActive="active">Lab Tests</a>
+          <a class="nav-link fw-bold px-2 py-3" routerLink="/lab-tests" routerLinkActive="active">Lab Tests</a>
         </li>
         <li class="nav-item">
           <a class="nav-link fw-bold px-2 py-3" routerLink="/surgeries" routerLinkActive="active">Surgeries</a>
         </li>
       </ul>
 
-      <!-- Right Utility Bar -->
-      <div class="d-flex align-items-center gap-3">
-        <!-- For Corporates -->
-        <a href="#" class="nav-link small fw-semibold d-flex align-items-center gap-1 d-none d-xl-flex text-muted" style="font-size: 13.5px;">
-          <span class="badge rounded-pill px-2 py-1" style="background-color: #263077; font-size: 9px; font-weight: 700;">NEW</span>
-          For Corporates
-        </a>
+      <!-- Right Side Navigation (From Screenshot) -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-3">
+        <li class="nav-item dropdown corporate-dropdown">
+          <a class="nav-link fw-semibold px-2 py-2 d-flex align-items-center text-secondary" href="#" id="corporateDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.85rem;">
+            <div class="bg-primary text-white rounded-pill px-2 py-0 me-1 d-flex align-items-center justify-content-center fw-bold" style="font-size: 0.6rem; height: 16px; background-color: #2b3b8c !important;">NEW</div>
+            For Corporates <i class="bi bi-chevron-down ms-1" style="font-size: 0.7rem;"></i>
+          </a>
+          <ul class="dropdown-menu shadow-sm border-0 mt-0 corporate-dropdown-menu" aria-labelledby="corporateDropdown" style="min-width: 220px; border-radius: 4px;">
+            <li><a class="dropdown-item py-2 text-dark" routerLink="/corporate" style="font-size: 0.9rem;">Health & Wellness Plans</a></li>
+            <li><a class="dropdown-item py-2 text-dark mt-2" routerLink="/corporate" style="font-size: 0.9rem;">Group Insurance</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown corporate-dropdown provider-dropdown">
+          <a class="nav-link fw-semibold px-2 py-2 d-flex align-items-center text-secondary" href="#" id="providerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.85rem;">
+            For Providers <i class="bi bi-chevron-down ms-1" style="font-size: 0.7rem;"></i>
+          </a>
+          <ul class="dropdown-menu shadow-sm border-0 mt-0 corporate-dropdown-menu" aria-labelledby="providerDropdown" style="min-width: 250px; border-radius: 4px;">
+            <li>
+              <a class="dropdown-item py-2 text-dark d-flex align-items-center justify-content-between" routerLink="/providers/prime" style="font-size: 0.9rem;">
+                Practo Prime 
+                <span class="text-white rounded px-1 fw-bold ms-2" style="font-size: 0.6rem; background-color: #f78104;">NEW</span>
+              </a>
+            </li>
+            <li><a class="dropdown-item py-2 text-dark mt-2" routerLink="/providers/software" style="font-size: 0.9rem;">Software for providers</a></li>
+            <li><a class="dropdown-item py-2 text-dark mt-2" routerLink="/providers/profile" style="font-size: 0.9rem;">List your practice for Free</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-semibold px-2 py-2 text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.85rem;">Security & help</a>
+          <ul class="dropdown-menu border-0 shadow-sm mt-2" style="width: 150px;">
+            <li><a class="dropdown-item py-2 text-dark" routerLink="/data-security" style="font-size: 0.9rem;">Data security</a></li>
+            <li><a class="dropdown-item py-2 text-dark" routerLink="/help" style="font-size: 0.9rem;">Help</a></li>
+          </ul>
+        </li>
         
-        <!-- For Providers -->
-        <a href="#" class="nav-link small fw-semibold text-muted d-none d-lg-block" style="font-size: 13.5px;">For Providers</a>
-        
-        <!-- Security & help -->
-        <a href="#" class="nav-link small fw-semibold text-muted d-none d-lg-block" style="font-size: 13.5px;">Security & help</a>
-
         <!-- User Authentication Section -->
-        <div class="ms-2">
+        <li class="nav-item ms-lg-2">
           <ng-container *ngIf="authService.isAuthenticated(); else guestView">
             <div class="dropdown">
-              <button class="btn btn-outline-secondary dropdown-toggle d-flex align-items-center gap-2 py-2 px-3 fw-semibold" style="font-size: 13.5px; border-color: #dee2e6; color: #495057;" type="button" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-outline-secondary dropdown-toggle d-flex align-items-center gap-2 py-1 px-3 fw-semibold" style="font-size: 0.85rem; border-color: #dee2e6; color: #495057;" type="button" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-person-circle text-muted"></i>
                 <span>{{ authService.currentUser()?.firstName }}</span>
               </button>
@@ -65,8 +87,12 @@
                     <span class="badge bg-light text-dark mt-1 border">{{ authService.currentUser()?.role }}</span>
                   </div>
                 </li>
-                <li><a class="dropdown-item py-2 px-3" routerLink="/dashboard"><i class="bi bi-grid-1x2 me-2"></i>My Dashboard</a></li>
-                <li><a class="dropdown-item py-2 px-3" routerLink="/records"><i class="bi bi-file-earmark-medical me-2"></i>Medical Records</a></li>
+                <li>
+                  <a class="dropdown-item py-2 px-3" [routerLink]="authService.currentUser()?.role === 'Doctor' ? '/doctor/dashboard' : '/patient/dashboard'">
+                    <i class="bi bi-grid-1x2 me-2"></i>My Dashboard
+                  </a>
+                </li>
+                <li><a class="dropdown-item py-2 px-3" routerLink="/find-doctors"><i class="bi bi-search me-2"></i>Find Doctors</a></li>
                 <li><hr class="dropdown-divider my-1"></li>
                 <li>
                   <button class="dropdown-item py-2 px-3 text-danger" (click)="logout()">
@@ -78,10 +104,10 @@
           </ng-container>
 
           <ng-template #guestView>
-            <a class="btn btn-outline-secondary py-1 px-3 fw-semibold text-muted" style="border-color: #dee2e6; border-radius: 4px; font-size: 13.5px;" routerLink="/login">Login / Signup</a>
+            <a class="btn btn-outline-secondary py-1 px-3 fw-semibold text-secondary" style="border-color: #e0e6ed; border-radius: 4px; font-size: 0.85rem;" routerLink="/login">Login / Signup</a>
           </ng-template>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

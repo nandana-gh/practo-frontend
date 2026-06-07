@@ -1,0 +1,289 @@
+<div class="software-hospitals-wrapper">
+  
+  <!-- Custom Header -->
+  <nav class="navbar navbar-expand-lg security-header sticky-top bg-white" style="z-index: 1050;">
+    <div class="container px-lg-5 d-flex align-items-center">
+      <a class="navbar-brand me-5" routerLink="/">
+        <span class="fs-4 fw-extrabold" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+          <span style="color: #2b3b8c; font-weight: 800;">practo</span>
+        </span>
+      </a>
+
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto d-flex gap-4">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about">About Practo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">In Media / News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/data-security">Data Security</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">For Partners</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              For Clinics & Hospitals
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm mt-2" style="width: 250px;">
+              <li>
+                <a class="dropdown-item py-2 text-dark d-flex align-items-center" routerLink="/providers/prime" style="font-size: 0.9rem;">
+                  Practo Prime <i class="bi bi-patch-check-fill ms-1" style="color: #4b2e83;"></i>
+                  <span class="badge ms-auto" style="background-color: #ff9800; font-size: 0.65rem;">NEW</span>
+                </a>
+              </li>
+              <li><a class="dropdown-item py-2 text-dark" routerLink="/software/clinics" style="font-size: 0.9rem;">Software for clinics</a></li>
+              <li><a class="dropdown-item py-2 text-dark" routerLink="/software/hospitals" style="font-size: 0.9rem;">Software for hospitals</a></li>
+              <li><a class="dropdown-item py-2 text-dark" routerLink="/providers/profile" style="font-size: 0.9rem;">List your practice for Free</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Secondary Header -->
+  <nav class="navbar secondary-header sticky-top" style="top: 57px; z-index: 1040;">
+    <div class="container px-lg-5">
+      <ul class="nav d-flex gap-4">
+        <li class="nav-item">
+          <a class="nav-link active-brand" href="#">Hospitals</a>
+        </li>
+      </ul>
+      <div class="d-flex ms-auto gap-4">
+        <a class="nav-link" href="#">Insta</a>
+        <a class="nav-link" href="#">Qikwell</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+          <!-- Illustration placeholder -->
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Illustration" class="img-fluid rounded shadow-lg" style="max-height: 300px; opacity: 0.9;">
+        </div>
+        <div class="col-md-6 mt-4 mt-md-0 ps-md-5">
+          <h1 class="hero-title">Robust plug-and-play software solutions</h1>
+          <ul class="hero-stats-list">
+            <li>500+ Hospitals</li>
+            <li>1500+ Clinics</li>
+            <li>30 Cr+ patients served</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customers Section -->
+  <section class="customers-section">
+    <div class="container px-lg-5">
+      <h2 class="customers-title">Our awesome customers</h2>
+      
+      <div class="row align-items-center justify-content-center g-5 mt-2">
+        <div class="col-md-3 col-6" *ngFor="let c of customers">
+          <div class="customer-logo" [ngClass]="c.logoUrl">{{ c.name }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product 1: Practo Prime -->
+  <section class="product-block bg-light-gray">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 pe-md-5 order-md-2 ps-md-5">
+          <h2 class="product-brand">Practo Prime <i class="bi bi-patch-check-fill" style="font-size: 1.5rem;"></i></h2>
+          <p class="product-desc">An ultimate product for clinics and hospitals which connects them to new patients and improves their experience.</p>
+          <button class="product-btn mt-3">Get free demo</button>
+        </div>
+        <div class="col-md-6 mt-4 mt-md-0 order-md-1">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Practo Prime Dashboard" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product 2: Insta -->
+  <section class="product-block bg-white">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 pe-md-5">
+          <h2 class="product-brand insta">Insta™</h2>
+          <p class="product-desc fw-bold">The premier hospital management software for hospitals</p>
+          
+          <ul class="product-list">
+            <li>50,000 daily patient walk-ins managed</li>
+            <li>99.9% Uptime</li>
+            <li>HIPAA compliant servers</li>
+            <li>An agile, fully cloud-based solution</li>
+          </ul>
+          <button class="product-btn mt-2">Find more</button>
+        </div>
+        <div class="col-md-6 mt-4 mt-md-0 text-end">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Insta Dashboard" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product 3: Qikwell -->
+  <section class="product-block bg-light-gray">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-md-2 ps-md-5">
+          <h2 class="product-brand qikwell">Qikwell™</h2>
+          <p class="product-desc fw-bold">An intelligent patient relationship management system for the hospitals</p>
+          <p class="product-sub-desc">Helps in smooth appointment process, digital entry, queuing, digital payments and more.</p>
+          <button class="product-btn mt-2">Learn more</button>
+        </div>
+        <div class="col-md-6 mt-4 mt-md-0 order-md-1">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Qikwell Mobile" class="img-fluid rounded shadow-sm mx-auto d-block">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product 4: Practo Profile -->
+  <section class="product-block bg-white">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 pe-md-5">
+          <h2 class="product-brand profile fw-bold">Practo Profile</h2>
+          <p class="product-desc">Millions of people trust and use Practo. Help them connect with you to grow your practice</p>
+          <p class="product-sub-desc text-primary" style="color: #2CB7DF !important;">Create and claim a free Practo profile in steps. It is that simple.</p>
+          <button class="product-btn mt-2">Get your profile edited for free</button>
+        </div>
+        <div class="col-md-6 mt-4 mt-md-0 text-end">
+          <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Practo Profile Mobile" class="img-fluid rounded shadow-sm d-inline-block me-3">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Download Section -->
+  <section class="product-block bg-light-gray">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-md-1 text-center">
+          <img src="https://images.unsplash.com/photo-1601972599720-36938d4ecd31?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Practo Pro App" class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-6 mt-4 mt-md-0 order-md-2 ps-md-5">
+          <h2 class="app-download-title">Download Practo Pro app</h2>
+          <p class="app-download-desc">A powerful app that lets you manage and grow your practice.</p>
+          
+          <ul class="product-list">
+            <li>We have managed profiles to track patient reviews</li>
+            <li>Respond up-to-date and directly to your patients</li>
+            <li>Provide online consultation to patients</li>
+            <li>We recommend patients for booking direct appointments</li>
+            <li>Secure access directly from your phone</li>
+            <li>Track your clinic's performance on the go</li>
+            <li>Manage online and in-clinic prescriptions</li>
+          </ul>
+          
+          <div class="mt-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="app-store-badge">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="app-store-badge">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Dark Footer -->
+  <footer class="practo-dark-footer">
+    <div class="container px-lg-5">
+      <div class="row">
+        <div class="col-md-2 col-6">
+          <h5 class="footer-heading">Practo</h5>
+          <ul class="footer-list">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6">
+          <h5 class="footer-heading">For patients</h5>
+          <ul class="footer-list">
+            <li><a href="#">Search for doctors</a></li>
+            <li><a href="#">Search for clinics</a></li>
+            <li><a href="#">Search for hospitals</a></li>
+            <li><a href="#">Book Diagnostic Tests</a></li>
+            <li><a href="#">Book Full Body Checkups</a></li>
+            <li><a href="#">Practo Plus</a></li>
+            <li><a href="#">Covid Hospital listing</a></li>
+            <li><a href="#">Read health articles</a></li>
+            <li><a href="#">Read about medicines</a></li>
+            <li><a href="#">Practo drive</a></li>
+            <li><a href="#">Health app</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">For doctors</h5>
+          <ul class="footer-list">
+            <li><a href="#">Practo Profile</a></li>
+          </ul>
+          <h5 class="footer-heading mt-4">For clinics</h5>
+          <ul class="footer-list">
+            <li><a href="#">Ray by Practo</a></li>
+            <li><a href="#">Practo Reach</a></li>
+            <li><a href="#">Ray Tab</a></li>
+            <li><a href="#">Practo Pro</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">For hospitals</h5>
+          <ul class="footer-list">
+            <li><a href="#">Insta by Practo</a></li>
+            <li><a href="#">Qikwell by Practo</a></li>
+            <li><a href="#">Practo Profile</a></li>
+            <li><a href="#">Practo Reach</a></li>
+            <li><a href="#">Practo Drive</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">More</h5>
+          <ul class="footer-list">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">PCS T&C</a></li>
+            <li><a href="#">Healthcare Directory</a></li>
+            <li><a href="#">Practo Health Wiki</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">Social</h5>
+          <ul class="footer-list">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Youtube</a></li>
+            <li><a href="#">Github</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-logo">
+        <span class="fs-3 fw-extrabold" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em; color: white;">
+          <span style="color: #2CB7DF; margin-right: 1px; font-size: 1.2em; line-height: 0;">•</span>
+          <span style="font-weight: 800;">practo</span>
+          <span style="color: #2CB7DF; margin-left: 1px; font-size: 1.2em; line-height: 0;">•</span>
+        </span>
+        <p class="footer-copyright mt-3">Copyright © 2017, Practo. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>

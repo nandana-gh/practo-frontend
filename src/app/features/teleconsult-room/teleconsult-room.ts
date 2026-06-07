@@ -18,9 +18,10 @@ export class TeleconsultRoomComponent implements OnInit, OnDestroy {
   appointmentId: string = '';
   jitsiUrl!: SafeResourceUrl;
   
-  activeTab: 'chat' | 'rx' = 'chat';
+  activeTab: 'chat' | 'rx' | 'records' = 'chat';
   isDoctor: boolean = false;
   currentUserId: number = 0;
+  patientRecords: any[] = [];
 
   messages$! : import('rxjs').Observable<import('../../core/services/chat').ChatMessage[]>;
   newMessage: string = '';
@@ -60,6 +61,20 @@ export class TeleconsultRoomComponent implements OnInit, OnDestroy {
 
     this.loadChatHistory();
     this.chatService.createHubConnection(this.appointmentId);
+
+    if (this.isDoctor) {
+      this.http.get<any>(`http://localhost:5016/api/Appointment/${this.appointmentId}`).subscribe({
+        next: (apt) => {
+          this.http.get<any[]>(`http://localhost:5016/api/MedicalRecords/patient/${apt.patientId}`).subscribe({
+            next: (records) => {
+              this.patientRecords = records;
+            },
+            error: (err) => console.error('Failed to load patient records', err)
+          });
+        },
+        error: (err) => console.error('Failed to load appointment details', err)
+      });
+    }
   }
 
   ngOnDestroy(): void {

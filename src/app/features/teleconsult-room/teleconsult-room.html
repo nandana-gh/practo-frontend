@@ -40,6 +40,11 @@
             <i class="bi bi-file-medical me-2"></i>Prescription
           </a>
         </li>
+        <li class="nav-item" *ngIf="isDoctor">
+          <a class="nav-link cursor-pointer rounded-0 py-3" [class.active]="activeTab === 'records'" (click)="activeTab = 'records'">
+            <i class="bi bi-folder2-open me-2"></i>Records
+          </a>
+        </li>
       </ul>
 
       <!-- Chat Area -->
@@ -89,6 +94,26 @@
           <span *ngIf="isSubmittingRx" class="spinner-border spinner-border-sm me-2"></span>
           Issue Prescription
         </button>
+      </div>
+
+      <!-- Patient Records Area (Doctor Only) -->
+      <div *ngIf="activeTab === 'records' && isDoctor" class="d-flex flex-column h-100 p-4 overflow-auto bg-light">
+        <h6 class="fw-bold text-dark mb-4 border-bottom pb-2">Patient's Medical Records</h6>
+        <div *ngIf="patientRecords.length === 0" class="text-center text-muted mt-4">
+          <i class="bi bi-folder-x fs-1 text-light"></i>
+          <p class="mt-2">No records uploaded by the patient.</p>
+        </div>
+        <div class="card shadow-sm border-0 mb-3" *ngFor="let r of patientRecords">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="fw-bold mb-1">{{ r.description }}</h6>
+              <small class="text-muted">Uploaded: {{ r.uploadedAt | date:'shortDate' }}</small>
+            </div>
+            <a [href]="r.fileUrl" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+              <i class="bi bi-eye"></i> View
+            </a>
+          </div>
+        </div>
       </div>
 
     </div>

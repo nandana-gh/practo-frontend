@@ -15,6 +15,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/main-landing/main-landing').then(m => m.MainLandingComponent)
   },
   {
+    path: 'cart',
+    loadComponent: () => import('./features/cart/cart').then(m => m.CartComponent)
+  },
+  {
     path: 'find-doctors',
     loadComponent: () => import('./features/home/home').then(m => m.HomeComponent)
   },
@@ -57,6 +61,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/consult-request/consult-request').then(m => m.ConsultRequestComponent)
   },
   {
+    path: 'book/:doctorId',
+    loadComponent: () => import('./features/book-appointment/book-appointment').then(m => m.BookAppointmentComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'consult/:id',
     loadComponent: () => import('./features/teleconsult-room/teleconsult-room').then(m => m.TeleconsultRoomComponent),
     canActivate: [authGuard]
@@ -94,6 +103,12 @@ export const routes: Routes = [
     loadComponent: () => import('./features/help/help').then(m => m.HelpComponent)
   },
 
+  {
+    path: 'admin/dashboard',
+    loadComponent: () => import('./features/admin-dashboard/admin-dashboard').then(m => m.AdminDashboardComponent),
+    canActivate: [authGuard],
+    data: { roles: ['Admin'] }
+  },
   {
     path: '**',
     redirectTo: ''

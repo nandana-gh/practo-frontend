@@ -13,9 +13,15 @@ import { RouterModule } from '@angular/router';
 })
 export class ConsultRequestComponent implements OnInit {
   consultForm!: FormGroup;
+  otpForm!: FormGroup;
+
+  step: 'details' | 'otp' | 'success' = 'details';
+  
   isSubmitting = false;
-  submitSuccess = false;
   submitError = '';
+
+  isVerifying = false;
+  verifyError = '';
 
   constructor(
     private fb: FormBuilder,
@@ -29,10 +35,21 @@ export class ConsultRequestComponent implements OnInit {
       symptom: ['', [Validators.required, Validators.minLength(4)]],
       email: ['', [Validators.required, Validators.email]]
     });
+
+    this.otpForm = this.fb.group({
+      otp: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
+    });
   }
 
   goBack(): void {
-    this.location.back();
+    if (this.step === 'otp') {
+      this.step = 'details';
+      this.submitError = '';
+      this.verifyError = '';
+      this.cdr.detectChanges();
+    } else {
+      this.location.back();
+    }
   }
 
   onSubmit(): void {
@@ -45,12 +62,38 @@ export class ConsultRequestComponent implements OnInit {
     this.http.post('http://localhost:5016/api/consultations/request', this.consultForm.value).subscribe({
       next: (res: any) => {
         this.isSubmitting = false;
-        this.submitSuccess = true;
+        this.step = 'otp';
         this.cdr.detectChanges();
       },
       error: (err) => {
         this.isSubmitting = false;
         this.submitError = err.error?.message || 'Something went wrong. Please try again.';
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  onVerifyOtp(): void {
+    if (this.otpForm.invalid) return;
+
+    this.isVerifying = true;
+    this.verifyError = '';
+    this.cdr.detectChanges();
+
+    const payload = {
+      email: this.consultForm.value.email,
+      otp: this.otpForm.value.otp
+    };
+
+    this.http.post('http://localhost:5016/api/consultations/verify-otp', payload).subscribe({
+      next: (res: any) => {
+        this.isVerifying = false;
+        this.step = 'success';
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        this.isVerifying = false;
+        this.verifyError = err.error?.message || 'Invalid OTP. Please try again.';
         this.cdr.detectChanges();
       }
     });

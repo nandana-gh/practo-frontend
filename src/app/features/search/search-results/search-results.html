@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="w-100 d-flex flex-column gap-2 mt-auto">
-                  <button class="btn btn-outline-primary btn-practo w-100 fw-bold py-2" *ngIf="doc.isVideoConsultationAvailable">
+                  <button class="btn btn-outline-primary btn-practo w-100 fw-bold py-2" *ngIf="doc.isVideoConsultationAvailable" [routerLink]="['/video-consult']">
                     <i class="bi bi-camera-video-fill me-2"></i> Video Consult
                   </button>
                   <button class="btn btn-primary btn-practo-primary w-100 fw-bold py-2 shadow-sm" [routerLink]="['/profile', doc.id]">

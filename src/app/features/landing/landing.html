@@ -294,11 +294,16 @@
                     <option value="Delhi">Delhi</option>
                     <option value="Hyderabad">Hyderabad</option>
                     <option value="Chennai">Chennai</option>
+                    <option value="Kochi">Kochi</option>
                   </select>
                 </div>
 
                 <div class="mb-3">
                   <input type="text" class="form-control border-1 py-2" placeholder="Name" formControlName="name" [ngClass]="{'is-invalid': leadForm.get('name')?.invalid && leadForm.get('name')?.touched}" style="font-size: 0.9rem;">
+                </div>
+
+                <div class="mb-3">
+                  <input type="email" class="form-control border-1 py-2" placeholder="Email Address" formControlName="email" [ngClass]="{'is-invalid': leadForm.get('email')?.invalid && leadForm.get('email')?.touched}" style="font-size: 0.9rem;">
                 </div>
 
                 <div class="mb-4">

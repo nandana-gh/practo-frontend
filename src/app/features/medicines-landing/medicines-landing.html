@@ -91,7 +91,10 @@
             </div>
             <h6 class="fw-bold text-dark mb-1 text-truncate" style="font-size: 0.9rem;">{{ p.name }}</h6>
             <p class="text-muted small mb-2 text-truncate" style="font-size: 0.75rem;">{{ p.description }}</p>
-            <div class="mt-auto fw-bold text-dark">₹{{ p.price | number:'1.2-2' }}</div>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark">₹{{ p.price | number:'1.2-2' }}</span>
+              <button class="btn btn-sm btn-primary" (click)="addToCart(p)">Add to Cart</button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,118 @@
+.booking-wrapper {
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.custom-input {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background-color: #fcfcfc;
+}
+
+.custom-input:focus {
+  border-color: #00a6e2;
+  box-shadow: 0 0 0 4px rgba(0, 166, 226, 0.1);
+  outline: none;
+  background-color: white;
+}
+
+/* Custom Tabs */
+.custom-tabs .nav-link {
+  color: #666;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+.custom-tabs .nav-link.active {
+  color: #00a6e2;
+  background-color: transparent;
+  border-bottom-color: #00a6e2;
+}
+
+/* Date Scroll */
+.date-scroll {
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 10px;
+}
+
+.date-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.date-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.date-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.date-card {
+  display: inline-block;
+  min-width: 80px;
+  padding: 15px 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.date-card:hover {
+  border-color: #b3e5fc;
+  background-color: #f4fbff;
+}
+
+.date-card.active {
+  border-color: #00a6e2;
+  background-color: #f4fbff;
+  box-shadow: 0 4px 12px rgba(0, 166, 226, 0.15);
+}
+
+.date-card.active .fs-5 {
+  color: #00a6e2;
+}
+
+.time-btn {
+  border-radius: 8px;
+  padding: 10px 0;
+  font-weight: 600;
+  color: #00a6e2;
+  border-color: #b3e5fc;
+  transition: all 0.2s ease;
+}
+
+.time-btn:hover {
+  background-color: #f4fbff;
+}
+
+.time-btn.active {
+  background-color: #00a6e2;
+  color: white;
+  border-color: #00a6e2;
+}
+
+/* Custom Radio */
+.custom-radio {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.custom-radio:hover {
+  background-color: #f8f9fa;
+}
+
+.custom-radio.border-info {
+  background-color: #f4fbff;
+  box-shadow: 0 0 0 1px #00a6e2;
+}

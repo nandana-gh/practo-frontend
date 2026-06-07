@@ -29,6 +29,7 @@ export class LandingComponent implements OnInit {
       surgeryName: ['', Validators.required],
       city: ['', Validators.required],
       name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
     });
   }

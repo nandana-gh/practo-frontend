@@ -1,0 +1,351 @@
+<div class="d-flex" style="min-height: calc(100vh - 72px); background-color: #f8f9fa;">
+  
+  <!-- Ray Sidebar -->
+  <div class="sidebar" style="width: 240px; background-color: #2b3b8c; color: white; display: flex; flex-direction: column;">
+    <div class="py-4 px-3 border-bottom border-secondary">
+      <h4 class="mb-0 fw-bold" style="font-family: 'Inter', sans-serif;">Ray<span class="text-white-50 ms-1 fw-light" style="font-size: 0.6em;">TM</span></h4>
+    </div>
+    
+    <div class="py-3">
+      <ul class="nav flex-column sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link py-3 px-4 d-flex align-items-center cursor-pointer" [class.active-tab]="activeTab === 'calendar'" (click)="setTab('calendar')">
+            <i class="bi bi-calendar-check me-3 fs-5"></i> Calendar
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-3 px-4 d-flex align-items-center cursor-pointer" [class.active-tab]="activeTab === 'patients'" (click)="setTab('patients')">
+            <i class="bi bi-people me-3 fs-5"></i> Patients
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link py-3 px-4 d-flex align-items-center cursor-pointer" [class.active-tab]="activeTab === 'reports'" (click)="setTab('reports')">
+            <i class="bi bi-graph-up me-3 fs-5"></i> Reports
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link py-3 px-4 d-flex align-items-center cursor-pointer" [class.active-tab]="activeTab === 'profile'" (click)="setTab('profile')">
+            <i class="bi bi-gear me-3 fs-5"></i> Profile & Settings
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="flex-grow-1 p-4" style="max-height: calc(100vh - 72px); overflow-y: auto;">
+    
+    <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading">
+      
+      <!-- CALENDAR TAB -->
+      <div *ngIf="activeTab === 'calendar'">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-bold m-0 text-dark">Calendar & Appointments</h3>
+        </div>
+        
+        <div class="row">
+          <!-- Appointments Queue -->
+          <div class="col-lg-8 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+              <div class="card-header bg-white pt-3 pb-2 border-0">
+                <h5 class="mb-0 fw-bold">Today's Queue</h5>
+              </div>
+              <div class="card-body p-0">
+                <div *ngIf="appointments.length === 0" class="text-center py-5">
+                  <i class="bi bi-inbox fs-1 text-muted"></i>
+                  <p class="text-muted mt-2">No appointments scheduled.</p>
+                </div>
+                <div class="table-responsive" *ngIf="appointments.length > 0">
+                  <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="ps-4">Time</th>
+                        <th>Patient Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th class="text-end pe-4">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let apt of appointments">
+                        <td class="ps-4">
+                          <div class="fw-semibold">{{ apt.appointmentDateTime | date:'shortTime' }}</div>
+                          <small class="text-muted">{{ apt.appointmentDateTime | date:'mediumDate' }}</small>
+                        </td>
+                        <td>
+                          <div class="fw-semibold text-primary">{{ apt.patientName }}</div>
+                          <small class="text-muted">Reason: {{ apt.reasonForVisit || 'N/A' }}</small>
+                        </td>
+                        <td>
+                          <span class="badge" [ngClass]="{'bg-success': apt.type === 1, 'bg-info text-dark': apt.type === 0}">
+                            <i class="bi" [ngClass]="{'bi-camera-video': apt.type === 1, 'bi-hospital': apt.type === 0}"></i>
+                            {{ apt.type === 1 ? 'Video' : 'In-Clinic' }}
+                          </span>
+                        </td>
+                        <td>
+                          <span class="badge bg-secondary">{{ apt.status === 0 ? 'Pending' : (apt.status === 1 ? 'Confirmed' : 'Completed') }}</span>
+                        </td>
+                        <td class="text-end pe-4">
+                          <button *ngIf="apt.type === 1" class="btn btn-sm btn-primary px-3" [routerLink]="['/consult', apt.id]">
+                            <i class="bi bi-camera-video me-1"></i> Start
+                          </button>
+                          <button *ngIf="apt.type === 0" class="btn btn-sm btn-outline-secondary px-3 ms-2">Details</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Availability / Remaining Timeslots -->
+          <div class="col-lg-4 mb-4">
+            <div class="card shadow-sm border-0 h-100 bg-light">
+              <div class="card-header bg-light pt-3 pb-2 border-0">
+                <h5 class="mb-0 fw-bold">Remaining Timeslots</h5>
+              </div>
+              <div class="card-body">
+                <div *ngIf="calendarSlots.length === 0" class="text-muted small">Loading schedule...</div>
+                <div *ngFor="let day of calendarSlots" class="mb-4">
+                  <div class="fw-bold mb-2 text-secondary">{{ day.date | date:'EEEE, MMM d' }}</div>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span *ngFor="let time of day.availableTimes" class="badge bg-white text-dark border p-2" style="font-weight: 500;">
+                      {{ time }}
+                    </span>
+                    <span *ngIf="day.availableTimes.length === 0" class="text-danger small">Fully booked / Unavailable</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PATIENTS TAB -->
+      <div *ngIf="activeTab === 'patients'">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-bold m-0 text-dark">My Patients</h3>
+          <button class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i> Add Patient</button>
+        </div>
+        
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-0">
+            <div *ngIf="patients.length === 0" class="text-center py-5">
+              <i class="bi bi-people fs-1 text-muted"></i>
+              <p class="text-muted mt-2">No patients found.</p>
+            </div>
+            <div class="table-responsive" *ngIf="patients.length > 0">
+              <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th class="ps-4">Patient Name</th>
+                    <th>Contact Info</th>
+                    <th>Total Visits</th>
+                    <th>Last Visit</th>
+                    <th class="text-end pe-4">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let patient of patients">
+                    <td class="ps-4">
+                      <div class="fw-bold text-dark">{{ patient.name }}</div>
+                      <small class="text-muted">ID: P-{{ patient.id.toString().padStart(4, '0') }}</small>
+                    </td>
+                    <td>
+                      <div class="small"><i class="bi bi-telephone text-muted me-1"></i> {{ patient.phoneNumber || 'N/A' }}</div>
+                      <div class="small"><i class="bi bi-envelope text-muted me-1"></i> {{ patient.email }}</div>
+                    </td>
+                    <td>
+                      <span class="badge bg-info text-dark rounded-pill px-3">{{ patient.totalVisits }}</span>
+                    </td>
+                    <td>
+                      <div class="fw-medium">{{ patient.lastVisitDate | date:'mediumDate' }}</div>
+                    </td>
+                    <td class="text-end pe-4">
+                      <button class="btn btn-sm btn-outline-primary">View Records</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORTS TAB -->
+      <div *ngIf="activeTab === 'reports'">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-bold m-0 text-dark">Analytics & Reports</h3>
+          <select class="form-select w-auto"><option>All Time</option><option>This Month</option></select>
+        </div>
+        
+        <div class="row" *ngIf="reports">
+          <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow-sm bg-white h-100">
+              <div class="card-body">
+                <div class="text-muted small fw-bold text-uppercase mb-1">Total Earnings</div>
+                <h3 class="fw-bold text-success mb-0">₹{{ reports.totalEarnings }}</h3>
+                <div class="small text-muted mt-2"><i class="bi bi-arrow-up-right text-success"></i> +12% from last month</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow-sm bg-white h-100">
+              <div class="card-body">
+                <div class="text-muted small fw-bold text-uppercase mb-1">Total Patients</div>
+                <h3 class="fw-bold text-primary mb-0">{{ reports.totalPatients }}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow-sm bg-white h-100">
+              <div class="card-body">
+                <div class="text-muted small fw-bold text-uppercase mb-1">Appointments</div>
+                <h3 class="fw-bold text-info mb-0">{{ reports.totalAppointments }}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow-sm bg-white h-100">
+              <div class="card-body">
+                <div class="text-muted small fw-bold text-uppercase mb-1">Upcoming</div>
+                <h3 class="fw-bold text-warning mb-0">{{ reports.upcomingAppointments }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE SETTINGS TAB -->
+      <div *ngIf="activeTab === 'profile'">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-bold m-0 text-dark">Profile & Settings</h3>
+        </div>
+        
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
+            <div *ngIf="profileSaveMessage" class="alert" [ngClass]="{'alert-success': profileSaveMessage.includes('successfully'), 'alert-danger': !profileSaveMessage.includes('successfully')}">
+              {{ profileSaveMessage }}
+            </div>
+            
+            <form (ngSubmit)="saveProfile()">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Qualifications</label>
+                  <input type="text" class="form-control" name="qualifications" [(ngModel)]="profileForm.qualifications" placeholder="e.g. MBBS, MD">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Experience (Years)</label>
+                  <input type="number" class="form-control" name="experienceYears" [(ngModel)]="profileForm.experienceYears">
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Registration Number</label>
+                  <input type="text" class="form-control" name="registrationNumber" [(ngModel)]="profileForm.registrationNumber">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Languages Spoken</label>
+                  <input type="text" class="form-control" name="languagesSpoken" [(ngModel)]="profileForm.languagesSpoken" placeholder="English, Hindi">
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Video Consultation Fee (₹)</label>
+                  <input type="number" class="form-control" name="videoConsultationFee" [(ngModel)]="profileForm.videoConsultationFee">
+                  <small class="text-muted">This is the default fee shown to patients.</small>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 mb-4">
+                  <label class="form-label fw-bold text-secondary small">About / Bio</label>
+                  <textarea class="form-control" rows="4" name="about" [(ngModel)]="profileForm.about" placeholder="Tell patients about yourself..."></textarea>
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-primary px-4 fw-bold">Save Changes</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card shadow-sm border-0 mt-4">
+          <div class="card-header bg-white border-bottom pt-4 pb-3">
+            <h5 class="fw-bold mb-0 text-dark">My Clinics</h5>
+          </div>
+          <div class="card-body p-4">
+            <!-- List existing clinics -->
+            <div *ngIf="profileForm.clinics && profileForm.clinics.length > 0" class="mb-4">
+              <div *ngFor="let clinic of profileForm.clinics" class="border rounded-3 p-3 mb-3 bg-light">
+                <div class="d-flex justify-content-between">
+                  <h6 class="fw-bold text-primary mb-1">{{ clinic.name }}</h6>
+                  <span class="badge bg-secondary">Fee: ₹{{ clinic.consultationFee }}</span>
+                </div>
+                <p class="text-muted small mb-1"><i class="bi bi-geo-alt me-1"></i> {{ clinic.address }}, {{ clinic.locality }}, {{ clinic.city }}</p>
+                <p class="text-muted small mb-0"><i class="bi bi-clock me-1"></i> {{ clinic.timings }}</p>
+              </div>
+            </div>
+            
+            <div *ngIf="!profileForm.clinics || profileForm.clinics.length === 0" class="alert alert-info py-2">
+              You haven't added any clinics yet. Patients will only be able to book Video Consultations with you.
+            </div>
+
+            <!-- Add new clinic form -->
+            <h6 class="fw-bold mt-4 mb-3 border-bottom pb-2">Add New Clinic</h6>
+            <div *ngIf="clinicSaveMessage" class="alert" [ngClass]="{'alert-success': clinicSaveMessage.includes('successfully'), 'alert-danger': !clinicSaveMessage.includes('successfully')}">
+              {{ clinicSaveMessage }}
+            </div>
+            
+            <form (ngSubmit)="addClinic()">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Clinic Name *</label>
+                  <input type="text" class="form-control" name="clinicName" [(ngModel)]="newClinic.name" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-bold text-secondary small">City *</label>
+                  <input type="text" class="form-control" name="clinicCity" [(ngModel)]="newClinic.city" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Address *</label>
+                  <input type="text" class="form-control" name="clinicAddress" [(ngModel)]="newClinic.address" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Locality</label>
+                  <input type="text" class="form-control" name="clinicLocality" [(ngModel)]="newClinic.locality">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Timings</label>
+                  <input type="text" class="form-control" name="clinicTimings" [(ngModel)]="newClinic.timings" placeholder="e.g. Mon-Sat, 9AM-5PM">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label fw-bold text-secondary small">Consultation Fee (₹)</label>
+                  <input type="number" class="form-control" name="clinicFee" [(ngModel)]="newClinic.consultationFee">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-outline-primary px-4 fw-bold mt-2" [disabled]="isLoading">
+                <i class="bi bi-plus-circle me-1"></i> Add Clinic
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

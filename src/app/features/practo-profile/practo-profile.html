@@ -1,0 +1,343 @@
+<div class="practo-profile-wrapper">
+  
+  <!-- Custom Header -->
+  <nav class="navbar navbar-expand-lg security-header sticky-top bg-white" style="z-index: 1050;">
+    <div class="container px-lg-5 d-flex align-items-center">
+      <a class="navbar-brand me-5" routerLink="/">
+        <span class="fs-4 fw-extrabold" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+          <span style="color: #2b3b8c; font-weight: 800;">practo</span>
+        </span>
+      </a>
+
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto d-flex gap-4">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about">About Practo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">In Media / News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/data-security">Data Security</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">For Partners</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              For Clinics & Hospitals
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm mt-2" style="width: 250px;">
+              <li>
+                <a class="dropdown-item py-2 text-dark d-flex align-items-center" routerLink="/providers/prime" style="font-size: 0.9rem;">
+                  Practo Prime <i class="bi bi-patch-check-fill ms-1" style="color: #4b2e83;"></i>
+                  <span class="badge ms-auto" style="background-color: #ff9800; font-size: 0.65rem;">NEW</span>
+                </a>
+              </li>
+              <li><a class="dropdown-item py-2 text-dark" routerLink="/software/clinics" style="font-size: 0.9rem;">Software for clinics</a></li>
+              <li><a class="dropdown-item py-2 text-dark" routerLink="/software/hospitals" style="font-size: 0.9rem;">Software for hospitals</a></li>
+              <li><a class="dropdown-item py-2 text-dark" routerLink="/providers/profile" style="font-size: 0.9rem;">List your practice for Free</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Secondary Header -->
+  <nav class="navbar secondary-header sticky-top" style="top: 57px; z-index: 1040;">
+    <div class="container px-lg-5">
+      <ul class="nav d-flex gap-4">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Add Clinic / Hospital</a>
+        </li>
+      </ul>
+      <div class="d-flex ms-auto">
+        <a class="nav-link" href="#">Help</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-5 pe-md-5">
+          <h1 class="hero-title">Patients are looking for doctors like you</h1>
+          <p class="hero-desc">Millions of patients are looking for the right doctor on Practo. Start your digital journey with Practo Profile.</p>
+          
+          <form [formGroup]="leadForm" (ngSubmit)="onSubmit()" *ngIf="!submitSuccess">
+            <div class="mb-3">
+              <label class="hero-form-label">Name</label>
+              <input type="text" class="form-control" formControlName="name" placeholder="eg. Dr. Ramesh">
+            </div>
+            <div class="mb-4">
+              <label class="hero-form-label">Email</label>
+              <div class="input-group">
+                <input type="email" class="form-control" formControlName="phone" placeholder="eg. doctor@practo.com">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="hero-form-label">Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="password" placeholder="Create a secure password">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="hero-form-label">Specialty</label>
+              <select class="form-select" formControlName="specialtyId">
+                <option value="" disabled selected>Select your specialty</option>
+                <option *ngFor="let s of specialties" [value]="s.id">{{ s.name }}</option>
+              </select>
+              <div *ngIf="errorMessage" class="text-danger small mt-2">{{ errorMessage }}</div>
+            </div>
+            <button type="submit" class="hero-btn" [disabled]="isSubmitting">
+              {{ isSubmitting ? 'Sending OTP...' : 'Send OTP' }}
+            </button>
+            <p class="text-white-50 mt-2" style="font-size: 0.75rem;">Note: OTP will be sent to this email for verification.</p>
+          </form>
+
+          <!-- OTP Step -->
+          <div *ngIf="showOtpStep" class="bg-white p-4 rounded shadow mt-3">
+            <h5 class="fw-bold mb-3 text-dark">Email Verification</h5>
+            <p class="text-muted small">We've sent a 6-digit OTP code to <strong>{{ leadForm.value.phone }}</strong>. Enter it below.</p>
+            
+            <div *ngIf="otpError" class="alert alert-danger small py-2">{{ otpError }}</div>
+            
+            <div class="mb-3">
+              <input type="text" maxlength="6" class="form-control text-center fw-bold py-2 fs-5" [(ngModel)]="otpCode" placeholder="000000">
+            </div>
+            
+            <button class="btn btn-info w-100 text-white fw-bold py-2" (click)="onVerifyOtp()" [disabled]="otpLoading" style="background-color: #00a6e2;">
+              {{ otpLoading ? 'Verifying...' : 'Verify & Join' }}
+            </button>
+          </div>
+
+          <div *ngIf="submitSuccess" class="bg-success text-white p-3 rounded mt-3">
+            <i class="bi bi-check-circle-fill me-2"></i> Thank you! We will verify this shortly.
+          </div>
+        </div>
+        
+        <div class="col-md-7 mt-5 mt-md-0 position-relative">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Practo Profile Dashboard" class="img-fluid rounded shadow-lg" style="opacity: 0.9;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 1 -->
+  <section class="feature-block bg-white">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-md-2 ps-md-5">
+          <h2 class="feature-title">Edit your profile from anywhere, effortlessly</h2>
+          <ul class="feature-list">
+            <li>Easily edit or modify your profile</li>
+            <li>Add clinic details like address, timings, fees, photos, facilities and more</li>
+            <li>Keep your patients informed about your absence</li>
+          </ul>
+        </div>
+        <div class="col-md-6 order-md-1 text-center">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Edit Profile Mobile" class="img-fluid rounded shadow-sm mx-auto d-block" style="max-height: 400px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 2 -->
+  <section class="feature-block bg-light-gray">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 pe-md-5">
+          <h2 class="feature-title">Keep track of patient feedback</h2>
+          <ul class="feature-list">
+            <li>Know what your patients have to say about you</li>
+            <li>Interact with them through your Practo profile</li>
+            <li>Build your credibility online easily through their feedback</li>
+            <li>Let us worry about the fake feedback, we filter out</li>
+          </ul>
+        </div>
+        <div class="col-md-6 mt-4 mt-md-0 text-end">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Patient Feedback Dashboard" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 3 -->
+  <section class="feature-block bg-white">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-md-2 ps-md-5">
+          <h2 class="feature-title">Improve your profile with tips from us</h2>
+          <p class="feature-text">We score your profile out of 100 based on the information provided by you. Higher the score better are your chances to be discovered by patients.</p>
+        </div>
+        <div class="col-md-6 order-md-1 text-center">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tips Dashboard" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps Section -->
+  <section class="steps-section">
+    <div class="container px-lg-5">
+      <h2 class="feature-title mb-5">Create your free Practo profile in 3 simple steps</h2>
+      
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+          <div class="step-icon">
+            <i class="bi bi-person-badge"></i>
+            <div class="step-badge"><i class="bi bi-award-fill text-white" style="font-size: 0.6rem;"></i></div>
+          </div>
+          <p class="step-text px-3">Register and find yourself on Practo.com</p>
+          <p class="text-muted small mt-2 px-3">Enter your name, mobile number and clinic/hospital name</p>
+        </div>
+        <div class="col-md-4">
+          <div class="step-icon">
+            <i class="bi bi-card-checklist"></i>
+            <div class="step-badge"><i class="bi bi-person-fill text-white" style="font-size: 0.7rem;"></i></div>
+          </div>
+          <p class="step-text px-3">Add your profile information</p>
+          <p class="text-muted small mt-2 px-3">Fill details about yourself and timings on the redirecting Practo Profile page</p>
+        </div>
+        <div class="col-md-4">
+          <div class="step-icon">
+            <i class="bi bi-telephone-inbound"></i>
+            <div class="step-badge"><i class="bi bi-check text-white" style="font-size: 0.8rem;"></i></div>
+          </div>
+          <p class="step-text px-3">Help us verify your details</p>
+          <p class="text-muted small mt-2 px-3">Complete a verification over a phone call, and you're set!</p>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <button class="hero-btn" style="width: auto; padding: 0.8rem 3rem;" (click)="scrollToTop()">Create your profile</button>
+      </div>
+      
+      <p class="text-muted mt-4 small">Note: To create a profile on Practo you need to be a qualified doctor with a valid medical registration.</p>
+    </div>
+  </section>
+
+  <!-- App Download Section -->
+  <section class="app-download-section">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-md-1 text-center">
+          <img src="https://images.unsplash.com/photo-1601972599720-36938d4ecd31?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Practo Pro App" class="img-fluid rounded shadow-sm mx-auto d-block">
+        </div>
+        <div class="col-md-6 mt-4 mt-md-0 order-md-2 ps-md-5">
+          <h2 class="app-download-title">Download Practo Pro app</h2>
+          <p class="app-download-desc">A powerful app that lets you manage and grow your practice.</p>
+          
+          <ul class="app-feature-list">
+            <li>Manage your profile with advanced profile editor</li>
+            <li>Respond to patient reviews on your profile</li>
+            <li>Provide online consultation to patients</li>
+            <li>Manage your clinic with a Ray by Practo subscription</li>
+            <li>Accept online payments from anywhere</li>
+            <li>Track your clinic's performance on the go</li>
+            <li>Manage your patient and prescription details</li>
+          </ul>
+          
+          <div class="mt-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="app-store-badge">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="app-store-badge">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Dark Footer -->
+  <footer class="practo-dark-footer">
+    <div class="container px-lg-5">
+      <div class="row">
+        <div class="col-md-2 col-6">
+          <h5 class="footer-heading">Practo</h5>
+          <ul class="footer-list">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6">
+          <h5 class="footer-heading">For patients</h5>
+          <ul class="footer-list">
+            <li><a href="#">Search for doctors</a></li>
+            <li><a href="#">Search for clinics</a></li>
+            <li><a href="#">Search for hospitals</a></li>
+            <li><a href="#">Book Diagnostic Tests</a></li>
+            <li><a href="#">Book Full Body Checkups</a></li>
+            <li><a href="#">Practo Plus</a></li>
+            <li><a href="#">Covid Hospital listing</a></li>
+            <li><a href="#">Read health articles</a></li>
+            <li><a href="#">Read about medicines</a></li>
+            <li><a href="#">Practo drive</a></li>
+            <li><a href="#">Health app</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">For doctors</h5>
+          <ul class="footer-list">
+            <li><a href="#">Practo Profile</a></li>
+          </ul>
+          <h5 class="footer-heading mt-4">For clinics</h5>
+          <ul class="footer-list">
+            <li><a href="#">Ray by Practo</a></li>
+            <li><a href="#">Practo Reach</a></li>
+            <li><a href="#">Ray Tab</a></li>
+            <li><a href="#">Practo Pro</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">For hospitals</h5>
+          <ul class="footer-list">
+            <li><a href="#">Insta by Practo</a></li>
+            <li><a href="#">Qikwell by Practo</a></li>
+            <li><a href="#">Practo Profile</a></li>
+            <li><a href="#">Practo Reach</a></li>
+            <li><a href="#">Practo Drive</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">More</h5>
+          <ul class="footer-list">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">PCS T&C</a></li>
+            <li><a href="#">Healthcare Directory</a></li>
+            <li><a href="#">Practo Health Wiki</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6 mt-4 mt-md-0">
+          <h5 class="footer-heading">Social</h5>
+          <ul class="footer-list">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Youtube</a></li>
+            <li><a href="#">Github</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-logo">
+        <span class="fs-3 fw-extrabold" style="font-family: 'Inter', sans-serif; letter-spacing: -0.05em; color: white;">
+          <span style="color: #2CB7DF; margin-right: 1px; font-size: 1.2em; line-height: 0;">•</span>
+          <span style="font-weight: 800;">practo</span>
+          <span style="color: #2CB7DF; margin-left: 1px; font-size: 1.2em; line-height: 0;">•</span>
+        </span>
+        <p class="footer-copyright mt-3">Copyright © 2017, Practo. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>

@@ -1,0 +1,224 @@
+/* Practo Profile Styles */
+
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+/* Header */
+.security-header {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+}
+.security-header a.nav-link {
+  color: #555;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+}
+.security-header a.nav-link:hover { color: #2CB7DF; }
+
+/* Secondary Header */
+.secondary-header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+.secondary-header .nav-link {
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #2b3b8c;
+  color: white;
+  padding: 5rem 0 3rem;
+  overflow: hidden;
+}
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.hero-desc {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  max-width: 400px;
+}
+.hero-form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+.hero-btn {
+  background-color: #f78104;
+  color: white;
+  font-weight: 700;
+  padding: 0.6rem 2rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+/* Feature Blocks */
+.feature-block {
+  padding: 5rem 0;
+}
+.bg-light-gray { background-color: #f8f9fb; }
+.bg-white { background-color: #fff; }
+
+.feature-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+.feature-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: #666;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.feature-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #2CB7DF;
+  font-weight: bold;
+}
+.feature-text {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Steps Section */
+.steps-section {
+  padding: 5rem 0;
+  background-color: #f8f9fb;
+  text-align: center;
+}
+.step-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #2b3b8c;
+  color: white;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.step-badge {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background-color: #f78104;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 2px solid #f8f9fb;
+}
+.step-text {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 500;
+}
+
+/* App Download Section */
+.app-download-section {
+  padding: 5rem 0;
+  background-color: #fff;
+}
+.app-download-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.app-download-desc {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+.app-store-badge {
+  width: 140px;
+  margin-right: 1rem;
+}
+.app-feature-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+.app-feature-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+.app-feature-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #f78104;
+}
+
+/* Custom Dark Footer */
+.practo-dark-footer {
+  background-color: #2b3b8c;
+  color: white;
+  padding: 4rem 0 2rem;
+}
+.footer-heading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+.footer-list {
+  list-style: none;
+  padding-left: 0;
+}
+.footer-list li { margin-bottom: 0.8rem; }
+.footer-list a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.footer-list a:hover { color: white; }
+.footer-logo {
+  text-align: center;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 3rem;
+}
+.footer-copyright {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}

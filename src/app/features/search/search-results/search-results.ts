@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchService, DoctorSearchDto } from '../../../core/services/search.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -13,6 +13,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 export class SearchResultsComponent implements OnInit {
   private searchService = inject(SearchService);
   private route = inject(ActivatedRoute);
+  private cdr = inject(ChangeDetectorRef);
 
   doctors: DoctorSearchDto[] = [];
   loading = false;
@@ -51,9 +52,11 @@ export class SearchResultsComponent implements OnInit {
       next: (res) => {
         this.doctors = res;
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }

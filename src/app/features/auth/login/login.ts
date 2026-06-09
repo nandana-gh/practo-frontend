@@ -9,7 +9,7 @@ import { FooterComponent } from '../../../shared/components/footer/footer';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, HeaderComponent, FooterComponent],
+  imports: [CommonModule, FormsModule, RouterLink, FooterComponent],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -41,7 +41,13 @@ export class LoginComponent {
     this.authService.login({ email: this.email, password: this.password }).subscribe({
       next: (res) => {
         this.isLoading = false;
-        this.router.navigate(['/']);
+        if (res.role === 'Admin') {
+          this.router.navigate(['/admin/dashboard']);
+        } else if (res.role === 'Doctor') {
+          this.router.navigate(['/doctor/dashboard']);
+        } else {
+          this.router.navigate(['/']);
+        }
       },
       error: (err) => {
         this.isLoading = false;
@@ -68,7 +74,13 @@ export class LoginComponent {
       next: (res) => {
         this.otpLoading = false;
         this.showOtpModal = false;
-        this.router.navigate(['/']);
+        if (res.role === 'Admin') {
+          this.router.navigate(['/admin/dashboard']);
+        } else if (res.role === 'Doctor') {
+          this.router.navigate(['/doctor/dashboard']);
+        } else {
+          this.router.navigate(['/']);
+        }
       },
       error: (err) => {
         this.otpLoading = false;

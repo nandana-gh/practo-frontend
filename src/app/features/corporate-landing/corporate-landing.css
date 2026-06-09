@@ -1,0 +1,214 @@
+/* Corporate Landing Page Styles */
+
+/* Hero Section */
+.corporate-hero {
+  background: linear-gradient(135deg, #1d255b 0%, #2b3b8c 100%);
+  color: white;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.corporate-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -20%;
+  width: 60%;
+  height: 100%;
+  background: url('/assets/images/corporate-hero-bg.png') no-repeat center right;
+  background-size: cover;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* Demo Form */
+.demo-form-card {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  color: #333;
+}
+
+.demo-form-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #414146;
+}
+
+.form-control, .form-select {
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #2CB7DF;
+  box-shadow: 0 0 0 0.2rem rgba(44, 183, 223, 0.1);
+}
+
+.btn-primary {
+  background-color: #2CB7DF;
+  border-color: #2CB7DF;
+  font-weight: 600;
+  padding: 0.6rem;
+}
+
+.btn-primary:hover {
+  background-color: #1ea2c8;
+  border-color: #1ea2c8;
+}
+
+/* Total Protect Banner */
+.protect-banner {
+  background-color: #e5f6fc;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-top: -2rem;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.protect-title {
+  color: #1d255b;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.protect-subtitle {
+  color: #2CB7DF;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Section Headings */
+.section-heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #414146;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Services */
+.service-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.service-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.25rem;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  color: #2b3b8c;
+}
+
+.service-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #414146;
+  margin-bottom: 0.25rem;
+}
+
+.service-desc {
+  font-size: 0.9rem;
+  color: #787887;
+  line-height: 1.5;
+}
+
+/* Why Choose Us */
+.bg-light-gray {
+  background-color: #f8f9fa;
+}
+
+.choose-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.choose-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #2CB7DF;
+}
+
+.choose-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #414146;
+  margin-bottom: 0.5rem;
+}
+
+.choose-desc {
+  font-size: 0.9rem;
+  color: #787887;
+}
+
+/* Footer Section */
+.corporate-footer {
+  background-color: #2b3b8c;
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.corporate-footer a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.corporate-footer a:hover {
+  color: white;
+}
+
+/* Accordion Customization */
+.accordion-button:not(.collapsed) {
+  background-color: #f8f9fa;
+  color: #2b3b8c;
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0,0,0,.125);
+}

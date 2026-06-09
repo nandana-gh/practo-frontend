@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DoctorService, AppointmentSlotDto, ClinicDto } from '../../../core/services/doctor.service';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ export class BookingWidgetComponent implements OnInit {
 
   private doctorService = inject(DoctorService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
   activeTab: 'clinic' | 'video' = 'clinic';
   selectedClinicId?: number;
@@ -38,9 +39,11 @@ export class BookingWidgetComponent implements OnInit {
       next: (res) => {
         this.slots = res;
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -61,10 +64,14 @@ export class BookingWidgetComponent implements OnInit {
   }
 
   bookSlot(time: string) {
-    // In a real app, we would pass the selected time and date to a booking confirmation page
-    // For now, we will simulate the navigation
     const selectedDate = this.slots[this.selectedDateIndex].date;
-    alert(`Redirecting to checkout for slot: ${new Date(selectedDate).toDateString()} at ${time}`);
-    // this.router.navigate(['/checkout'], { queryParams: { doctorId: this.doctorId, time: time, date: selectedDate } });
+    this.router.navigate(['/book', this.doctorId], { 
+      queryParams: { 
+        time: time, 
+        date: selectedDate,
+        type: this.activeTab === 'clinic' ? 'InClinic' : 'Video',
+        clinicId: this.activeTab === 'clinic' ? this.selectedClinicId : undefined
+      } 
+    });
   }
 }

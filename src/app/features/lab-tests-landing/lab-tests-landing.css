@@ -1,0 +1,53 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.lab-test-card {
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  border-radius: 12px;
+}
+
+.lab-test-card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+  transform: translateY(-2px);
+}
+
+.package-card {
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  border-radius: 12px;
+}
+
+.package-card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+  transform: translateY(-2px);
+}
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.vital-card {
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.vital-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+
+.hover-white:hover {
+  color: white !important;
+}
+
+/* Custom rounded corners for the search bar */
+.search-bar-container {
+  border-radius: 30px;
+}

@@ -1,0 +1,79 @@
+/* Specialty Circles */
+.specialty-circle-wrap {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.specialty-circle-wrap:hover {
+  transform: scale(1.05);
+}
+
+.consult-link {
+  color: #00a6e2;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  transition: color 0.15s ease;
+}
+
+.consult-link:hover {
+  color: #008cc0;
+}
+
+/* Common Concern Cards */
+.concern-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.concern-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+}
+
+/* Avatar circle */
+.avatar-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Line clamp */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Doctor Cards */
+.doc-card {
+  transition: box-shadow 0.2s ease;
+}
+.doc-card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1) !important;
+}
+
+/* Info Cards */
+.info-card {
+  transition: box-shadow 0.2s ease;
+}
+.info-card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1) !important;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+  transition: box-shadow 0.2s ease;
+}
+.testimonial-card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1) !important;
+}

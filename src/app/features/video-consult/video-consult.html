@@ -1,0 +1,522 @@
+
+
+<!-- Hero Section -->
+<div class="position-relative" style="background-color: #fce7e0; overflow: hidden; min-height: 400px;">
+  <div class="container h-100 position-relative z-1 py-5">
+    <div class="row align-items-center h-100">
+      <div class="col-md-6 pt-md-5 pb-5">
+        <h1 class="fw-bold text-dark mb-1" style="font-size: 38px;">Skip the travel!</h1>
+        <h2 class="fw-bold mb-3" style="color: #414146; font-size: 34px;">Take Online Doctor Consultation</h2>
+        <p class="text-dark fw-medium mb-4" style="font-size: 15px;">Private consultation + Audio call • Starts at just ₹199</p>
+        
+        <div class="d-flex align-items-center mb-4">
+          <div class="d-flex me-3">
+            <div class="avatar-circle border border-white" style="width: 36px; height: 36px; margin-right: -10px; background-color: #e2e8f0; z-index: 3;"><img src="https://images.unsplash.com/photo-1612349317150-e410f624c427?w=100&q=80" alt="Doc" class="w-100 h-100 rounded-circle object-fit-cover"></div>
+            <div class="avatar-circle border border-white" style="width: 36px; height: 36px; margin-right: -10px; background-color: #cbd5e1; z-index: 2;"><img src="https://images.unsplash.com/photo-1594824436998-f4cc14d2ce77?w=100&q=80" alt="Doc" class="w-100 h-100 rounded-circle object-fit-cover"></div>
+            <div class="avatar-circle border border-white" style="width: 36px; height: 36px; background-color: #94a3b8; z-index: 1;"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&q=80" alt="Doc" class="w-100 h-100 rounded-circle object-fit-cover"></div>
+          </div>
+          <span class="text-dark fw-bold small">+114 Doctors are online <span class="text-success ms-1">●</span></span>
+        </div>
+        
+        <button class="btn btn-info text-white fw-bold px-4 py-2 mb-4" routerLink="/consult/request" style="background-color: #00a6e2; border: none; min-width: 160px;">Consult Now</button>
+        
+        <div class="d-flex align-items-center text-muted small gap-3">
+          <div class="d-flex align-items-center gap-1 cursor-pointer"><i class="bi bi-circle-fill text-info" style="font-size: 6px;"></i> Gynaecology</div>
+          <div class="d-flex align-items-center gap-1 cursor-pointer"><i class="bi bi-circle-fill text-info" style="font-size: 6px;"></i> General Physician</div>
+          <div class="d-flex align-items-center gap-1 cursor-pointer text-info">+ More</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Right Side Background Image -->
+  <div class="position-absolute end-0 bottom-0 h-100 d-none d-md-block" style="width: 55%;">
+    <!-- Background shape to blend the image -->
+    <div class="position-absolute h-100 w-100 start-0 top-0" style="background: linear-gradient(to right, #fce7e0 0%, transparent 20%); z-index: 1;"></div>
+    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200" alt="Patient consulting on phone" class="w-100 h-100 object-fit-cover" style="object-position: top center;">
+  </div>
+</div>
+
+<!-- 25+ Specialities -->
+<div class="container my-5 py-3 border-bottom pb-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h3 class="fw-bold mb-1" style="color: #414146; font-size: 24px;">25+ Specialities</h3>
+      <p class="text-muted small mb-0">Consult with top doctors across specialities</p>
+    </div>
+    <button class="btn btn-outline-secondary btn-sm fw-bold px-3">See all specialities</button>
+  </div>
+  
+  <div class="row row-cols-2 row-cols-md-6 g-4 text-center mt-2 position-relative" *ngIf="!loading">
+    <div class="col" *ngFor="let spec of landingData?.specialties">
+      <div class="specialty-circle-wrap mx-auto mb-3" style="background-color: #eff6ff;">
+        <i class="bi bi-activity text-primary fs-2"></i>
+      </div>
+      <h6 class="fw-bold text-dark small mb-1" style="font-size: 13px;">{{ spec.name }}</h6>
+      <span class="text-muted small d-block mb-1" style="font-size: 11px;">₹{{ spec.startingPrice }}</span>
+      <a routerLink="/consult/request" class="small text-decoration-none fw-bold consult-link cursor-pointer">Consult now</a>
+    </div>
+    
+    <!-- Next Arrow -->
+    <button class="btn btn-light rounded-circle shadow-sm position-absolute end-0 top-50 translate-middle-y d-none d-md-flex align-items-center justify-content-center" style="width: 40px; height: 40px; right: -20px !important;">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+  <div *ngIf="loading" class="text-center my-4">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+
+<!-- Common Health Concerns -->
+<div class="container my-5 py-3 border-bottom pb-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h3 class="fw-bold mb-1" style="color: #414146; font-size: 24px;">Common Health Concerns</h3>
+      <p class="text-muted small mb-0">Consult a doctor online for any health issue</p>
+    </div>
+    <button class="btn btn-outline-secondary btn-sm fw-bold px-3">See all symptoms</button>
+  </div>
+  
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 mt-2">
+    <!-- Card 1 -->
+    <div class="col">
+      <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden concern-card">
+        <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?w=400&q=80" alt="Cough & Cold" class="card-img-top object-fit-cover" style="height: 140px;">
+        <div class="card-body p-3">
+          <h6 class="fw-bold text-dark mb-1" style="font-size: 14px;">Cough & Cold</h6>
+          <span class="text-muted small d-block mb-3" style="font-size: 12px;">₹399</span>
+          <a routerLink="/consult/request" class="text-decoration-none fw-bold consult-link">Consult now</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="col">
+      <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden concern-card">
+        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400&q=80" alt="Period problems" class="card-img-top object-fit-cover" style="height: 140px;">
+        <div class="card-body p-3">
+          <h6 class="fw-bold text-dark mb-1" style="font-size: 14px;">Period problems</h6>
+          <span class="text-muted small d-block mb-3" style="font-size: 12px;">₹499</span>
+          <a routerLink="/consult/request" class="text-decoration-none fw-bold consult-link">Consult now</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="col">
+      <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden concern-card">
+        <img src="https://images.unsplash.com/photo-1536243298747-ea8874136d64?w=400&q=80" alt="Performance issues in bed" class="card-img-top object-fit-cover" style="height: 140px;">
+        <div class="card-body p-3">
+          <h6 class="fw-bold text-dark mb-1" style="font-size: 14px;">Performance issues in bed</h6>
+          <span class="text-muted small d-block mb-3" style="font-size: 12px;">₹499</span>
+          <a routerLink="/consult/request" class="text-decoration-none fw-bold consult-link">Consult now</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="col">
+      <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden concern-card">
+        <img src="https://images.unsplash.com/photo-1512496015851-a1fbaf6928bc?w=400&q=80" alt="Skin problems" class="card-img-top object-fit-cover" style="height: 140px;">
+        <div class="card-body p-3">
+          <h6 class="fw-bold text-dark mb-1" style="font-size: 14px;">Skin problems</h6>
+          <span class="text-muted small d-block mb-3" style="font-size: 12px;">₹449</span>
+          <a routerLink="/consult/request" class="text-decoration-none fw-bold consult-link">Consult now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Offers -->
+<div class="container my-5 py-3 border-bottom pb-5">
+  <h3 class="fw-bold mb-4" style="color: #414146; font-size: 24px;">Offers</h3>
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card border-0 rounded-4 p-4 text-dark h-100 position-relative overflow-hidden" style="background-color: #a7f3d0;">
+        <span class="badge bg-white text-dark mb-3 px-2 py-1 shadow-sm position-absolute" style="top: 20px; left: 20px;">OFFER</span>
+        <div class="mt-4 pt-3 position-relative z-1" style="max-width: 65%;">
+          <h4 class="fw-bold mb-3" style="font-size: 22px; line-height: 1.3;">Download The App & get ₹200 HealthCash</h4>
+          <a href="#" class="text-dark fw-bold text-decoration-none d-inline-flex align-items-center">Download App <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <!-- Mock Phone SVG -->
+        <div class="position-absolute" style="bottom: -20px; right: 20px; z-index: 0;">
+          <svg width="100" height="150" viewBox="0 0 100 150" fill="none">
+            <rect x="10" y="10" width="80" height="150" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="4"/>
+            <rect x="20" y="30" width="60" height="10" rx="2" fill="#e2e8f0"/>
+            <rect x="20" y="50" width="60" height="40" rx="4" fill="#6ee7b7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-0 rounded-4 p-4 text-dark h-100 position-relative overflow-hidden" style="background-color: #fed7aa;">
+        <span class="badge bg-white text-dark mb-3 px-2 py-1 shadow-sm position-absolute" style="top: 20px; left: 20px;">OFFER</span>
+        <div class="mt-4 pt-3 position-relative z-1" style="max-width: 65%;">
+          <h4 class="fw-bold mb-3" style="font-size: 22px; line-height: 1.3;">Consult with a specialist at just ₹199</h4>
+          <a routerLink="/consult/request" class="text-dark fw-bold text-decoration-none d-inline-flex align-items-center">Consult Now <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <!-- Doctor SVG -->
+        <div class="position-absolute" style="bottom: 0; right: 20px; z-index: 0;">
+          <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=150&q=80" alt="Doctor" class="rounded-circle object-fit-cover" style="width: 100px; height: 100px; margin-bottom: -10px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Our Doctors -->
+<div class="container my-5 py-3 border-bottom pb-5 position-relative">
+  <h3 class="fw-bold mb-4" style="color: #414146; font-size: 24px;">Our Doctors</h3>
+  <div class="row row-cols-1 row-cols-md-4 g-3 mt-2" *ngIf="!loading">
+    <div class="col" *ngFor="let doc of landingData?.doctors">
+      <div class="card p-3 border rounded-3 shadow-sm doc-card h-100 cursor-pointer" [routerLink]="['/profile', doc.id]">
+        <div class="d-flex align-items-center gap-3">
+          <img [src]="doc.profileImageUrl || 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=100&q=80'" alt="Dr" class="rounded-circle object-fit-cover" style="width: 45px; height: 45px;">
+          <div>
+            <h6 class="fw-bold mb-0" style="font-size: 13px;">{{ doc.name }}</h6>
+            <span class="d-block text-muted" style="font-size: 11px;">{{ doc.specialty }}</span>
+            <span class="d-block text-muted" style="font-size: 11px;">{{ doc.experienceYears }} yrs experience</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loading" class="text-center my-4">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <!-- Next Arrow -->
+  <button class="btn btn-light rounded-circle shadow-sm position-absolute end-0 top-50 translate-middle-y d-none d-md-flex align-items-center justify-content-center" style="width: 40px; height: 40px; right: 0px;" *ngIf="!loading">
+    <i class="bi bi-chevron-right"></i>
+  </button>
+</div>
+
+<!-- How it works -->
+<div class="container my-5 py-3 pb-5 text-center">
+  <h3 class="fw-bold mb-5" style="color: #414146; font-size: 24px;">How it works</h3>
+  <div class="row align-items-center position-relative">
+    <!-- Connecting line behind steps -->
+    <div class="position-absolute w-75 top-25 start-50 translate-middle-x d-none d-md-block" style="height: 1px; border-top: 1px dashed #cbd5e1; z-index: -1;"></div>
+    
+    <div class="col-md-4 mb-4">
+      <div class="mx-auto bg-light rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px; color: #263077;">
+        <i class="bi bi-search fs-3"></i>
+      </div>
+      <h6 class="fw-semibold text-dark" style="font-size: 14px;">Select a specialty or symptom</h6>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="mx-auto bg-light rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px; color: #263077;">
+        <i class="bi bi-camera-video fs-3"></i>
+      </div>
+      <h6 class="fw-semibold text-dark" style="font-size: 14px;">Audio/ video call with a verified doctor</h6>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="mx-auto bg-light rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px; color: #263077;">
+        <i class="bi bi-file-earmark-medical fs-3"></i>
+      </div>
+      <h6 class="fw-semibold text-dark" style="font-size: 14px;">Get a digital prescription & free follow-up</h6>
+    </div>
+  </div>
+</div>
+
+<!-- Stats Bar -->
+<div class="py-4" style="background-color: #282c3f;">
+  <div class="container">
+    <div class="row text-center text-white" *ngIf="landingData?.stats">
+      <div class="col-3">
+        <h3 class="fw-bold mb-0" style="font-size: 22px;">{{ landingData!.stats.happyPatients }}</h3>
+        <span class="text-white-50 small">Happy Patients</span>
+      </div>
+      <div class="col-3">
+        <h3 class="fw-bold mb-0" style="font-size: 22px;">{{ landingData!.stats.verifiedDoctors }}</h3>
+        <span class="text-white-50 small">Verified Doctors</span>
+      </div>
+      <div class="col-3">
+        <h3 class="fw-bold mb-0" style="font-size: 22px;">{{ landingData!.stats.specialtiesCount }}</h3>
+        <span class="text-white-50 small">Specialities</span>
+      </div>
+      <div class="col-3">
+        <h3 class="fw-bold mb-0" style="font-size: 22px;">{{ landingData!.stats.appRating }}</h3>
+        <span class="text-white-50 small">App Rating</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Benefits of Online Consultation -->
+<div class="container my-5 py-5 border-bottom">
+  <h3 class="fw-bold mb-4" style="color: #414146; font-size: 24px;">Benefits of Online Consultation</h3>
+  <div class="row mt-4">
+    <div class="col-md-6 mb-4">
+      <div class="mb-4">
+        <h6 class="fw-bold d-flex align-items-center" style="font-size: 15px;">
+          <i class="bi bi-check-circle-fill text-info me-2 fs-5"></i> Consult Top Doctors 24x7
+        </h6>
+        <p class="text-muted small ms-4 ps-2 mb-0" style="line-height: 1.6;">Connect instantly with a 24x7 specialist or choose to video visit a particular doctor.</p>
+      </div>
+      <div class="mb-4">
+        <h6 class="fw-bold d-flex align-items-center" style="font-size: 15px;">
+          <i class="bi bi-check-circle-fill text-info me-2 fs-5"></i> Similar Clinic Experience
+        </h6>
+        <p class="text-muted small ms-4 ps-2 mb-0" style="line-height: 1.6;">Experience clinic-like consultation through a video call with the doctor. Video consultation is available only on the Practo app.</p>
+      </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+      <div class="mb-4">
+        <h6 class="fw-bold d-flex align-items-center" style="font-size: 15px;">
+          <i class="bi bi-check-circle-fill text-info me-2 fs-5"></i> Convenient and Easy
+        </h6>
+        <p class="text-muted small ms-4 ps-2 mb-0" style="line-height: 1.6;">Start an instant consultation within 2 minutes or do video consultation at the scheduled time.</p>
+      </div>
+      <div class="mb-4">
+        <h6 class="fw-bold d-flex align-items-center" style="font-size: 15px;">
+          <i class="bi bi-check-circle-fill text-info me-2 fs-5"></i> Free Follow-up
+        </h6>
+        <p class="text-muted small ms-4 ps-2 mb-0" style="line-height: 1.6;">Get a valid digital prescription and a 7-day, free follow-up for further clarifications.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Experience online doctor consultations -->
+<div class="container my-5 py-3 border-bottom pb-5 position-relative">
+  <h3 class="fw-bold mb-4" style="color: #414146; font-size: 24px;">Experience online doctor consultations</h3>
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+    <!-- Card 1 -->
+    <div class="col">
+      <div class="card h-100 border rounded-3 shadow-sm overflow-hidden info-card">
+        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 180px;">
+          <!-- Empty visual as per screenshot -->
+        </div>
+        <div class="card-body p-3">
+          <h6 class="fw-bold text-dark mb-1" style="font-size: 14px;">What is Online Doctor Consultation?</h6>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="col">
+      <div class="card h-100 border rounded-3 shadow-sm overflow-hidden info-card">
+        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 180px;">
+        </div>
+        <div class="card-body p-3">
+          <h6 class="fw-bold text-dark mb-1" style="font-size: 14px;">Is Online Doctor Consultation safe & secure?</h6>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="col">
+      <div class="card h-100 border rounded-3 shadow-sm overflow-hidden info-card">
+        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 180px;">
+        </div>
+        <div class="card-body p-3">
+          <h6 class="fw-bold text-dark mb-1" style="font-size: 14px;">Video Consultation</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials -->
+<div class="container my-5 py-3 border-bottom pb-5 position-relative">
+  <h3 class="fw-bold mb-4" style="color: #414146; font-size: 24px;">What our users say about their online consultation experience</h3>
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+    <div class="col">
+      <div class="card h-100 border rounded-3 p-4 bg-light bg-opacity-50 testimonial-card">
+        <div class="d-flex align-items-center mb-3">
+          <div class="avatar-circle bg-dark text-white me-3" style="width: 40px; height: 40px;">J</div>
+          <div>
+            <h6 class="fw-bold mb-0" style="font-size: 14px;">Julie</h6>
+            <span class="text-muted" style="font-size: 11px;">Consulted for Gynecological issues</span>
+          </div>
+        </div>
+        <p class="text-muted small mb-0" style="line-height: 1.6;">I highly recommend Dr. Shruti to anyone who is looking for a good gynecologist. I took a tele consultation and I am extremely satisfied with her advice and patience.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 border rounded-3 p-4 bg-light bg-opacity-50 testimonial-card">
+        <div class="d-flex align-items-center mb-3">
+          <div class="avatar-circle bg-secondary text-white me-3" style="width: 40px; height: 40px;">S</div>
+          <div>
+            <h6 class="fw-bold mb-0" style="font-size: 14px;">Suraj</h6>
+            <span class="text-muted" style="font-size: 11px;">Consulted for Cold and Cough</span>
+          </div>
+        </div>
+        <p class="text-muted small mb-0" style="line-height: 1.6;">Good doctor. Listens well to patient issues and answers all queries patiently. Good to have consultation with this doctor. Highly recommend.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 border rounded-3 p-4 bg-light bg-opacity-50 testimonial-card">
+        <div class="d-flex align-items-center mb-3">
+          <div class="avatar-circle bg-success text-white me-3" style="width: 40px; height: 40px;">D</div>
+          <div>
+            <h6 class="fw-bold mb-0" style="font-size: 14px;">Deepa</h6>
+            <span class="text-muted" style="font-size: 11px;">Consulted for Skin issues</span>
+          </div>
+        </div>
+        <p class="text-muted small mb-0" style="line-height: 1.6;">Dr. Ashwini Kumar is a wonderful doctor. She listened to all my problems very patiently and prescribed the medicines accordingly. Very sweet and polite.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Next Arrow -->
+  <button class="btn btn-light rounded-circle shadow-sm position-absolute end-0 top-50 translate-middle-y d-none d-md-flex align-items-center justify-content-center" style="width: 40px; height: 40px; right: 0px;">
+    <i class="bi bi-chevron-right"></i>
+  </button>
+  
+  <div class="d-flex justify-content-center gap-1 mt-4">
+    <div class="bg-primary rounded-pill" style="width: 15px; height: 6px;"></div>
+    <div class="bg-light rounded-pill" style="width: 6px; height: 6px;"></div>
+    <div class="bg-light rounded-pill" style="width: 6px; height: 6px;"></div>
+    <div class="bg-light rounded-pill" style="width: 6px; height: 6px;"></div>
+  </div>
+</div>
+
+<!-- FAQs -->
+<div class="container my-5 py-3 border-bottom pb-5">
+  <h3 class="fw-bold mb-4" style="color: #414146; font-size: 24px;">FAQs</h3>
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <h6 class="fw-bold" style="font-size: 14px;">What is an online doctor consultation?</h6>
+      <p class="text-muted small mb-0">Online doctor consultation or online medical consultation is a method to connect patients and doctors virtually. It is a convenient and easy way to get online doctor advice using doctor apps or telemedicine apps or platforms, and the internet.</p>
+    </div>
+    <div class="col-md-6 mb-4">
+      <h6 class="fw-bold" style="font-size: 14px;">How do I start online consultation with doctors on Practo?</h6>
+      <p class="text-muted small mb-0">Starting an online doctor consultation is very simple on Practo. Follow these 4 simple steps: Choose your health concern. Connect with a doctor within 2 minutes. Ask your queries to the doctor via audio or video call. Get a valid prescription and a 7-day free online doctor consultation.</p>
+    </div>
+    <div class="col-md-6 mb-4">
+      <h6 class="fw-bold" style="font-size: 14px;">Are your online doctors qualified?</h6>
+      <p class="text-muted small mb-0">We follow a strict verification process for every doctor providing online medical services on Practo. Our team manually verifies necessary documents, registrations, and certifications for every doctor.</p>
+    </div>
+    <div class="col-md-6 mb-4">
+      <h6 class="fw-bold" style="font-size: 14px;">Is online doctor consultation safe and secured on Practo?</h6>
+      <p class="text-muted small mb-0">The privacy of our patients is critical to us, and thus, we are compliant with industry standards like HIPAA. Rest assured that your online consultation with a doctor is completely safe and secured with 256-bit encryption.</p>
+    </div>
+    <div class="col-md-6 mb-4">
+      <h6 class="fw-bold" style="font-size: 14px;">What happens if I don't get a response from a doctor?</h6>
+      <p class="text-muted small mb-0">In the unlikely event that an online doctor does not respond, you will be entitled to a 100% refund.</p>
+    </div>
+    <div class="col-md-6 mb-4">
+      <h6 class="fw-bold" style="font-size: 14px;">Can I do a free online doctor consultation on Practo?</h6>
+      <p class="text-muted small mb-0">Avail a free online doctor consultation (only first-time users) when you download the Practo app. You will also get access to HealthCash which you can use for online doctor consultation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Health Queries -->
+<div class="container my-5 py-3 border-bottom pb-5">
+  <h3 class="fw-bold mb-4" style="color: #414146; font-size: 24px;">Health Queries</h3>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <h6 class="fw-bold d-flex justify-content-between" style="font-size: 13px;">Swollen right gums <span class="text-muted fw-normal">2 Views</span></h6>
+      <p class="text-muted small mb-0 line-clamp-3">I have some swelling inside my right cheek right at the top/end of my lower teeth area...</p>
+    </div>
+    <div class="col">
+      <h6 class="fw-bold d-flex justify-content-between" style="font-size: 13px;">Lump under ear <span class="text-muted fw-normal">0 Views</span></h6>
+      <p class="text-muted small mb-0 line-clamp-3">Lump on left side on ear. Initially painful to touch. But from today morning pain has started...</p>
+    </div>
+    <div class="col">
+      <h6 class="fw-bold d-flex justify-content-between" style="font-size: 13px;">Left side neck pain <span class="text-muted fw-normal">0 Views</span></h6>
+      <p class="text-muted small mb-0 line-clamp-3">Pain in left side neck radiating to the neck with clicking sound. What to do?</p>
+    </div>
+  </div>
+  <div class="text-end mt-3">
+    <a href="#" class="text-info text-decoration-none small fw-bold">View all queries</a>
+  </div>
+</div>
+
+<!-- Still looking for your health concern? -->
+<div class="py-4" style="background-color: #414146;">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <div>
+      <h4 class="text-white fw-bold mb-1" style="font-size: 20px;">Still looking for your health concern?</h4>
+      <p class="text-white-50 small mb-0">Consult a doctor online for any health issue</p>
+    </div>
+    <button class="btn btn-info text-white fw-bold px-4 py-2 mt-3 mt-md-0" routerLink="/consult/request" style="background-color: #00a6e2; border: none;">Consult Now</button>
+  </div>
+</div>
+
+<!-- Download App Section -->
+<div class="py-5 bg-white border-top">
+  <div class="container py-4">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-5 text-center">
+        <!-- Phone Mockups -->
+        <svg width="300" height="350" viewBox="0 0 300 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Back Phone -->
+          <rect x="50" y="20" width="130" height="260" rx="15" fill="#ffffff" stroke="#e2e8f0" stroke-width="3"/>
+          <rect x="50" y="45" width="130" height="130" fill="#1e3a8a"/>
+          
+          <!-- Front Phone -->
+          <rect x="120" y="60" width="130" height="260" rx="15" fill="#ffffff" stroke="#e2e8f0" stroke-width="3" filter="drop-shadow(0 10px 15px rgba(0,0,0,0.1))"/>
+          <rect x="120" y="85" width="130" height="40" fill="#1e3a8a"/>
+          
+          <rect x="130" y="140" width="110" height="15" rx="3" fill="#f8fafc"/>
+          <rect x="130" y="165" width="110" height="15" rx="3" fill="#f8fafc"/>
+          <rect x="130" y="190" width="50" height="50" rx="3" fill="#fecaca"/>
+          <rect x="190" y="190" width="50" height="50" rx="3" fill="#bfdbfe"/>
+        </svg>
+      </div>
+      
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-2" style="color: #414146; font-size: 32px; line-height: 1.2;">Download the Practo app</h2>
+        <p class="text-muted small mb-4">Get ₹200 HealthCash</p>
+        
+        <ul class="list-unstyled mb-4">
+          <li class="mb-2 d-flex align-items-center text-muted" style="font-size: 14px;">
+            <i class="bi bi-check2 text-info fs-5 me-2 fw-bold"></i> Video consultation with Doctors
+          </li>
+          <li class="mb-2 d-flex align-items-center text-muted" style="font-size: 14px;">
+            <i class="bi bi-check2 text-info fs-5 me-2 fw-bold"></i> Live medicine order tracking
+          </li>
+          <li class="mb-2 d-flex align-items-center text-muted" style="font-size: 14px;">
+            <i class="bi bi-check2 text-info fs-5 me-2 fw-bold"></i> Exclusive healthcare packages
+          </li>
+          <li class="mb-2 d-flex align-items-center text-muted" style="font-size: 14px;">
+            <i class="bi bi-check2 text-info fs-5 me-2 fw-bold"></i> Ask free questions
+          </li>
+        </ul>
+        
+        <label class="d-block small fw-bold text-dark mb-2 mt-4" style="font-size: 13px;">Get the link to download the app</label>
+        <div class="input-group mb-4" style="max-width: 380px;">
+          <span class="input-group-text bg-white border fw-bold px-3">+91</span>
+          <input type="text" class="form-control border py-2 fs-6" placeholder="Enter phone number">
+          <button class="btn btn-info text-white px-3 fw-bold border-0" style="background-color: #00a6e2;">Send SMS</button>
+        </div>
+        
+        <div class="d-flex gap-3 mt-4">
+          <a href="#" class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 border-0" style="background-color: #000; border-radius: 8px; min-width: 130px;">
+            <i class="bi bi-google-play fs-5 text-white"></i>
+            <div class="text-start">
+              <span class="d-block text-uppercase text-white-50" style="font-size: 8px;">Get it on</span>
+              <span class="d-block fw-bold text-white small" style="font-size: 11px;">Google Play</span>
+            </div>
+          </a>
+          <a href="#" class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 border-0" style="background-color: #000; border-radius: 8px; min-width: 130px;">
+            <i class="bi bi-apple fs-5 text-white"></i>
+            <div class="text-start">
+              <span class="d-block text-uppercase text-white-50" style="font-size: 8px;">Download on the</span>
+              <span class="d-block fw-bold text-white small" style="font-size: 11px;">App Store</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fine Print -->
+<div class="container pb-4 pt-2">
+  <p class="text-muted mb-2" style="font-size: 10px; line-height: 1.5; opacity: 0.7;">
+    Seeking an online doctor consultation... You can now consult a doctor online from anywhere, anytime! Avoid traffic and travel, and just chat, audio call or video call a doctor. Doctors from Practo are verified and qualified experts. We have a robust system to verify the credibility of the doctor before they join the Practo platform. 
+  </p>
+  <p class="text-muted mb-2" style="font-size: 10px; line-height: 1.5; opacity: 0.7;">
+    Note: Online doctor consultation is not a substitute for a physical consultation. It should not be used for medical emergencies.
+  </p>
+  <p class="text-muted mb-0" style="font-size: 10px; line-height: 1.5; opacity: 0.7;">
+    Disclaimer: The information provided on this platform is for educational purposes only. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+  </p>
+</div>
+
+<app-footer></app-footer>

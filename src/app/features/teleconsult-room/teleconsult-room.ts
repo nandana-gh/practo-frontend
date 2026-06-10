@@ -63,9 +63,9 @@ export class TeleconsultRoomComponent implements OnInit, OnDestroy {
     this.chatService.createHubConnection(this.appointmentId);
 
     if (this.isDoctor) {
-      this.http.get<any>(`http://localhost:5016/api/Appointment/${this.appointmentId}`).subscribe({
+      this.http.get<any>(`http://4.187.152.228:5000/api/Appointment/${this.appointmentId}`).subscribe({
         next: (apt) => {
-          this.http.get<any[]>(`http://localhost:5016/api/MedicalRecords/patient/${apt.patientId}`).subscribe({
+          this.http.get<any[]>(`http://4.187.152.228:5000/api/MedicalRecords/patient/${apt.patientId}`).subscribe({
             next: (records) => {
               this.patientRecords = records;
             },
@@ -82,7 +82,7 @@ export class TeleconsultRoomComponent implements OnInit, OnDestroy {
   }
 
   loadChatHistory() {
-    this.http.get<any[]>(`http://localhost:5016/api/Teleconsult/${this.appointmentId}/chat-history`).subscribe({
+    this.http.get<any[]>(`http://4.187.152.228:5000/api/Teleconsult/${this.appointmentId}/chat-history`).subscribe({
       next: (messages) => {
         this.chatService.setInitialHistory(messages);
       },
@@ -107,7 +107,7 @@ export class TeleconsultRoomComponent implements OnInit, OnDestroy {
       instructions: this.prescriptionInstructions
     };
 
-    this.http.post(`http://localhost:5016/api/Teleconsult/prescription`, payload).subscribe({
+    this.http.post(`http://4.187.152.228:5000/api/Teleconsult/prescription`, payload).subscribe({
       next: () => {
         alert('Prescription issued successfully!');
         this.router.navigate(['/doctor/dashboard']);
@@ -131,3 +131,4 @@ export class TeleconsultRoomComponent implements OnInit, OnDestroy {
     }
   }
 }
+

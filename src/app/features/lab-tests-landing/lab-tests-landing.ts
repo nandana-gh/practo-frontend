@@ -80,3 +80,4 @@ export class LabTestsLandingComponent implements OnInit {
     this.cdr.detectChanges();
   }
 }
+

@@ -26,7 +26,7 @@ export interface AuthResponse {
 export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
-  private apiUrl = 'http://localhost:5016/api/auth';
+  private apiUrl = 'http://4.187.152.228:5000/api/auth';
 
   // Reactive state using Angular signals
   private currentUserSignal = signal<User | null>(null);
@@ -105,3 +105,4 @@ export class AuthService {
     return throwError(() => error);
   }
 }
+

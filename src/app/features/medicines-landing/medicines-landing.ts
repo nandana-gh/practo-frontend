@@ -64,3 +64,4 @@ export class MedicinesLandingComponent implements OnInit {
     alert(`${product.name} added to cart!`);
   }
 }
+

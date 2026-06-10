@@ -35,7 +35,7 @@ export interface VideoConsultLandingDto {
   providedIn: 'root'
 })
 export class VideoConsultService {
-  private apiUrl = 'http://localhost:5016/api/VideoConsult';
+  private apiUrl = 'http://4.187.152.228:5000/api/VideoConsult';
 
   constructor(private http: HttpClient) { }
 
@@ -43,3 +43,4 @@ export class VideoConsultService {
     return this.http.get<VideoConsultLandingDto>(`${this.apiUrl}/landing`);
   }
 }
+

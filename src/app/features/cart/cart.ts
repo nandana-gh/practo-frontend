@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
     // endpoint in the backend. 
     // First, let's post to `api/Medicines/checkout-universal` (we will build this endpoint)
     
-    this.http.post<any>('http://localhost:5016/api/Payment/checkout-cart', {
+    this.http.post<any>('http://4.187.152.228:5000/api/Payment/checkout-cart', {
       items: this.cartItems.map(i => ({
         id: i.id,
         type: i.type,
@@ -115,7 +115,7 @@ export class CartComponent implements OnInit {
   }
 
   private verifyPayment(paymentResponse: any, orderGroupToken: string) {
-    this.http.post<any>('http://localhost:5016/api/Payment/verify-cart', {
+    this.http.post<any>('http://4.187.152.228:5000/api/Payment/verify-cart', {
       razorpayOrderId: paymentResponse.razorpay_order_id,
       razorpayPaymentId: paymentResponse.razorpay_payment_id,
       razorpaySignature: paymentResponse.razorpay_signature,
@@ -135,3 +135,4 @@ export class CartComponent implements OnInit {
     });
   }
 }
+

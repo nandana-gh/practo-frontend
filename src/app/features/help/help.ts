@@ -17,3 +17,4 @@ export class HelpComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 }
+

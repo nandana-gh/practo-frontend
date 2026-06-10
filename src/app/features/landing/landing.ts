@@ -82,3 +82,4 @@ export class LandingComponent implements OnInit {
     return `assets/images/treatments/${name.toLowerCase().replace(/ /g, '-')}.png`;
   }
 }
+

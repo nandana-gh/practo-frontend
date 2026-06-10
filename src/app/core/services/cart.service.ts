@@ -71,3 +71,4 @@ export class CartService {
     return this.cartItems.getValue().reduce((acc, item) => acc + item.quantity, 0);
   }
 }
+

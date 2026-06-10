@@ -20,3 +20,4 @@ describe('DoctorProfile', () => {
     expect(component).toBeTruthy();
   });
 });
+

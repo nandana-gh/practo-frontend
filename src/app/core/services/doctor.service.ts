@@ -39,7 +39,7 @@ export interface AppointmentSlotDto {
 })
 export class DoctorService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5016/api/Doctor';
+  private apiUrl = 'http://4.187.152.228:5000/api/Doctor';
 
   getDoctorProfile(id: number): Observable<DoctorProfileDto> {
     return this.http.get<DoctorProfileDto>(`${this.apiUrl}/${id}`);
@@ -53,3 +53,4 @@ export class DoctorService {
     return this.http.get<AppointmentSlotDto[]>(`${this.apiUrl}/${id}/availability`, { params });
   }
 }
+

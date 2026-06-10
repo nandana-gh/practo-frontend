@@ -22,7 +22,7 @@ export interface DoctorSearchDto {
 })
 export class SearchService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5016/api/Search';
+  private apiUrl = 'http://4.187.152.228:5000/api/Search';
 
   searchDoctors(params: any): Observable<DoctorSearchDto[]> {
     let httpParams = new HttpParams();
@@ -37,3 +37,4 @@ export class SearchService {
     return this.http.get<DoctorSearchDto[]>(`${this.apiUrl}/doctors`, { params: httpParams });
   }
 }
+

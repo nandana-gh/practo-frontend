@@ -26,7 +26,7 @@ export interface SurgeryLeadCreateDto {
   providedIn: 'root'
 })
 export class SurgeryService {
-  private apiUrl = 'http://localhost:5016/api/Surgery';
+  private apiUrl = 'http://4.187.152.228:5000/api/Surgery';
 
   constructor(private http: HttpClient) { }
 
@@ -38,3 +38,4 @@ export class SurgeryService {
     return this.http.post(`${this.apiUrl}/lead`, lead);
   }
 }
+

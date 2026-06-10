@@ -20,3 +20,4 @@ describe('BookingWidget', () => {
     expect(component).toBeTruthy();
   });
 });
+

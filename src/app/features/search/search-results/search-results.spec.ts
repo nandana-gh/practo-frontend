@@ -20,3 +20,4 @@ describe('SearchResults', () => {
     expect(component).toBeTruthy();
   });
 });
+

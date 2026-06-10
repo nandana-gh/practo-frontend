@@ -29,7 +29,7 @@ export class ChatService {
 
   async createHubConnection(appointmentId: string) {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('http://localhost:5016/chathub')
+      .withUrl('http://4.187.152.228:5000/chathub')
       .withAutomaticReconnect()
       .build();
 
@@ -70,3 +70,4 @@ export class ChatService {
     this.messageThreadSource.next(messages);
   }
 }
+

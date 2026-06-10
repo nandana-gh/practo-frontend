@@ -37,7 +37,7 @@ export class AboutPractoComponent implements OnInit {
   }
 
   fetchTestimonials(): void {
-    this.http.get<Testimonial[]>('http://localhost:5016/api/about/testimonials').subscribe({
+    this.http.get<Testimonial[]>('http://4.187.152.228:5000/api/about/testimonials').subscribe({
       next: (data) => {
         if (data && data.length > 0) {
           this.testimonials = data;
@@ -74,3 +74,4 @@ export class AboutPractoComponent implements OnInit {
     }
   }
 }
+

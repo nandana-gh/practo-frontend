@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: product-frontend
+  name: practo-frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: product-frontend
+      app: practo-frontend
   template:
     metadata:
       labels:
-        app: product-frontend
+        app: practo-frontend
     spec:
       containers:
-        - name: product-frontend
-          image: fullstackacr.azurecr.io/product-frontend:latest
+        - name: practo-frontend
+          image: practoacr.azurecr.io/practo-frontend:latest
           ports:
             - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: product-frontend
+  name: practo-frontend
 spec:
   type: LoadBalancer
   selector:
-    app: product-frontend
+    app: practo-frontend
   ports:
     - port: 80
       targetPort: 80

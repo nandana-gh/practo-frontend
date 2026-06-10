@@ -44,7 +44,7 @@ export class PractoPrimeComponent implements OnInit {
   }
 
   fetchSubscriptionPlans() {
-    this.http.get<any[]>('http://localhost:5016/api/Subscription/plans').subscribe({
+    this.http.get<any[]>('http://4.187.152.228:5000/api/Subscription/plans').subscribe({
       next: (data) => {
         this.subscriptionPlans = data;
         this.cdr.detectChanges();
@@ -67,7 +67,7 @@ export class PractoPrimeComponent implements OnInit {
     this.submitSuccess = false;
     this.submitError = '';
 
-    this.http.post('http://localhost:5016/api/providers/join', this.leadForm.value)
+    this.http.post('http://4.187.152.228:5000/api/providers/join', this.leadForm.value)
       .pipe(finalize(() => this.isSubmitting = false))
       .subscribe({
         next: () => {
@@ -94,7 +94,7 @@ export class PractoPrimeComponent implements OnInit {
       return;
     }
 
-    this.http.post(`http://localhost:5016/api/Subscription/purchase/${plan.id}`, {}).subscribe({
+    this.http.post(`http://4.187.152.228:5000/api/Subscription/purchase/${plan.id}`, {}).subscribe({
       next: (res: any) => {
         if (res.razorpayOrderId) {
           const options = {
@@ -131,7 +131,7 @@ export class PractoPrimeComponent implements OnInit {
       referenceId: refId
     };
 
-    this.http.post('http://localhost:5016/api/payment/verify', payload).subscribe({
+    this.http.post('http://4.187.152.228:5000/api/payment/verify', payload).subscribe({
       next: (res: any) => {
         alert('Payment successful! Your Practo Prime subscription is now active.');
         this.cdr.detectChanges();
@@ -142,3 +142,4 @@ export class PractoPrimeComponent implements OnInit {
     });
   }
 }
+

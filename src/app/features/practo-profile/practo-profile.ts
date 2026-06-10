@@ -39,7 +39,7 @@ export class PractoProfileComponent implements OnInit {
   }
 
   fetchSpecialties(): void {
-    this.http.get('http://localhost:5016/api/search/specialties?limit=100').subscribe({
+    this.http.get('http://4.187.152.228:5000/api/search/specialties?limit=100').subscribe({
       next: (res: any) => {
         this.specialties = res;
         this.cdr.detectChanges();
@@ -60,7 +60,7 @@ export class PractoProfileComponent implements OnInit {
     this.errorMessage = '';
     this.cdr.detectChanges();
 
-    this.http.post('http://localhost:5016/api/providers/profile-lead', this.leadForm.value).subscribe({
+    this.http.post('http://4.187.152.228:5000/api/providers/profile-lead', this.leadForm.value).subscribe({
       next: () => {
         this.isSubmitting = false;
         this.showOtpStep = true;
@@ -93,7 +93,7 @@ export class PractoProfileComponent implements OnInit {
       otp: this.otpCode
     };
 
-    this.http.post('http://localhost:5016/api/providers/register-doctor', payload).subscribe({
+    this.http.post('http://4.187.152.228:5000/api/providers/register-doctor', payload).subscribe({
       next: () => {
         this.otpLoading = false;
         this.showOtpStep = false;
@@ -113,3 +113,4 @@ export class PractoProfileComponent implements OnInit {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
+

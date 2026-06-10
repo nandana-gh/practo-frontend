@@ -69,3 +69,4 @@ export class SearchResultsComponent implements OnInit {
     this.fetchResults();
   }
 }
+

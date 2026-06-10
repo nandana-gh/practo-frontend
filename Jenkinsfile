@@ -38,7 +38,7 @@ stage('Run Container') {
  
 steps {
  
-bat 'docker rm -f %CONT% || true'
+bat 'docker rm -f %CONT% >nul 2>&1 || exit 0'
  
 bat 'docker run -d --name %CONT% -p 8081:80 %IMAGE%'
  

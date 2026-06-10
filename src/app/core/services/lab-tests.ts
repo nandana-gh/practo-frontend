@@ -45,7 +45,7 @@ export interface LabTestsLandingDto {
   providedIn: 'root'
 })
 export class LabTestsService {
-  private apiUrl = 'http://4.187.152.228:5000/api/labtests';
+  private apiUrl = '/api/labtests';
 
   constructor(private http: HttpClient) { }
 
@@ -53,4 +53,5 @@ export class LabTestsService {
     return this.http.get<LabTestsLandingDto>(`${this.apiUrl}/landing`);
   }
 }
+
 

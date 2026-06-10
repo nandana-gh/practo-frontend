@@ -54,7 +54,7 @@ export class DoctorDashboardComponent implements OnInit {
 
     if (this.activeTab === 'calendar') {
       // Load both appointments and availability
-      this.http.get<any[]>(`http://4.187.152.228:5000/api/Appointment/doctor`).subscribe({
+      this.http.get<any[]>(`/api/Appointment/doctor`).subscribe({
         next: (data) => {
           this.appointments = data;
           this.loadAvailability();
@@ -66,7 +66,7 @@ export class DoctorDashboardComponent implements OnInit {
         }
       });
     } else if (this.activeTab === 'patients') {
-      this.http.get<any[]>(`http://4.187.152.228:5000/api/Doctor/user/${this.doctorId}/patients`).subscribe({
+      this.http.get<any[]>(`/api/Doctor/user/${this.doctorId}/patients`).subscribe({
         next: (data) => {
           this.patients = data;
           this.isLoading = false;
@@ -79,7 +79,7 @@ export class DoctorDashboardComponent implements OnInit {
         }
       });
     } else if (this.activeTab === 'reports') {
-      this.http.get<any>(`http://4.187.152.228:5000/api/Doctor/user/${this.doctorId}/reports`).subscribe({
+      this.http.get<any>(`/api/Doctor/user/${this.doctorId}/reports`).subscribe({
         next: (data) => {
           this.reports = data;
           this.isLoading = false;
@@ -92,7 +92,7 @@ export class DoctorDashboardComponent implements OnInit {
         }
       });
     } else if (this.activeTab === 'profile') {
-      this.http.get<any>(`http://4.187.152.228:5000/api/Doctor/user/${this.doctorId}/profile`).subscribe({
+      this.http.get<any>(`/api/Doctor/user/${this.doctorId}/profile`).subscribe({
         next: (data) => {
           if (data) {
             this.profileForm = {
@@ -118,7 +118,7 @@ export class DoctorDashboardComponent implements OnInit {
   }
 
   loadAvailability() {
-    this.http.get<any[]>(`http://4.187.152.228:5000/api/Doctor/user/${this.doctorId}/availability?days=3`).subscribe({
+    this.http.get<any[]>(`/api/Doctor/user/${this.doctorId}/availability?days=3`).subscribe({
       next: (data) => {
         this.calendarSlots = data;
         this.isLoading = false;
@@ -136,7 +136,7 @@ export class DoctorDashboardComponent implements OnInit {
     this.isLoading = true;
     this.profileSaveMessage = '';
     
-    this.http.put(`http://4.187.152.228:5000/api/Doctor/user/${this.doctorId}/profile`, this.profileForm).subscribe({
+    this.http.put(`/api/Doctor/user/${this.doctorId}/profile`, this.profileForm).subscribe({
       next: () => {
         this.isLoading = false;
         this.profileSaveMessage = 'Profile updated successfully!';
@@ -172,7 +172,7 @@ export class DoctorDashboardComponent implements OnInit {
     }
 
     this.isLoading = true;
-    this.http.post(`http://4.187.152.228:5000/api/Doctor/user/${this.doctorId}/clinics`, this.newClinic).subscribe({
+    this.http.post(`/api/Doctor/user/${this.doctorId}/clinics`, this.newClinic).subscribe({
       next: () => {
         this.isLoading = false;
         this.clinicSaveMessage = 'Clinic added successfully!';
@@ -190,4 +190,5 @@ export class DoctorDashboardComponent implements OnInit {
     });
   }
 }
+
 

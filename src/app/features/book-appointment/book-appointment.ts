@@ -79,7 +79,7 @@ export class BookAppointmentComponent implements OnInit {
   }
 
   fetchDoctorProfile(): void {
-    this.http.get(`http://4.187.152.228:5000/api/doctor/${this.doctorId}`).subscribe({
+    this.http.get(`/api/doctor/${this.doctorId}`).subscribe({
       next: (res: any) => {
         this.doctorProfile = res;
         // If not passed in query params, fallback to first clinic
@@ -98,7 +98,7 @@ export class BookAppointmentComponent implements OnInit {
 
   fetchAvailability(): void {
     const today = new Date().toISOString().split('T')[0];
-    this.http.get(`http://4.187.152.228:5000/api/doctor/${this.doctorId}/availability?startDate=${today}&days=7`).subscribe({
+    this.http.get(`/api/doctor/${this.doctorId}/availability?startDate=${today}&days=7`).subscribe({
       next: (res: any) => {
         this.availabilitySlots = res;
         if (res.length > 0 && !this.selectedDate) {
@@ -176,7 +176,7 @@ export class BookAppointmentComponent implements OnInit {
     }
 
     // HTTP Interceptor automatically attaches the token
-    this.http.post('http://4.187.152.228:5000/api/appointment/book', payload).subscribe({
+    this.http.post('/api/appointment/book', payload).subscribe({
       next: (res: any) => {
         if (res.razorpayOrderId) {
           const options = {
@@ -233,7 +233,7 @@ export class BookAppointmentComponent implements OnInit {
       referenceId: appointmentId
     };
 
-    this.http.post('http://4.187.152.228:5000/api/payment/verify', payload).subscribe({
+    this.http.post('/api/payment/verify', payload).subscribe({
       next: (res: any) => {
         this.isSubmitting = false;
         this.confirmedAppointmentId = appointmentId;
@@ -249,4 +249,5 @@ export class BookAppointmentComponent implements OnInit {
     });
   }
 }
+
 

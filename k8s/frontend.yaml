@@ -23,7 +23,7 @@ kind: Service
 metadata:
   name: practo-frontend
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: practo-frontend
   ports:

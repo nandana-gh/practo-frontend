@@ -43,7 +43,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   fetchAllPatients(): void {
-    this.http.get<any[]>('http://4.187.152.228:5000/api/admin/patients').subscribe({
+    this.http.get<any[]>('/api/admin/patients').subscribe({
       next: (data) => {
         this.patients = data;
         this.cdr.detectChanges();
@@ -53,7 +53,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   fetchAllDoctors(): void {
-    this.http.get<any[]>('http://4.187.152.228:5000/api/admin/doctors').subscribe({
+    this.http.get<any[]>('/api/admin/doctors').subscribe({
       next: (data) => {
         this.allDoctors = data;
         this.cdr.detectChanges();
@@ -63,7 +63,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   fetchAppointments(): void {
-    this.http.get<any[]>('http://4.187.152.228:5000/api/admin/appointments').subscribe({
+    this.http.get<any[]>('/api/admin/appointments').subscribe({
       next: (data) => {
         this.appointments = data;
         this.cdr.detectChanges();
@@ -73,7 +73,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   fetchLabTestOrders(): void {
-    this.http.get<any[]>('http://4.187.152.228:5000/api/admin/labtest-orders').subscribe({
+    this.http.get<any[]>('/api/admin/labtest-orders').subscribe({
       next: (data) => {
         this.labTestOrders = data;
         this.cdr.detectChanges();
@@ -83,7 +83,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   fetchSurgeryLeads(): void {
-    this.http.get<any[]>('http://4.187.152.228:5000/api/admin/surgery-leads').subscribe({
+    this.http.get<any[]>('/api/admin/surgery-leads').subscribe({
       next: (data) => {
         this.surgeryLeads = data;
         this.cdr.detectChanges();
@@ -94,7 +94,7 @@ export class AdminDashboardComponent implements OnInit {
 
   fetchMedicineOrders(): void {
     this.isLoading = true;
-    this.http.get<any[]>('http://4.187.152.228:5000/api/admin/medicine-orders').subscribe({
+    this.http.get<any[]>('/api/admin/medicine-orders').subscribe({
       next: (data) => {
         this.medicineOrders = data;
         this.isLoading = false;
@@ -112,7 +112,7 @@ export class AdminDashboardComponent implements OnInit {
   fetchPendingDoctors(): void {
     this.isLoading = true;
     // In a real app, you would pass an Admin token.
-    this.http.get('http://4.187.152.228:5000/api/admin/pending-doctors').subscribe({
+    this.http.get('/api/admin/pending-doctors').subscribe({
       next: (res: any) => {
         this.pendingDoctors = res;
         this.isLoading = false;
@@ -130,7 +130,7 @@ export class AdminDashboardComponent implements OnInit {
     this.errorMessage = '';
     this.successMessage = '';
     
-    this.http.post(`http://4.187.152.228:5000/api/admin/approve-doctor/${id}`, {}).subscribe({
+    this.http.post(`/api/admin/approve-doctor/${id}`, {}).subscribe({
       next: (res: any) => {
         this.successMessage = res.message;
         // Remove approved doctor from the list
@@ -145,7 +145,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   intimatePatient(leadId: number): void {
-    this.http.post(`http://4.187.152.228:5000/api/admin/intimate-surgery-lead/${leadId}`, {}).subscribe({
+    this.http.post(`/api/admin/intimate-surgery-lead/${leadId}`, {}).subscribe({
       next: (res: any) => {
         this.successMessage = res.message || 'Notification sent successfully.';
         this.errorMessage = '';
@@ -160,7 +160,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   fetchMedicinesInventory(): void {
-    this.http.get<any[]>('http://4.187.152.228:5000/api/admin/inventory/medicines').subscribe({
+    this.http.get<any[]>('/api/admin/inventory/medicines').subscribe({
       next: (data) => {
         this.medicinesInventory = data;
         this.cdr.detectChanges();
@@ -177,7 +177,7 @@ export class AdminDashboardComponent implements OnInit {
       originalPrice: this.newMedicine.originalPrice || this.newMedicine.price || 0
     };
     
-    this.http.post('http://4.187.152.228:5000/api/admin/inventory/medicines', payload).subscribe({
+    this.http.post('/api/admin/inventory/medicines', payload).subscribe({
       next: (res: any) => {
         this.successMessage = 'Medicine added successfully!';
         this.errorMessage = '';
@@ -194,7 +194,7 @@ export class AdminDashboardComponent implements OnInit {
 
   deleteMedicine(id: number): void {
     if(confirm('Are you sure you want to delete this medicine?')) {
-      this.http.delete(`http://4.187.152.228:5000/api/admin/inventory/medicines/${id}`).subscribe({
+      this.http.delete(`/api/admin/inventory/medicines/${id}`).subscribe({
         next: () => {
           this.successMessage = 'Medicine deleted successfully.';
           this.fetchMedicinesInventory();
@@ -208,7 +208,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   fetchLabTestsInventory(): void {
-    this.http.get<any[]>('http://4.187.152.228:5000/api/admin/inventory/labtests').subscribe({
+    this.http.get<any[]>('/api/admin/inventory/labtests').subscribe({
       next: (data) => {
         this.labTestsInventory = data;
         this.cdr.detectChanges();
@@ -224,7 +224,7 @@ export class AdminDashboardComponent implements OnInit {
       originalPrice: this.newLabTest.originalPrice || this.newLabTest.price || 0
     };
 
-    this.http.post('http://4.187.152.228:5000/api/admin/inventory/labtests', payload).subscribe({
+    this.http.post('/api/admin/inventory/labtests', payload).subscribe({
       next: (res: any) => {
         this.successMessage = 'Lab test added successfully!';
         this.errorMessage = '';
@@ -241,7 +241,7 @@ export class AdminDashboardComponent implements OnInit {
 
   deleteLabTest(id: number): void {
     if(confirm('Are you sure you want to delete this lab test?')) {
-      this.http.delete(`http://4.187.152.228:5000/api/admin/inventory/labtests/${id}`).subscribe({
+      this.http.delete(`/api/admin/inventory/labtests/${id}`).subscribe({
         next: () => {
           this.successMessage = 'Lab test deleted successfully.';
           this.fetchLabTestsInventory();
@@ -254,4 +254,5 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 }
+
 

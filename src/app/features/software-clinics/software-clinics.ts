@@ -48,7 +48,7 @@ export class SoftwareClinicsComponent implements OnInit {
   }
 
   fetchFaqs(): void {
-    this.http.get<Faq[]>('http://4.187.152.228:5000/api/software/faqs').subscribe({
+    this.http.get<Faq[]>('/api/software/faqs').subscribe({
       next: (data) => {
         if (data && data.length > 0) {
           this.faqs = data;
@@ -69,7 +69,7 @@ export class SoftwareClinicsComponent implements OnInit {
     this.isSubmitting = true;
     this.submitSuccess = false;
 
-    this.http.post('http://4.187.152.228:5000/api/providers/join', this.leadForm.value).subscribe({
+    this.http.post('/api/providers/join', this.leadForm.value).subscribe({
       next: () => {
         this.isSubmitting = false;
         this.submitSuccess = true;
@@ -82,4 +82,5 @@ export class SoftwareClinicsComponent implements OnInit {
     });
   }
 }
+
 

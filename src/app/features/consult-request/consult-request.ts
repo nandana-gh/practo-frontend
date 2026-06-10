@@ -59,7 +59,7 @@ export class ConsultRequestComponent implements OnInit {
     this.submitError = '';
     this.cdr.detectChanges();
     
-    this.http.post('http://4.187.152.228:5000/api/consultations/request', this.consultForm.value).subscribe({
+    this.http.post('/api/consultations/request', this.consultForm.value).subscribe({
       next: (res: any) => {
         this.isSubmitting = false;
         this.step = 'otp';
@@ -85,7 +85,7 @@ export class ConsultRequestComponent implements OnInit {
       otp: this.otpForm.value.otp
     };
 
-    this.http.post('http://4.187.152.228:5000/api/consultations/verify-otp', payload).subscribe({
+    this.http.post('/api/consultations/verify-otp', payload).subscribe({
       next: (res: any) => {
         this.isVerifying = false;
         this.step = 'success';
@@ -99,4 +99,5 @@ export class ConsultRequestComponent implements OnInit {
     });
   }
 }
+
 

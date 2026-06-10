@@ -20,7 +20,7 @@ export class PatientDashboardComponent implements OnInit {
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>(`http://4.187.152.228:5000/api/Appointment/patient`).subscribe({
+    this.http.get<any[]>(`/api/Appointment/patient`).subscribe({
       next: (data) => {
         this.appointments = data;
         this.isLoading = false;
@@ -33,7 +33,7 @@ export class PatientDashboardComponent implements OnInit {
       }
     });
 
-    this.http.get<any[]>(`http://4.187.152.228:5000/api/Medicines/orders`).subscribe({
+    this.http.get<any[]>(`/api/Medicines/orders`).subscribe({
       next: (data) => {
         this.medicineOrders = data;
         this.cdr.detectChanges();
@@ -43,7 +43,7 @@ export class PatientDashboardComponent implements OnInit {
       }
     });
 
-    this.http.get<any[]>(`http://4.187.152.228:5000/api/MedicalRecords/my-records`).subscribe({
+    this.http.get<any[]>(`/api/MedicalRecords/my-records`).subscribe({
       next: (data) => {
         this.medicalRecords = data;
         this.cdr.detectChanges();
@@ -51,7 +51,7 @@ export class PatientDashboardComponent implements OnInit {
       error: (err) => console.error(err)
     });
 
-    this.http.get<any[]>(`http://4.187.152.228:5000/api/MedicalRecords/my-prescriptions`).subscribe({
+    this.http.get<any[]>(`/api/MedicalRecords/my-prescriptions`).subscribe({
       next: (data) => {
         this.prescriptions = data;
         this.cdr.detectChanges();
@@ -72,7 +72,7 @@ export class PatientDashboardComponent implements OnInit {
       fileUrl: '/assets/sample-record.pdf'
     };
 
-    this.http.post(`http://4.187.152.228:5000/api/MedicalRecords/upload`, payload).subscribe({
+    this.http.post(`/api/MedicalRecords/upload`, payload).subscribe({
       next: (res) => {
         alert("Record uploaded!");
         descriptionInput.value = '';
@@ -82,4 +82,5 @@ export class PatientDashboardComponent implements OnInit {
     });
   }
 }
+
 

@@ -44,7 +44,7 @@ export class CorporateLandingComponent implements OnInit {
     this.submitSuccess = false;
     this.submitError = '';
 
-    this.http.post('http://4.187.152.228:5000/api/corporate/demo', this.demoForm.value)
+    this.http.post('/api/corporate/demo', this.demoForm.value)
       .pipe(finalize(() => this.isSubmitting = false))
       .subscribe({
         next: () => {
@@ -65,4 +65,5 @@ export class CorporateLandingComponent implements OnInit {
     }
   }
 }
+
 

@@ -37,7 +37,7 @@ export class DataSecurityComponent implements OnInit {
   }
 
   fetchFaqs(): void {
-    this.http.get<Faq[]>('http://4.187.152.228:5000/api/security/faqs').subscribe({
+    this.http.get<Faq[]>('/api/security/faqs').subscribe({
       next: (data) => {
         this.faqs = data;
       },
@@ -47,4 +47,5 @@ export class DataSecurityComponent implements OnInit {
     });
   }
 }
+
 

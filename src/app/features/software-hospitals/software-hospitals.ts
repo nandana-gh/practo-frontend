@@ -32,7 +32,7 @@ export class SoftwareHospitalsComponent implements OnInit {
   }
 
   fetchCustomers(): void {
-    this.http.get<Customer[]>('http://4.187.152.228:5000/api/hospitals/customers').subscribe({
+    this.http.get<Customer[]>('/api/hospitals/customers').subscribe({
       next: (data) => {
         if (data && data.length > 0) {
           this.customers = data;
@@ -42,4 +42,5 @@ export class SoftwareHospitalsComponent implements OnInit {
     });
   }
 }
+
 

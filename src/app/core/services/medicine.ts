@@ -29,7 +29,7 @@ export interface MedicinesLandingDto {
   providedIn: 'root'
 })
 export class MedicineService {
-  private apiUrl = 'http://4.187.152.228:5000/api/Medicines';
+  private apiUrl = '/api/Medicines';
 
   constructor(private http: HttpClient) { }
 
@@ -37,4 +37,5 @@ export class MedicineService {
     return this.http.get<MedicinesLandingDto>(`${this.apiUrl}/landing`);
   }
 }
+
 
